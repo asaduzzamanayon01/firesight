@@ -13,7 +13,6 @@ COMP6002 Computer Science Project, Semester 2 2026. Group 14, Master of AI.
 - `src/features` feature engineering
 - `src/models` training and calibration
 - `src/evaluation` metrics and validation - `notebooks` exploratory analysis
-- `tests` unit tests
 - `docs` decisions log and sprint reports
 ## Setup
 ```bash
