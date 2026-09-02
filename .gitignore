@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Data: tracked by DVC, never by git
+data/raw/*
+data/processed/*
+data/interim/*
+!data/**/.gitkeep
+*.tif
+*.parquet
+*.nc
+# Environments and secrets .env
+.venv/
+venv/
+# MLflow mlruns/
+# Notebooks .ipynb_checkpoints/
+# OS and editors
+.DS_Store
+.vscode/
+.idea/
