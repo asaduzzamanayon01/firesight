@@ -1,0 +1,72 @@
+# FireSight configuration
+# Owner: Ayon (Scrum Master & ML)
+# Everything that is a magic number lives here, not in the code.
+
+project:
+  name: firesight
+  random_seed: 42
+
+# Study region: Perth metro + Darling Scarp
+region:
+  name: perth_darling_scarp
+  # lon_min, lat_min, lon_max, lat_max  (EPSG:4326)
+  bbox: [115.45, -32.60, 116.55, -31.40]
+  grid_cell_km: 3
+  projected_crs: "EPSG:7850"   # GDA2020 / MGA zone 50, metres
+
+# Fire season definition: Australian fire year runs Jul -> Jun
+seasons:
+  start_year: 2012
+  end_year: 2025
+  season_start_month: 7
+
+firms:
+  # Get a free key at https://firms.modaps.eosdis.nasa.gov/api/
+  # Store it in .env as FIRMS_MAP_KEY - never commit it.
+  base_url: "https://firms.modaps.eosdis.nasa.gov/api/area/csv"
+  source: "VIIRS_SNPP_SP"
+  min_confidence: "nominal"     # drop 'low' confidence detections
+  # DBSCAN clustering for grouping detections into fire events
+  cluster_eps_km: 1.5
+  cluster_eps_hours: 24
+  cluster_min_samples: 1
+
+weather:
+  # Variables joined onto each cell-day. All lagged - see note in join_weather.py
+  variables: [t2m_max, rh_min, wind_speed_max, precip_24h, kbdi]
+  lag_days: 1
+  rolling_windows: [3, 7, 30]
+
+model:
+  target: ignition
+  # Columns never fed to the model
+  exclude_cols: [cell_id, date, season, geometry, ignition]
+  lightgbm:
+    objective: binary
+    n_estimators: 2000
+    learning_rate: 0.05
+    num_leaves: 63
+    min_child_samples: 100
+    subsample: 0.8
+    colsample_bytree: 0.8
+    early_stopping_rounds: 100
+    # scale_pos_weight is computed from the data at train time, not hardcoded
+  calibration:
+    method: isotonic
+
+evaluation:
+  primary_metric: pr_auc
+  reliability_bins: 10
+  # Which seasons to hold out, one at a time
+  cv_scheme: leave_one_season_out
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  models: models
+  reports: reports
+  figures: reports/figures
+
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"   # file store is deprecated in MLflow 3.x
+  experiment_name: firesight
