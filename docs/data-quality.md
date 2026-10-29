@@ -27,4 +27,4 @@ Read data-sources.md before collecting real data. Reconcile PR #3's differing bb
 
 ## Latest upstream integration
 
-Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. The refreshed combined candidate passes 83 local tests and ruff check . with the upstream notebook exclusion. See [latest evidence](yian-delivery/Latest_Integration_Status.md) for the current result; the 75-test evidence above is the earlier snapshot. Hosted CI, review, merge and real-data checks remain pending.
+Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. The refreshed combined candidate passes 83 local tests and ruff check . with the upstream notebook exclusion. See [latest evidence](yian-delivery/Latest_Integration_Status.md) for the current result; the 75-test evidence above is the earlier snapshot. Hosted fork CI passed on code revision 61851c4 (Python 3.10); review, upstream merge and real-data checks remain pending.

@@ -11,17 +11,19 @@ Catalogue, checker, tests, report and presentation materials are available for t
 - **Whole team:** see [everyone’s responsibilities and handoff order](TEAM_HANDOFF.md).
 - **Offline copy:** [complete archive](FireSight_Yian_Final_Delivery_2026-10-29.zip). It preserves the original local evidence snapshot; this index and Jira record current publication status.
 
+**Hosted CI:** [passed on code revision 61851c4](https://github.com/YIAN-WANG-W/firesight/actions/runs/40873721046), Python 3.10. PR #7 has no merge conflicts; review and upstream merge remain pending.
+
 ## Five deliverables
 
 | Task | Delivered files | Present state | Remaining work |
 |---|---|---|---|
 | [FS-35 · Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | [Catalogue](../data-sources.md), [source-record template](../source-record.template.json) | Prepared; catalogue attached in Jira. | Ayon supplies acquisition manifests, products, dates and units; Yian completes run provenance. |
-| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **83 local tests passed after upstream refresh**. Archive attached in Jira. | Second-person review, hosted CI and upstream merge; agree conventions with PR #3 before the real run. |
+| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **83 local tests passed after upstream refresh**. Archive attached in Jira. | Second-person review and upstream merge; agree conventions with PR #3 before the real run. |
 | [FS-37 · Real-data summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | [Required inputs / status](Real_Data_Quality_Status.md) | **Waiting for real inputs.** No real counts, missingness or seasonal coverage measured. | Ayon supplies ignition, weather, forecast, grid and manifests; Yian publishes measured results with hashes and revision. |
 | [FS-38 · Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md) | Editable contribution attached in Jira; Word layout inspected. | Tabib integrates / reviews; Yian adds FS-37 measurements. |
 | [FS-39 · Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | [PowerPoint](Yian_Data_Slide.pptx), [notes](Speaker_Notes.txt) | Editable slide / script attached in Jira; slide rendered and inspected. | Tabib integrates; Yian rehearses and joins team rehearsal. |
 
-All five tasks remain **In Progress**. The repository’s Definition of Done requires review, CI and merge for code work. Commits include relevant FS keys; no automatic Done transition is requested while acceptance work remains.
+All five tasks remain **In Progress**. The repository’s Definition of Done requires review, CI and merge for code work. Fork CI has passed; second-person review and upstream merge remain. Commits include relevant FS keys; no automatic Done transition is requested while acceptance work remains.
 
 ## Verification
 
@@ -39,7 +41,7 @@ From the repository root after installing requirements.txt, run:
 | Current combined candidate on 41584f9 | **83 tests passed locally** | Includes upstream and delivery tests; fixtures only. |
 | Ruff: whole repository | Passed locally | Uses latest upstream configuration, excluding notebooks. Earlier snapshot had 8 notebook findings. |
 | Real API / real-data validation / model training | Not performed | Production files and measured results were not obtained. |
-| Hosted CI / approval / upstream merge | Pending | Read the live PR and Jira for later updates. |
+| Hosted fork CI on 61851c4 | **Passed on Python 3.10** | Upstream PR Checks tab has no checks; review / merge remain pending. |
 
 See [latest evidence](Latest_Integration_Status.md), [earlier test log](repository-tests.txt), [integration snapshot](Repository_Integration_Status.json) and [real-input commands / interpretation limits](../data-quality.md). Fixture counts are not real fire or weather statistics. The archive and snapshot were written before remote publication; their local-only status is historical.
 
