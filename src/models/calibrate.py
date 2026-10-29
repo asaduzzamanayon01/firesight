@@ -67,6 +67,11 @@ class IsotonicCalibrator:
 
 
 def main() -> None:
+    # Re-import under the real module path: when run with `python -m`, this file is
+    # `__main__`, and pickling the class from there makes calibrator.pkl unloadable
+    # from any other script (e.g. export_forecast).
+    from src.models.calibrate import IsotonicCalibrator
+
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     proc = CFG.path("processed")
     oof = pd.read_parquet(proc / "oof_predictions.parquet").dropna(subset=["y_prob"])
