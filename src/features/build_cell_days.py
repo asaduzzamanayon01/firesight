@@ -113,6 +113,27 @@ def add_temporal_features(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+# A 3 km cell that "ignites" on 35 or more different days in 6 seasons is almost
+# certainly a permanent heat source (flare, quarry, industrial site), not a series of
+# bushfires: the average cell ignites on about 2 days in 6 seasons. FIRMS clusters
+# a steady source into a new "event" each time a cloudy gap exceeds 24 hours.
+STATIC_MIN_IGNITION_DAYS = 35
+
+
+def drop_static_sources(df: pd.DataFrame, min_days: int = STATIC_MIN_IGNITION_DAYS
+                        ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Remove cells with implausibly frequent ignitions.
+
+    Returns (filtered table, table of removed cells with their ignition-day counts).
+    The rule is fixed in advance and applied to every season, so it does not depend
+    on which season is being evaluated.
+    """
+    days = df[df["ignition"] == 1].groupby("cell_id")["date"].nunique()
+    static_ids = days[days >= min_days]
+    removed = static_ids.rename("ignition_days").reset_index()
+    return df[~df["cell_id"].isin(removed["cell_id"])].copy(), removed
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     raw_dir = CFG.path("raw")
@@ -124,6 +145,12 @@ def main() -> None:
         )
     ignitions = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
     out = add_temporal_features(build(ignitions))
+    out, removed = drop_static_sources(out)
+    if len(removed):
+        removed.to_csv(CFG.path("processed") / "static_cells.csv", index=False)
+        print(f"excluded {len(removed)} probable static heat-source cells "
+              f"(>= {STATIC_MIN_IGNITION_DAYS} ignition days): "
+              f"{removed.to_dict('records')}")
     dest = CFG.path("processed") / "cell_days.parquet"
     out.to_parquet(dest, index=False)
     print(f"wrote {len(out):,} rows -> {dest}")
