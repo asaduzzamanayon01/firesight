@@ -235,3 +235,6 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# Local quality evidence (select intentionally for the assessment, never bulk-add)
+reports/data-quality/

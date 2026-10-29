@@ -1,4 +1,4 @@
-.PHONY: setup synth test pipeline baseline train calibrate explain lint
+.PHONY: setup synth test pipeline baseline train calibrate explain lint quality
 
 setup:
 	pip install -r requirements.txt
@@ -25,3 +25,7 @@ test:
 
 lint:
 	ruff check .
+
+# Supply explicit input files and data mode; see docs/data-quality.md.
+quality:
+	PYTHONPATH=. python scripts/check_data_quality.py $(QUALITY_ARGS)

@@ -96,3 +96,8 @@ cp .env.example .env          # add your FIRMS key, never commit it
 export MLFLOW_TRACKING_URI=sqlite:///mlflow.db
 mlflow ui                     # http://localhost:5000
 ```
+
+
+## Data quality (FS-35 / FS-36)
+
+See [data-quality integration and run instructions](docs/data-quality.md) and [source catalogue](docs/data-sources.md). These local candidate changes have fixture verification; real-run evidence is still required.

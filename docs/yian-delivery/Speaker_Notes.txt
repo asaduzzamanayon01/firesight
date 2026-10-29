@@ -1,0 +1,19 @@
+Yian Wang data slide
+Approximately 60 to 75 seconds at a natural speaking pace. Rehearse and adjust with Tabib's total time allocation.
+
+My contribution covers the data catalogue and quality checks. The two sources in the final plan are NASA FIRMS detections and historical weather from Open-Meteo.
+
+For each acquired file, the catalogue specifies the source, period, units and attribution. The quality module checks required fields, missing values, duplicate records, timestamps and coordinates. At the dashboard boundary, it also validates probabilities and binary labels in forecast.csv.
+
+The checks preserve the input files and produce aggregate counts with input hashes. I have tested the module offline on controlled fixtures. Integration and the real-data quality summary still need the actual run files.
+
+Satellite detections are not independently verified ignition events, and historical reanalysis availability must be considered before making live forecasting claims.
+
+Sources accessed 29 October 2026
+NASA FIRMS. API Area. https://firms.modaps.eosdis.nasa.gov/api/area/
+Open-Meteo. Historical Weather API. https://open-meteo.com/en/docs/historical-weather-api
+Open-Meteo. Licence. https://open-meteo.com/en/licence
+Team final delivery plan, PDF page 5.
+
+中文理解
+你的工作是数据目录和检查，不是负责模型结果。讲清来源、字段和时间坐标检查、可追溯的摘要。当前只做过受控样例验证，真实数据统计要拿到 Ayon 的运行文件才能补。不要把卫星检测条数直接称作真实起火次数，也不要把历史回测说成实时预报。
