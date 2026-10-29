@@ -82,3 +82,15 @@ def test_scale_pos_weight_matches_the_imbalance():
 def test_scale_pos_weight_rejects_empty_positive_class():
     with pytest.raises(ValueError, match="no positives"):
         compute_scale_pos_weight(np.zeros(100, dtype=int))
+
+
+def test_early_stopping_validation_never_touches_the_test_season():
+    from src.models.train_lgbm import inner_split
+
+    df = pd.DataFrame({"season": ["2019-20"] * 4 + ["2020-21"] * 4 + ["2021-22"] * 4})
+    test_idx = np.arange(8, 12)
+    train_idx = np.arange(0, 8)
+    fit, val = inner_split(df, train_idx)
+    assert set(val).isdisjoint(test_idx) and set(fit).isdisjoint(test_idx)
+    assert set(fit).isdisjoint(val)
+    assert set(df.iloc[val]["season"]) == {"2020-21"}

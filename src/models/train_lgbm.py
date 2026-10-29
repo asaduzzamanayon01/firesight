@@ -64,11 +64,25 @@ def compute_scale_pos_weight(y: np.ndarray) -> float:
     return neg / pos
 
 
+def inner_split(df: pd.DataFrame, train_idx: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Split a training set into fit and validation parts, by season.
+
+    The most recent training season is held back for early stopping. Early
+    stopping on the held-out test season would let test data choose the
+    number of trees, which is a mild form of leakage.
+    """
+    seasons = df.iloc[train_idx]["season"]
+    val_season = sorted(seasons.unique())[-1]
+    is_val = (seasons == val_season).to_numpy()
+    return train_idx[~is_val], train_idx[is_val]
+
+
 def train_fold(X_tr, y_tr, X_te, y_te, params: dict):
     import lightgbm as lgb
 
-    spw = compute_scale_pos_weight(y_tr)
     p = dict(params)
+    mode = p.pop("class_weight", "none")
+    spw = compute_scale_pos_weight(y_tr) if mode == "balanced" else 1.0
     early = p.pop("early_stopping_rounds", 100)
     p.update(scale_pos_weight=spw, random_state=CFG.project.random_seed,
              n_jobs=-1, verbose=-1)
@@ -110,10 +124,12 @@ def run() -> pd.DataFrame:
         oof = np.full(len(df), np.nan)
 
         for season, tr, te in leave_one_season_out(df):
-            X_tr, y_tr = df.iloc[tr][feats], df.iloc[tr]["ignition"].to_numpy()
+            fit, val = inner_split(df, tr)
+            X_fit, y_fit = df.iloc[fit][feats], df.iloc[fit]["ignition"].to_numpy()
+            X_val, y_val = df.iloc[val][feats], df.iloc[val]["ignition"].to_numpy()
             X_te, y_te = df.iloc[te][feats], df.iloc[te]["ignition"].to_numpy()
 
-            model, spw = train_fold(X_tr, y_tr, X_te, y_te, params)
+            model, spw = train_fold(X_fit, y_fit, X_val, y_val, params)
             p = model.predict_proba(X_te)[:, 1]
             oof[te] = p
 
@@ -153,8 +169,10 @@ def run() -> pd.DataFrame:
         oof_df.to_parquet(proc / "oof_predictions.parquet", index=False)
 
         # Final model on all data, for the dashboard
-        final, _ = train_fold(df[feats], df["ignition"].to_numpy(),
-                              df[feats], df["ignition"].to_numpy(), params)
+        fit, val = inner_split(df, np.arange(len(df)))
+        final, _ = train_fold(df.iloc[fit][feats], df.iloc[fit]["ignition"].to_numpy(),
+                              df.iloc[val][feats], df.iloc[val]["ignition"].to_numpy(),
+                              params)
         import joblib
         mp = CFG.path("models") / "lgbm_final.pkl"
         joblib.dump({"model": final, "features": feats}, mp)
