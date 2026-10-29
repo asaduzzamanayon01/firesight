@@ -1,19 +1,16 @@
-Yian Wang data slide
-Approximately 60 to 75 seconds at a natural speaking pace. Rehearse and adjust with Tabib's total time allocation.
+Yian Wang — data sources and measured quality
+Updated 30 October 2026. About 75–90 seconds; agree the allocation with Tabib and rehearse personally.
 
-My contribution covers the data catalogue and quality checks. The two sources in the final plan are NASA FIRMS detections and historical weather from Open-Meteo.
+My contribution covers the data catalogue, provenance and quality checks. We have now received six seasonal event tables and five raw weather batches, described by the sender as real FIRMS and Open-Meteo data.
 
-For each acquired file, the catalogue specifies the source, period, units and attribution. The quality module checks required fields, missing values, duplicate records, timestamps and coordinates. At the dashboard boundary, it also validates probabilities and binary labels in forecast.csv.
+The event files contain 2,846 supplied event rows. Their required fields, timestamps, duplicates and coordinates pass our structural checks. With the current main grid, these become 2,822 positive cell-days, or about 0.08174 percent. These are satellite-derived labels, not independently confirmed ignition causes.
 
-The checks preserve the input files and produce aggregate counts with input hashes. I have tested the module offline on controlled fixtures. Integration and the real-data quality summary still need the actual run files.
+All 56 weather points have complete daily and hourly coverage, with no missing numeric values. I reconstructed the processed weather using the existing main transformations and retained the input hashes. That reconstruction has about 3.45 million cell-days, but 35 grid centres fall outside the configured boundary. The checker keeps this as a failure for the team to resolve.
 
-Satellite detections are not independently verified ignition events, and historical reanalysis availability must be considered before making live forecasting claims.
+We still need the actual forecast export, run provenance and an agreed grid and day convention before final acceptance. This audit does not reproduce model accuracy, and historical reanalysis should be presented as retrospective input.
 
-Sources accessed 29 October 2026
-NASA FIRMS. API Area. https://firms.modaps.eosdis.nasa.gov/api/area/
-Open-Meteo. Historical Weather API. https://open-meteo.com/en/docs/historical-weather-api
-Open-Meteo. Licence. https://open-meteo.com/en/licence
-Team final delivery plan, PDF page 5.
+Evidence: Real_Data_Quality_Status.md; Real_Data_Audit_2026-10-30.json; scripts/audit_received_data.py. Processing code e555d2aa41dd1be1d44d7bb9ebbe6be8feca3b54. Original files forwarded by Victor in WhatsApp, 29 October 2026 23:41 Perth; copied unchanged and checked 30 October.
+Source context: NASA FIRMS API Area https://firms.modaps.eosdis.nasa.gov/api/area/ ; Open-Meteo Historical Weather API https://open-meteo.com/en/docs/historical-weather-api ; licence https://open-meteo.com/en/licence (documentation accessed 29 October 2026).
 
 中文理解
-你的工作是数据目录和检查，不是负责模型结果。讲清来源、字段和时间坐标检查、可追溯的摘要。当前只做过受控样例验证，真实数据统计要拿到 Ayon 的运行文件才能补。不要把卫星检测条数直接称作真实起火次数，也不要把历史回测说成实时预报。
+你的实测工作已经推进：2,846 条卫星衍生事件记录，按现有主流程合成 2,822 个阳性网格日；天气 56 个点时间序列完整、没有数值缺失。天气表是按代码本地重建的，不能冒充队友原始模型输入。35 个网格中心越过配置边界，需 Ayon/Sa-ad 确认边缘规则；最终 forecast.csv、原始来源清单和运行版本仍缺。报告清楚说明已经检查的内容和验收条件；不声称模型准确性已复现，也不声称已完成个人或团队排练。

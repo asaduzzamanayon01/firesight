@@ -1,61 +1,41 @@
-# Yian’s delivery: files, evidence and remaining work
+# Yian’s delivery and current handoff
 
-**Owner:** Yian Wang · **Updated:** 29 October 2026 (Perth) · **Scope:** FS-35–FS-39 · **PR:** [#7](https://github.com/asaduzzamanayon01/firesight/pull/7)
+Yian Wang · **Updated 30 October 2026 (Perth)** · FS-35–FS-39 · [Upstream PR #7](https://github.com/asaduzzamanayon01/firesight/pull/7)
 
-Catalogue, checker, tests, report and presentation materials are available for team review. **Real-data statistics remain pending.** Publication on the delivery branch does not mean review or merge into upstream main is complete.
+**Real inputs have arrived and the measured audit is published.** Six event tables pass structural checks. Raw weather is complete; locally reconstructed weather fails the current strict bbox rule at 35 grid centres. Full acceptance awaits forecast.csv, actual run provenance and an agreed grid/day policy. Review and upstream merge remain pending.
 
-## Latest progress check
+## Current files for the team
 
-Ayon’s FS-21–FS-24 are now Done, and Sa-ad’s PR #3 is merged. The delivery branch integrates main cc00735. **Actual real-run files are still not accessible in the inspected sources**, so FS-37 remains waiting for the handoff. See the [new checkpoint](Progress_Check_2026-10-29.md), including author-reported model results and the 83 + 10 separately executed tests.
+- **Start with the [measured quality report and next owners](Real_Data_Quality_Status.md).** [Detailed JSON and input hashes](Real_Data_Audit_2026-10-30.json) · [archive receipt](Received_Archives_2026-10-30.json) · [offline audit script](../../scripts/audit_received_data.py).
+- **Tabib:** refreshed editable [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md), [one-slide PowerPoint](Yian_Data_Slide.pptx) and [speaker notes](Speaker_Notes.txt).
+- **Ayon / Sa-ad:** [catalogue](../data-sources.md), [quality module and run instructions](../data-quality.md), [whole-team responsibilities](TEAM_HANDOFF.md).
+- **Historical evidence:** [29 October checkpoint](Progress_Check_2026-10-29.md), [earlier integration](Latest_Integration_Status.md), [original archive](FireSight_Yian_Final_Delivery_2026-10-29.zip). Their waiting-for-input statements are superseded by the measured report above.
 
-## Start here
+## Measured receipt
 
-- **Ayon / Sa-ad:** review the [integration instructions](../data-quality.md), code and tests.
-- **Tabib:** use the editable [Word report](Yian_Report_Sections.docx), [Markdown report](Yian_Report_Sections.md), [PowerPoint slide](Yian_Data_Slide.pptx) and [speaker notes](Speaker_Notes.txt).
-- **Whole team:** see [everyone’s responsibilities and handoff order](TEAM_HANDOFF.md).
-- **Offline copy:** [complete archive](FireSight_Yian_Final_Delivery_2026-10-29.zip). It preserves the original local evidence snapshot; this index and Jira record current publication status.
+| Evidence | Result |
+|---|---|
+| Six event tables, 2019–20 to 2024–25 | 2,846 rows; 0 required missing values; all six native checks pass |
+| Grouped detections | 24,968, summed from supplied event counts; original detection rows absent |
+| Current main labels | 2,822 / 3,452,400 positive cell-days = 0.08174024% |
+| Five raw weather JSON batches | 56 points; full 2,557-day / 61,368-hour axes; 0 missing/nonfinite variable values |
+| Locally reconstructed weather | 3,452,400 cell-days; 0 missing features; **FAIL: 35 outside-bbox centres / 76,720 rows** |
+| Forecast / run-specific acceptance | **Pending**: no forecast.csv, original acquisition manifests or actual model-run grid/revision |
 
-**Hosted CI:** [passed on code revision 61851c4](https://github.com/YIAN-WANG-W/firesight/actions/runs/40873721046), Python 3.10. PR #7 has no merge conflicts; review and upstream merge remain pending.
+## Five deliverables and next owners
 
-## Five deliverables
-
-| Task | Delivered files | Present state | Remaining work |
-|---|---|---|---|
-| [FS-35 · Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | [Catalogue](../data-sources.md), [source-record template](../source-record.template.json) | Prepared; catalogue attached in Jira. | Ayon supplies acquisition manifests, products, dates and units; Yian completes run provenance. |
-| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **83 local tests passed after upstream refresh**. Archive attached in Jira. | Second-person review and upstream merge; agree conventions with PR #3 before the real run. |
-| [FS-37 · Real-data summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | [Required inputs / status](Real_Data_Quality_Status.md) | **Waiting for accessible real-run inputs; Ayon’s related tasks are now Done.** No real counts, missingness or seasonal coverage measured. | Ayon supplies ignition, weather, forecast, grid and manifests; Yian publishes measured results with hashes and revision. |
-| [FS-38 · Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md) | Editable contribution attached in Jira; Word layout inspected. | Tabib integrates / reviews; Yian adds FS-37 measurements. |
-| [FS-39 · Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | [PowerPoint](Yian_Data_Slide.pptx), [notes](Speaker_Notes.txt) | Editable slide / script attached in Jira; slide rendered and inspected. | Tabib integrates; Yian rehearses and joins team rehearsal. |
-
-All five tasks remain **In Progress**. The repository’s Definition of Done requires review, CI and merge for code work. Fork CI has passed; second-person review and upstream merge remain. Commits include relevant FS keys; no automatic Done transition is requested while acceptance work remains.
-
-## Verification
-
-The table below records the earlier 41584f9 integration. For the cc00735 refresh, read the [current checkpoint and logs](Progress_Check_2026-10-29.md).
-
-**Latest refresh:** upstream main 41584f9 now includes CI, weather / forecast scripts and a corrected inner validation split. These changes are retained in this branch; see [latest integration evidence](Latest_Integration_Status.md). Earlier archive statements about absent code describe the original ad480505 snapshot.
-
-From the repository root after installing requirements.txt, run:
-
-    python -m pytest
-    ruff check src scripts tests
-
-| Check | Observed result | Limit |
+| Task | Current delivery | Remaining acceptance |
 |---|---|---|
-| Unmodified baseline ad480505 | 32 tests passed locally | Baseline result; do not add this to 75. |
-| Earlier candidate on ad480505 | 75 tests passed locally | Historical result before upstream refresh. |
-| Current combined candidate on 41584f9 | **83 tests passed locally** | Includes upstream and delivery tests; fixtures only. |
-| Ruff: whole repository | Passed locally | Uses latest upstream configuration, excluding notebooks. Earlier snapshot had 8 notebook findings. |
-| Real API / real-data validation / model training | Not performed | Production files and measured results were not obtained. |
-| Hosted fork CI on 61851c4 | **Passed on Python 3.10** | Upstream PR Checks tab has no checks; review / merge remain pending. |
+| [FS-35 Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | Source catalogue now records received fields, units, dates and archive hashes | Ayon supplies original acquisition manifests and selected weather model; Yian reconciles provenance |
+| [FS-36 Checker](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | Validator plus reproducible real-file audit; failing bounds remain visible | Second-person review, CI and upstream merge; approved grid/day policy |
+| [FS-37 Real summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | Actual received-file measurements complete; detailed failure/limits published | Validate forecast and actual run grid/weather, resolve policy and obtain run provenance |
+| [FS-38 Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | Word and Markdown updated with measured counts and limitations | Tabib integrates/reviews final report |
+| [FS-39 Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | Editable data slide and script updated with measurements and remaining gate | Tabib integrates; Yian and team rehearse |
 
-See [latest evidence](Latest_Integration_Status.md), [earlier test log](repository-tests.txt), [integration snapshot](Repository_Integration_Status.json) and [real-input commands / interpretation limits](../data-quality.md). Fixture counts are not real fire or weather statistics. The archive and snapshot were written before remote publication; their local-only status is historical.
+Keep all five In Progress while their remaining acceptance work is open. Code publication is not upstream merge, and preparing a script is not a completed rehearsal. Commits use relevant FS keys without automatic Done commands.
 
-## Handoff order
+## Code verification
 
-1. **Ayon + Sa-ad:** agree bbox, grid IDs / boundaries, UTC versus Perth event day and clustering. Main’s original pipeline and the now-merged [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) differ. This delivery follows main’s UTC event-day contract.
-2. **Ayon:** supply actual ignition, weather, forecast.csv, grid, manifests, extraction intervals / units and exact run revision. Keep credentials out of GitHub and Jira.
-3. **Yian:** run non-mutating checks; separately confirm expected seasonal / cell-day coverage; publish FS-37 measurements and update report / slide.
-4. **Tabib:** integrate contributions and verify official submission rules. **Zarif:** integrate the forecast and prepare the offline demo. **Sa-ad:** retain authentic sprint / review evidence.
+The previous e555d2a candidate passed **83 root tests** and **10 geography tests separately with pyproj 3.8.0**; whole-repository Ruff passed. [Hosted fork CI on e555d2a passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40898477285) on Python 3.10, running the root suite only. These implementation tests are separate from the measured real-file audit. Check [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) for the newest documentation/audit commit result.
 
-The referenced Section 5 decision gate and supplied scripts / patches were not obtained. Confirm them before deciding final real-data versus synthetic-demo scope. WhatsApp’s Jira.csv is management evidence for Zarif, not a replacement for model inputs.
+The [quality report](Real_Data_Quality_Status.md) gives an offline reproduction command. Its audit process completing successfully does not override a table's failed validation or missing forecast. No new model run was performed and no original model-score reproduction is claimed.

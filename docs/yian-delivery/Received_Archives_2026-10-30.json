@@ -1,0 +1,77 @@
+[
+  {
+    "file": "ignitions.zip",
+    "bytes": 82048,
+    "sha256": "29e1414135ca784781608183cc984105b59a7793f050f95020c70906d045278d",
+    "source": "Victor WhatsApp attachment, forwarded 2026-10-29 23:41 Perth",
+    "retrieved_local_date": "2026-10-30",
+    "zip_crc_error": null,
+    "members": [
+      {
+        "name": "ignitions_2024-07-01.parquet",
+        "bytes": 17462,
+        "compressed": 11230
+      },
+      {
+        "name": "ignitions_2019-07-01.parquet",
+        "bytes": 25167,
+        "compressed": 16660
+      },
+      {
+        "name": "ignitions_2020-07-01.parquet",
+        "bytes": 23201,
+        "compressed": 15372
+      },
+      {
+        "name": "ignitions_2021-07-01.parquet",
+        "bytes": 22140,
+        "compressed": 14752
+      },
+      {
+        "name": "ignitions_2022-07-01.parquet",
+        "bytes": 17961,
+        "compressed": 12019
+      },
+      {
+        "name": "ignitions_2023-07-01.parquet",
+        "bytes": 16576,
+        "compressed": 10769
+      }
+    ]
+  },
+  {
+    "file": "weather.zip",
+    "bytes": 13194779,
+    "sha256": "0450f7132f375cb33164c5673d96326237e4203317acdd839e3538ffb6bba3db",
+    "source": "Victor WhatsApp attachment, forwarded 2026-10-29 23:41 Perth",
+    "retrieved_local_date": "2026-10-30",
+    "zip_crc_error": null,
+    "members": [
+      {
+        "name": "2018-07-01_2025-06-30_0.2_24.json",
+        "bytes": 18635398,
+        "compressed": 2817332
+      },
+      {
+        "name": "2018-07-01_2025-06-30_0.2_0.json",
+        "bytes": 18635704,
+        "compressed": 2827843
+      },
+      {
+        "name": "2018-07-01_2025-06-30_0.2_12.json",
+        "bytes": 18635348,
+        "compressed": 2819982
+      },
+      {
+        "name": "2018-07-01_2025-06-30_0.2_36.json",
+        "bytes": 18632853,
+        "compressed": 2838620
+      },
+      {
+        "name": "2018-07-01_2025-06-30_0.2_48.json",
+        "bytes": 12420677,
+        "compressed": 1889912
+      }
+    ]
+  }
+]

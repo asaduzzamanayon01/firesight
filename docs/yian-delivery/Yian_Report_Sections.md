@@ -1,11 +1,11 @@
 # FireSight data pipeline and security contribution
 
 Yian Wang — Data and Pipeline Lead  
-Prepared 29 October 2026 for Tabib to integrate into the final report
+Updated 30 October 2026 for Tabib to integrate into the final report
 
 ## Evidence and integration status
 
-This contribution now integrates with private repository main snapshot 41584f9, including Ayon's CI, weather acquisition, forecast export and inner training-season validation updates. Yian's earlier FIRMS helper is already in main. The refreshed delivery candidate passes 83 local tests, including controlled CSV and Parquet fixtures, and repository lint passes. PR #7 is submitted for review; upstream merge and hosted CI results remain pending. No real input files or measured real-data event counts, missingness rates or model results were obtained. Update the quality summary after the actual files and source manifests arrive.
+This contribution integrates upstream main cc00735 through delivery revision e555d2a. The existing combined candidate passed 83 root tests; ten geography tests passed separately with pyproj. Hosted fork CI passed on e555d2a. PR #7 awaits review and upstream merge. On 30 October, six seasonal event tables and five raw weather batches forwarded by Victor were checked. Event structure passes; reconstructed weather has complete values but fails the strict grid-centre boundary rule. Full acceptance awaits the forecast export, actual run provenance and an agreed spatial and calendar-day contract. No model performance is independently reproduced here.
 
 ## Data and pipeline
 
@@ -29,15 +29,23 @@ Open-Meteo offers API data under CC BY 4.0. The catalogue supplies attribution w
 
 ## Security and privacy measures in the delivered module
 
-The FIRMS helper reads its map key from the process environment. It stores a redacted request URL in the manifest and suppresses credential-bearing URLs in network error messages. The supplied environment example contains an empty variable, not a credential. The downloader rejects an existing output destination to reduce accidental replacement of the source record. These controls have focused offline tests. A live service call remains unverified.
+The FIRMS helper reads its map key from the process environment. It stores a redacted request URL in the manifest and suppresses credential-bearing URLs in network error messages. Setup instructions use an environment variable; upstream removed the example environment file. The downloader rejects an existing output destination to reduce accidental replacement of the source record. These controls have focused offline tests. A live service call remains unverified.
 
 The quality tool runs locally without network access. Its generated summaries report aggregate counts and input filenames rather than raw row samples, complete API responses or absolute file paths. The inspected repository's ignore rules exclude local environment files and raw and processed data directories. An ignore file cannot remove material already committed, so it does not by itself establish that the team's history is free of secrets. Access control, encrypted storage, secret scanning and production deployment controls have not been verified and are not claimed here.
 
 Environmental observations do not require collecting participant identities for these checks. Nevertheless, a fine-grained location can still reveal sensitive assets. The final team release should include only authorised layers at the precision needed for the assessment. FireSight's historical backtest must be described with its actual data mode and limitations. A quality pass is not evidence that the system provides reliable public warnings.
 
-## Real data quality summary pending measured inputs
+## Measured data quality and remaining limits
 
-No real-data quality statistics are reported in this version. To complete Y3, run the checker on Ayon's actual ignition table, weather table and forecast.csv using the agreed study box, source timezone, feature names and grid. Main and the open geospatial PR currently differ in their bounding box, event clustering and UTC versus Perth-day rules; these differences must be resolved before integration. Preserve the manifests, file checksums and code revision alongside quality-report.json. Review the event definition and expected seasonal and grid coverage manually. Then insert the measured counts, missing values, failed checks and unresolved limitations into this subsection. A failed or missing acquisition must remain distinguishable from a valid season with no detections.
+Victor supplied ignitions.zip and weather.zip, described as real FIRMS and weather data. The exact copied archive bytes passed ZIP CRC checks; hashes and member-level audit evidence are retained in Real_Data_Audit_2026-10-30.json. The six July–June event tables cover 2019–20 through 2024–25 and contain 620, 552, 523, 413, 350 and 388 rows, respectively: 2,846 supplied event rows in total. The sum of detections_in_event is 24,968; raw FIRMS detections were not provided to verify that sum independently. All six tables pass the repository's required-field, missingness, duplicate, timestamp, seasonal-range and coordinate checks. Event identifiers reset per seasonal file, so the valid combined key is source season plus event_id.
+
+Under current main grid assignment, the supplied rows map to 2,822 positive cell-days. The 1,575-cell grid and 2,192 dates yield 3,452,400 cell-days, with a positive proportion of 0.08174024%. This reproduces the author's rounded label proportion of 0.0817% under main's assumptions. It is not an independently confirmed count of ignition causes. Event-free dates cannot establish that every source download succeeded.
+
+The weather archive contains five raw JSON batches with 56 distinct returned point coordinates. Every point has all 2,557 expected daily dates and 61,368 hourly timestamps for 2018-07-01 through 2025-06-30, with no missing or nonfinite values in the inspected variables. Response metadata records Australia/Perth, daily maximum temperature in degrees Celsius, maximum wind in metres per second, rainfall in millimetres and hourly relative humidity in percent. This is not an author-supplied processed weather table.
+
+The offline audit reuses the existing main transformations: daily minimum humidity, simplified KBDI with a discarded spin-up year, and nearest request-point mapping. The locally reconstructed output has 3,452,400 unique cell-days and no missing values in its five weather features. However, 35 main grid centres are outside the configured bbox, affecting 76,720 rows. The unchanged checker reports a failure. No data were dropped or moved to conceal it; the team must approve an edge-cell policy or regenerate a consistent grid and downstream outputs.
+
+Original acquisition manifests, the selected weather model, exact model-run revision, actual run grid and forecast.csv remain unavailable. Batch mapping is inferred from filenames and current script order. Main uses UTC event dates while the weather uses Perth dates; firesight-geo has further differences in boundary and event grouping. These conventions require agreement before full run acceptance. The forwarded files support measured structural checks, but do not authenticate retrieval completeness, historical feature availability or model performance. The author's reported LightGBM and climatology PR-AUC values remain unverified. See the dated quality report and audit script for reproducible commands, input hashes and remaining owners.
 
 ## References
 

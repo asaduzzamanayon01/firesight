@@ -1,5 +1,7 @@
 # Progress check after the real-run updates
 
+**Historical checkpoint; superseded for input receipt by the [30 October measured audit](Real_Data_Quality_Status.md).**
+
 Checked 29 October 2026 (Perth), after upstream main reached **cc00735a5d3ed51d24f0538905afc8561022a9d4**.
 
 ## What changed

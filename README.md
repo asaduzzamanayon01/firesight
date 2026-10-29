@@ -44,7 +44,7 @@ src/evaluation/metrics.py     PR-AUC, Brier, reliability, top-k
 src/evaluation/splits.py      LOSO, forward chaining, spatial blocks
 src/explain/shap_explain.py   SHAP + leakage diagnostics
 notebooks/01_eda_ignitions.ipynb   EDA
-tests/                        28 tests, including leakage tests
+tests/                        Root suite plus data-quality and leakage checks
 docs/decisions.md             Why every non-obvious choice was made
 ```
 
@@ -54,8 +54,9 @@ docs/decisions.md             Why every non-obvious choice was made
 labelled 1 if a fire *started* there. Only the first detection of each fire
 event counts, otherwise the model learns spread rather than ignition.
 
-**2. The class imbalance is ~0.3% positive (1:300).** This drives every
-downstream decision: `scale_pos_weight` at training time, PR-AUC and Brier
+**2. The received 2019–2025 labels are 0.08174024% positive** under the
+current main grid (2,822 of 3,452,400 cell-days); earlier ~0.3% figures describe
+initial expectations/development data. This motivates checking `scale_pos_weight` at training time, PR-AUC and Brier
 instead of accuracy, and isotonic calibration afterwards.
 
 **3. Weather is lagged by one day, always.** To predict day D we may only use
@@ -66,7 +67,7 @@ fails the build if it regresses.
 
 | Metric | Answers | Note |
 |---|---|---|
-| PR-AUC | Can we rank cells? | Random baseline = positive rate (~0.003), not 0.5 |
+| PR-AUC | Can we rank cells? | Random baseline = the evaluated dataset/fold positive rate; full received-label rate is ~0.0008174 |
 | Brier | Are the probabilities right? | Lower is better |
 | Brier skill | Better than always guessing the base rate? | 0 = no skill |
 | Reliability | Does "20%" mean 20%? | Plotted every run |
@@ -98,8 +99,8 @@ mlflow ui                     # http://localhost:5000
 ```
 
 
-## Data quality (FS-35 / FS-36)
+## Data quality and current delivery
 
-See [data-quality integration and run instructions](docs/data-quality.md) and [source catalogue](docs/data-sources.md). The delivery branch has local fixture verification; real-run evidence and review / merge remain pending. Fork CI passed on code revision 61851c4; see the delivery index for evidence.
+Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for the current files and owners. The [30 October measured audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks six supplied event tables and five raw weather batches: 2,846 event rows, 2,822 positive cell-days, and complete 56-point weather arrays. Reconstructed weather fails the strict bbox rule for 35 grid centres; forecast.csv and actual run provenance remain pending. No model scores were reproduced by this audit.
 
-Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for editable files, task status and next owners, or read the [whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md).
+[Checker instructions](docs/data-quality.md) · [Source catalogue](docs/data-sources.md) · [Whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md). PR #7 awaits second-person review and upstream merge. Fixture/CI tests and measured data checks are distinct.

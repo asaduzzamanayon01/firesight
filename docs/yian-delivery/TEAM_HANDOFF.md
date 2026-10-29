@@ -4,17 +4,17 @@ Based on the 8-page final-delivery plan read from the authorized WhatsApp conver
 
 ## Current evidence
 
-**Latest refresh:** main cc00735 includes merged geography PR #3; FS-21–FS-24 are Done. Ayon reports a real run, but actual inputs / results have not been handed over in the inspected sources. See [checkpoint](Progress_Check_2026-10-29.md).
+**30 October update:** Six seasonal event files and five weather JSON batches have arrived from Victor. [Measured audit and owners](Real_Data_Quality_Status.md) supersedes earlier waiting-for-files statements. Responsibilities below are preserved from the plan.
 
-| Member | Found or supplied | Still needs evidence / action |
+| Member | Verified handoff | Next action |
 |---|---|---|
-| Ayon | FS-21–FS-24 are Done. Main cc00735 includes weather / forecast code and commits reporting real labels and a real model run. | Actual input / result files and manifests were not obtained. Reported model metrics favour climatology; review original result files before using them. |
-| Sa-ad | Merged [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) contains grid, label and validation work. | Merged into firesight-geo. This refresh passed its 10 tests with pyproj; agree which data conventions the real run used. |
-| Yian | Earlier FIRMS contribution already in main. New catalogue, checker, tests, report and slide on this branch. | [Five-task index](README.md): real statistics, review / CI / merge, integration and rehearsal remain. |
-| Tabib | Final report / slides / submission responsibilities recorded in Jira. | Integrated report / deck, official rules and receipts not obtained during inspection. |
-| Zarif | Dashboard / demo / risk / management responsibilities recorded in Jira; latest screenshot shows Jira.csv handoff. | Dashboard, forecast integration, recording and rehearsal evidence not obtained during inspection. |
+| Ayon | 2,846 supplied event rows and 56 complete raw weather point series now inspected; main label proportion reproduced as 0.08174024% | Supply forecast, actual processed weather/grid, original manifests, exact run revision and result artefacts |
+| Sa-ad | Geography PR #3 merged; 10 separate tests passed with pyproj | Agree boundary/edge-cell and UTC/Perth-day contract with Ayon; resolve 35 reconstructed main-grid centres outside bbox |
+| Yian | Catalogue/checker plus actual received-file measurements, report and slide updated | Validate remaining artefacts and agreed contract; obtain review/merge, integrate with Tabib and rehearse |
+| Tabib | Refreshed editable report/slide and notes available in this folder | Integrate/review whole submission, confirm official requirements and coordinate timing |
+| Zarif | Dashboard export contract documented | Obtain forecast.csv, integrate historical backtest and retain offline demo/rehearsal evidence |
 
-Missing evidence here does not imply a teammate has done no work elsewhere.
+The author's reported model PR-AUC remains unverified; no model result was reproduced in this data audit. Missing evidence here does not establish that a teammate has done no work elsewhere.
 
 ## Ayon — ML, real data and code
 

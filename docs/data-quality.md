@@ -32,3 +32,8 @@ Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. T
 ## Current checkpoint after cc00735
 
 Sa-ad’s geography module is now merged. This refresh passed 83 root tests plus 10 separately run geography tests with pyproj, and fixed five new geography lint findings. Actual real inputs are still needed for FS-37 despite FS-21–FS-24 being Done. See [checkpoint](yian-delivery/Progress_Check_2026-10-29.md).
+
+
+## Real-file audit on 30 October
+
+The forwarded six-season ignition files and five raw weather JSON batches were checked offline. See [measured report](yian-delivery/Real_Data_Quality_Status.md) and [audit script](../scripts/audit_received_data.py). Event checks pass; reconstructed weather retains the existing strict bounds failure (35 grid centres / 76,720 rows). No forecast was supplied. The earlier waiting-for-files notes describe historical checkpoints.
