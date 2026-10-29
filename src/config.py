@@ -12,8 +12,11 @@ from typing import Any
 
 import yaml
 
+from dotenv import load_dotenv
+
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "config.yaml"
+load_dotenv(ROOT / ".env")
 
 
 class Config:

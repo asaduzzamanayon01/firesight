@@ -32,7 +32,7 @@ from src.config import CFG, firms_key
 log = logging.getLogger(__name__)
 
 # FIRMS caps each request at 10 days
-MAX_DAYS_PER_REQUEST = 10
+MAX_DAYS_PER_REQUEST = 5
 
 
 def build_url(start: date, days: int) -> str:
@@ -48,7 +48,7 @@ def build_url(start: date, days: int) -> str:
 
 
 def fetch_window(start: date, days: int) -> pd.DataFrame:
-    """Fetch one <=10 day window from FIRMS."""
+    """Fetch one <=5 day window from FIRMS."""
     if days > MAX_DAYS_PER_REQUEST:
         raise ValueError(f"FIRMS allows max {MAX_DAYS_PER_REQUEST} days per request")
     url = build_url(start, days)
@@ -58,15 +58,18 @@ def fetch_window(start: date, days: int) -> pd.DataFrame:
 
 
 def fetch_range(start: date, end: date) -> pd.DataFrame:
-    """Fetch an arbitrary date range by chunking into 10-day windows."""
-    frames, cursor = [], start
+    """Fetch an arbitrary date range by chunking into 5-day windows."""
+    frames, cursor, failed = [], start, 0
     while cursor < end:
         days = min(MAX_DAYS_PER_REQUEST, (end - cursor).days)
         try:
             frames.append(fetch_window(cursor, days))
         except Exception as exc:  # noqa: BLE001 - one bad window must not kill the run
+            failed += 1
             log.warning("window %s failed: %s", cursor, exc)
         cursor += timedelta(days=days)
+    if failed:
+        raise RuntimeError(f"{failed} FIRMS windows failed. Fix the cause and rerun.")
     if not frames:
         return pd.DataFrame()
     return pd.concat(frames, ignore_index=True)
