@@ -16,7 +16,7 @@ region:
 
 # Fire season definition: Australian fire year runs Jul -> Jun
 seasons:
-  start_year: 2019
+  start_year: 2012
   end_year: 2025
   season_start_month: 7
 

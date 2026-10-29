@@ -105,6 +105,12 @@ def main() -> None:
     model, feats = bundle["model"], bundle["features"]
 
     df = pd.read_parquet(CFG.path("processed") / "cell_days_features.parquet")
+    df["date"] = pd.to_datetime(df["date"])
+    # rebuild the same where-features the final model was trained with
+    from src.features.spatial_priors import PRIOR_COLS, add_static_and_recent, fold_priors
+    df = add_static_and_recent(df)
+    all_vals, _ = fold_priors(df, np.arange(len(df)), np.array([], dtype=int))
+    df[PRIOR_COLS] = all_vals
     values, X = compute_shap(model, df[feats])
 
     imp = global_importance(values, X)
