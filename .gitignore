@@ -251,7 +251,6 @@ credentials*.json
 # Generated outputs and artefacts
 /reports/
 /results/
-/results_real/
 /results_synthetic/
 *.pkl
 *.joblib

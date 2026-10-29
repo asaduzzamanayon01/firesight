@@ -38,6 +38,7 @@ from src.evaluation.metrics import (
     recall_at_k,
 )
 from src.evaluation.splits import leave_one_season_out
+from src.features.spatial_priors import PRIOR_COLS, add_static_and_recent, fold_priors
 
 log = logging.getLogger(__name__)
 
@@ -105,8 +106,12 @@ def run() -> pd.DataFrame:
     df = pd.read_parquet(proc / "cell_days_features.parquet")
     df["date"] = pd.to_datetime(df["date"])
 
-    feats = feature_columns(df)
-    log.info("%d features: %s", len(feats), feats[:8])
+    # Where-features: static cell position, recent nearby ignitions (past days only),
+    # and per-fold historical rates (training seasons only). See spatial_priors.py.
+    df = add_static_and_recent(df)
+    feats = feature_columns(df) + PRIOR_COLS
+    df[PRIOR_COLS] = np.float32(np.nan)
+    log.info("%d features: %s", len(feats), feats)
 
     mlflow.set_tracking_uri(mlflow_uri())
     mlflow.set_experiment(CFG.mlflow.experiment_name)
@@ -124,6 +129,11 @@ def run() -> pd.DataFrame:
         oof = np.full(len(df), np.nan)
 
         for season, tr, te in leave_one_season_out(df):
+            # historical rates for this fold: never use the held-out season's labels
+            tr_vals, te_vals = fold_priors(df, tr, te)
+            vals = np.full((len(df), len(PRIOR_COLS)), np.nan, dtype=np.float32)
+            vals[tr], vals[te] = tr_vals, te_vals
+            df[PRIOR_COLS] = vals
             fit, val = inner_split(df, tr)
             X_fit, y_fit = df.iloc[fit][feats], df.iloc[fit]["ignition"].to_numpy()
             X_val, y_val = df.iloc[val][feats], df.iloc[val]["ignition"].to_numpy()
@@ -168,7 +178,9 @@ def run() -> pd.DataFrame:
         oof_df["y_prob"] = oof
         oof_df.to_parquet(proc / "oof_predictions.parquet", index=False)
 
-        # Final model on all data, for the dashboard
+        # Final model on all data, for the dashboard and SHAP
+        all_vals, _ = fold_priors(df, np.arange(len(df)), np.array([], dtype=int))
+        df[PRIOR_COLS] = all_vals
         fit, val = inner_split(df, np.arange(len(df)))
         final, _ = train_fold(df.iloc[fit][feats], df.iloc[fit]["ignition"].to_numpy(),
                               df.iloc[val][feats], df.iloc[val]["ignition"].to_numpy(),
