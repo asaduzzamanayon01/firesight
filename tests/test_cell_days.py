@@ -2,8 +2,12 @@
 import numpy as np
 import pandas as pd
 
+from src.config import CFG
 from src.features.build_cell_days import add_temporal_features, build, season_of
 from src.features.grid import assign_cells, grid_dimensions, n_cells
+
+# A day inside the configured window (the season start month of start_year + 1 day 15).
+IN_RANGE = f"{CFG.seasons.start_year + 1}-01-15"
 
 
 def test_season_spans_the_new_year():
@@ -30,7 +34,7 @@ def test_points_outside_bbox_get_minus_one():
 def test_build_produces_one_row_per_cell_day():
     ign = pd.DataFrame({
         "latitude": [-32.0], "longitude": [116.0],
-        "date": pd.to_datetime(["2013-01-15"]),
+        "date": pd.to_datetime([IN_RANGE]),
     })
     out = build(ign)
     assert not out.duplicated(["cell_id", "date"]).any()
@@ -40,7 +44,7 @@ def test_build_produces_one_row_per_cell_day():
 def test_ignition_flag_is_binary_even_with_two_fires_in_one_cell_day():
     ign = pd.DataFrame({
         "latitude": [-32.0, -32.0], "longitude": [116.0, 116.0],
-        "date": pd.to_datetime(["2013-01-15", "2013-01-15"]),
+        "date": pd.to_datetime([IN_RANGE, IN_RANGE]),
     })
     out = build(ign)
     hit = out[out["ignition"] == 1]

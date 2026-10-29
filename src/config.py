@@ -11,7 +11,6 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
