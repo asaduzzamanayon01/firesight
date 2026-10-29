@@ -1,0 +1,4 @@
+Combined candidate based on upstream main 41584f9; Python 3.12 local execution.
+83 tests passed (72 + 11 progress dots; pytest configuration suppresses final count).
+........................................................................ [ 86%]
+...........                                                              [100%]

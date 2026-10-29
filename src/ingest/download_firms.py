@@ -12,7 +12,7 @@ import hashlib
 import json
 import os
 from collections.abc import Sequence
-from datetime import UTC, date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import URLError
 from urllib.parse import quote
@@ -129,7 +129,7 @@ def write_download(
     manifest = {
         "source_provider": "NASA FIRMS",
         "product": source,
-        "retrieved_at_utc": datetime.now(UTC).isoformat(),
+        "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),  # noqa: UP017
         "query_url": redacted_url(source, bbox, days, end_date),
         "bbox_west_south_east_north": list(bbox),
         "day_range": days,

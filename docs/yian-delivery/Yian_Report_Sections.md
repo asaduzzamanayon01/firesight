@@ -5,7 +5,7 @@ Prepared 29 October 2026 for Tabib to integrate into the final report
 
 ## Evidence and integration status
 
-This contribution describes the local data-module integration candidate based on the inspected private repository snapshot ad480505. The repository already contains Yian's earlier FIRMS helper. Its original 32 tests passed; the adapted candidate passes 75 tests, including controlled CSV and Parquet fixtures. The new candidate has not been merged or run in hosted CI. The inspected raw and processed data directories contain placeholders only, so no measured real-data event count, missingness rate or model result is reported. Integration status must be updated after review and a real-data run.
+This contribution now integrates with private repository main snapshot 41584f9, including Ayon's CI, weather acquisition, forecast export and inner training-season validation updates. Yian's earlier FIRMS helper is already in main. The refreshed delivery candidate passes 83 local tests, including controlled CSV and Parquet fixtures, and repository lint passes. PR #7 is submitted for review; upstream merge and hosted CI results remain pending. No real input files or measured real-data event counts, missingness rates or model results were obtained. Update the quality summary after the actual files and source manifests arrive.
 
 ## Data and pipeline
 

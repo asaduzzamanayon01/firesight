@@ -1,6 +1,6 @@
 # Yian’s delivery: files, evidence and remaining work
 
-**Owner:** Yian Wang · **Updated:** 29 October 2026 (Perth) · **Scope:** FS-35–FS-39
+**Owner:** Yian Wang · **Updated:** 29 October 2026 (Perth) · **Scope:** FS-35–FS-39 · **PR:** [#7](https://github.com/asaduzzamanayon01/firesight/pull/7)
 
 Catalogue, checker, tests, report and presentation materials are available for team review. **Real-data statistics remain pending.** Publication on the delivery branch does not mean review or merge into upstream main is complete.
 
@@ -16,7 +16,7 @@ Catalogue, checker, tests, report and presentation materials are available for t
 | Task | Delivered files | Present state | Remaining work |
 |---|---|---|---|
 | [FS-35 · Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | [Catalogue](../data-sources.md), [source-record template](../source-record.template.json) | Prepared; catalogue attached in Jira. | Ayon supplies acquisition manifests, products, dates and units; Yian completes run provenance. |
-| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **75 local tests passed**. Archive attached in Jira. | Second-person review, hosted CI and upstream merge; agree conventions with PR #3 before the real run. |
+| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **83 local tests passed after upstream refresh**. Archive attached in Jira. | Second-person review, hosted CI and upstream merge; agree conventions with PR #3 before the real run. |
 | [FS-37 · Real-data summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | [Required inputs / status](Real_Data_Quality_Status.md) | **Waiting for real inputs.** No real counts, missingness or seasonal coverage measured. | Ayon supplies ignition, weather, forecast, grid and manifests; Yian publishes measured results with hashes and revision. |
 | [FS-38 · Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md) | Editable contribution attached in Jira; Word layout inspected. | Tabib integrates / reviews; Yian adds FS-37 measurements. |
 | [FS-39 · Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | [PowerPoint](Yian_Data_Slide.pptx), [notes](Speaker_Notes.txt) | Editable slide / script attached in Jira; slide rendered and inspected. | Tabib integrates; Yian rehearses and joins team rehearsal. |
@@ -24,6 +24,8 @@ Catalogue, checker, tests, report and presentation materials are available for t
 All five tasks remain **In Progress**. The repository’s Definition of Done requires review, CI and merge for code work. Commits include relevant FS keys; no automatic Done transition is requested while acceptance work remains.
 
 ## Verification
+
+**Latest refresh:** upstream main 41584f9 now includes CI, weather / forecast scripts and a corrected inner validation split. These changes are retained in this branch; see [latest integration evidence](Latest_Integration_Status.md). Earlier archive statements about absent code describe the original ad480505 snapshot.
 
 From the repository root after installing requirements.txt, run:
 
@@ -33,12 +35,13 @@ From the repository root after installing requirements.txt, run:
 | Check | Observed result | Limit |
 |---|---|---|
 | Unmodified baseline ad480505 | 32 tests passed locally | Baseline result; do not add this to 75. |
-| Integrated candidate | **75 tests passed locally** | Includes original and added tests; controlled fixtures only. |
-| Ruff: src / scripts / tests | Passed locally | Full-repository lint still has 8 pre-existing notebook findings. |
+| Earlier candidate on ad480505 | 75 tests passed locally | Historical result before upstream refresh. |
+| Current combined candidate on 41584f9 | **83 tests passed locally** | Includes upstream and delivery tests; fixtures only. |
+| Ruff: whole repository | Passed locally | Uses latest upstream configuration, excluding notebooks. Earlier snapshot had 8 notebook findings. |
 | Real API / real-data validation / model training | Not performed | Production files and measured results were not obtained. |
 | Hosted CI / approval / upstream merge | Pending | Read the live PR and Jira for later updates. |
 
-See [test log](repository-tests.txt), [integration snapshot](Repository_Integration_Status.json) and [real-input commands / interpretation limits](../data-quality.md). Fixture counts are not real fire or weather statistics. The archive and snapshot were written before remote publication; their local-only status is historical.
+See [latest evidence](Latest_Integration_Status.md), [earlier test log](repository-tests.txt), [integration snapshot](Repository_Integration_Status.json) and [real-input commands / interpretation limits](../data-quality.md). Fixture counts are not real fire or weather statistics. The archive and snapshot were written before remote publication; their local-only status is historical.
 
 ## Handoff order
 

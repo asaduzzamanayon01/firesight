@@ -44,13 +44,18 @@ model:
   lightgbm:
     objective: binary
     n_estimators: 2000
-    learning_rate: 0.05
-    num_leaves: 63
-    min_child_samples: 100
+    learning_rate: 0.03
+    num_leaves: 7
+    min_child_samples: 1000
+    reg_lambda: 10
     subsample: 0.8
+    subsample_freq: 1
     colsample_bytree: 0.8
     early_stopping_rounds: 100
-    # scale_pos_weight is computed from the data at train time, not hardcoded
+    # "none" = no class weight. "balanced" = scale_pos_weight computed from the data.
+    # On the synthetic data, balanced weighting (about 300) stopped training at
+    # iteration 1 and scored lower, so the default is "none".
+    class_weight: none
   calibration:
     method: isotonic
 

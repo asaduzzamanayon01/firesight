@@ -1,12 +1,12 @@
 # FireSight: team responsibilities and handoff
 
-Based on the 8-page final-delivery plan read from the authorized WhatsApp conversation and repository / Jira inspection on 29 October 2026. **Responsibilities are planned outputs, not proof of completion.** Internal deadlines use Perth time; Tabib must verify official Blackboard requirements.
+Based on the 8-page final-delivery plan read from the authorized WhatsApp conversation and repository / Jira inspection on 29 October 2026, refreshed against upstream main 41584f9 during PR preparation. **Responsibilities are planned outputs, not proof of completion.** Internal deadlines use Perth time; Tabib must verify official Blackboard requirements.
 
 ## Current evidence
 
 | Member | Found or supplied | Still needs evidence / action |
 |---|---|---|
-| Ayon | Main contains ingestion, synthetic-data, feature and model code; baseline suite passed 32 tests locally. | Real inputs, manifests, results, forecast export and hosted CI were not obtained. Code existence does not establish a real run. |
+| Ayon | Main now also contains CI, weather acquisition, forecast export and an inner training-season validation split (merged PRs #5 / #6). Earlier baseline suite: 32 local tests. | Actual real files, manifests, measured results and a successful hosted CI run were not obtained. Export / acquisition code now exists; execution evidence is still needed. |
 | Sa-ad | Open [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) contains grid, label and validation work. | Review / merge pending; this delivery did not run its tests. Agree conventions with Ayon. |
 | Yian | Earlier FIRMS contribution already in main. New catalogue, checker, tests, report and slide on this branch. | [Five-task index](README.md): real statistics, review / CI / merge, integration and rehearsal remain. |
 | Tabib | Final report / slides / submission responsibilities recorded in Jira. | Integrated report / deck, official rules and receipts not obtained during inspection. |
@@ -88,9 +88,11 @@ Yian owns traceability and checks. Ayon / Sa-ad supply model results; Tabib coor
 ## Resolve these dependencies first
 
 1. **Ayon + Sa-ad: one data contract.** Main bbox: 115.45,-32.60,116.55,-31.40; PR #3: 115.65,-32.60,116.30,-31.60. Main uses UTC days and 1.5 km / 24-hour clustering; PR #3 uses Perth days and 2 km / 2 days. Inspected main grid: 1,575 centres, 35 outside configured bbox. Agree boundaries, CRS, dates and grid IDs.
-2. **Ayon: real evidence and valid evaluation.** Inspected raw / processed directories contained only .gitkeep. Supply ignition, weather, forecast, grid, manifests, intervals, units and revision. Confirm six-season coverage against configured dates. Repair test-season use for early stopping before reporting held-out results; document independent calibration evaluation.
-3. **Ayon: remaining ingestion / CI.** This PR corrects src/ingest/download_firms.py. Separate firms_client.py still needs review of 10-day requests and skipped failed windows. Missing downloads are not zero-fire periods. Hosted workflow and successful real weather / forecast export were not found in inspected main.
+2. **Ayon: real evidence and valid evaluation.** Inspected raw / processed directories contained only .gitkeep. Supply ignition, weather, forecast, grid, manifests, intervals, units and revision. Confirm six-season coverage against configured dates. Latest main separates early-stopping validation from the held-out season; preserve and review this fix, and document independent calibration evaluation before reporting real results.
+3. **Ayon: remaining ingestion / CI.** This PR corrects src/ingest/download_firms.py. Separate firms_client.py still needs review of 10-day requests and skipped failed windows. Missing downloads are not zero-fire periods. Latest main now includes CI and weather / forecast scripts. Their presence does not establish successful hosted CI or a real run; obtain logs and actual output files.
 4. **Yian: review now, measurements next.** Deliver FS-35 / 36 / 38 / 39 now. After real inputs arrive, run checks, separately verify expected cell-day / seasonal coverage, publish FS-37 measurements and update report / slide.
 5. **Plan author / Ayon + Tabib: complete requirements.** PDF was read page by page but could not be saved. It jumps from Section 4 to Section 6 while referring to Section 5, a real-data gate and supplied scripts / patches. Those materials were not obtained. Confirm gate and official rules before final scope / submission decisions.
 
 Old FS-5 / FS-6 screenshots concern earlier completed tickets; they do not complete FS-35 / FS-36. Latest WhatsApp Jira.csv is management evidence for Zarif. Use FS keys in commits; mark Done only when acceptance evidence exists.
+
+Latest refresh: the earlier absence of CI / weather / forecast code applied to ad480505 only. Main 41584f9 adds those implementations and fixes the held-out early-stopping split. The delivery branch preserves these updates. See [latest integration evidence](Latest_Integration_Status.md); earlier archived snapshots are historical.

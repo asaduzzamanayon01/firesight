@@ -6,7 +6,7 @@ import hashlib
 import json
 import math
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -252,7 +252,7 @@ def write_report(results, output_dir, *, data_mode, bbox, revision=None, setting
     output_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "schema_version": 1,
-        "generated_utc": datetime.now(UTC).isoformat(),
+        "generated_utc": datetime.now(timezone.utc).isoformat(),  # noqa: UP017
         "data_mode": data_mode,
         "data_mode_basis": "caller declaration; provenance must be reviewed separately",
         "study_bbox": list(bbox),

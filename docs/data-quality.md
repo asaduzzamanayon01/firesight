@@ -24,3 +24,7 @@ Results: quality-report.json and quality-summary.md, with file SHA256, missing c
 Validation on this candidate: 75 tests passed (32 original tests, with corrected downloader date expectations, plus 43 added checks). Controlled CSV and Parquet fixtures only. Ruff passes for Python source/scripts/tests. Full-repository Ruff still reports eight pre-existing notebook findings. No real API request, model training or hosted CI run was performed.
 
 Read data-sources.md before collecting real data. Reconcile PR #3's differing bbox, timezone, clustering and grid with Ayon and Sa-ad. Preserve provider responses and source manifests; do not count missing downloads as zero-fire seasons. Reports and raw files remain local unless explicitly selected for evidence submission.
+
+## Latest upstream integration
+
+Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. The refreshed combined candidate passes 83 local tests and ruff check . with the upstream notebook exclusion. See [latest evidence](yian-delivery/Latest_Integration_Status.md) for the current result; the 75-test evidence above is the earlier snapshot. Hosted CI, review, merge and real-data checks remain pending.

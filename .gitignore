@@ -195,9 +195,9 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore
 #   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#   and can be added to the global gitignore or merged into this file. However, if you prefer,
 #   you could uncomment the following to ignore the entire vscode folder
 # .vscode/
 # Temporary file for partial code execution
@@ -226,11 +226,13 @@ data/interim/*
 *.tif
 *.parquet
 *.nc
-# Environments and secrets .env
+.env
 .venv/
 venv/
-# MLflow mlruns/
-# Notebooks .ipynb_checkpoints/
+/mlruns/
+mlflow.db
+/models/
+.ipynb_checkpoints/
 # OS and editors
 .DS_Store
 .vscode/
@@ -238,3 +240,25 @@ venv/
 
 # Local quality evidence (select intentionally for the assessment, never bulk-add)
 reports/data-quality/
+
+# Secrets and keys
+.env.*
+!.env.example
+*.key
+*.pem
+*.secret
+secrets.*
+credentials*.json
+
+# Generated outputs and artefacts
+/reports/
+/results/
+/results_real/
+/results_synthetic/
+*.pkl
+*.joblib
+mlflow.db
+/mlruns/
+/models/
+.pytest_cache/
+.ruff_cache/

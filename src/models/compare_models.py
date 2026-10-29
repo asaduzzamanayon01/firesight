@@ -44,6 +44,10 @@ def build_candidates(spw: float) -> dict:
     seed = CFG.project.random_seed
     p = CFG.model.lightgbm.to_dict()
     p.pop("early_stopping_rounds", None)
+    mode = p.pop("class_weight", "none")
+    # No early stopping here, so use a tree count close to what early stopping
+    # picked in train_lgbm (22 to 111 on the synthetic data).
+    p["n_estimators"] = 100
 
     return {
         # Linear models need imputation and scaling; trees do not.
@@ -57,7 +61,7 @@ def build_candidates(spw: float) -> dict:
             n_estimators=300, min_samples_leaf=50, class_weight="balanced_subsample",
             n_jobs=-1, random_state=seed),
         "lightgbm": lgb.LGBMClassifier(
-            **p, scale_pos_weight=spw, random_state=seed, n_jobs=-1, verbose=-1),
+            **p, scale_pos_weight=spw if mode == "balanced" else 1.0, random_state=seed, n_jobs=-1, verbose=-1),
         "hist_gbm": HistGradientBoostingClassifier(
             max_iter=300, learning_rate=0.05, random_state=seed,
             class_weight="balanced"),
