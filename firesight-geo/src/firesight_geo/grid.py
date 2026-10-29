@@ -9,7 +9,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from .projection import to_projected, to_lonlat
+from .projection import to_lonlat, to_projected
 
 # Study area (lon/lat, WGS84). Adjust here if the team agrees a different extent.
 STUDY_BBOX = {"min_lon": 115.65, "max_lon": 116.30, "min_lat": -32.60, "max_lat": -31.60}

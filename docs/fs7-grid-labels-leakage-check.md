@@ -58,14 +58,7 @@ once the config changes, as a reminder to delete the marker.
 - `ignition`, `n_ignitions` and `cell_id` are excluded from features.
 - Early stopping uses the latest training season, never the test season.
 
-## 4. Test bug fixed
-
-`test_ignition_flag_is_binary_even_with_two_fires_in_one_cell_day` used the
-date 2013-01-15, outside the configured seasons (2019-20 to 2024-25), so the
-fire was dropped and the test failed. Changed to 2020-01-15. The neighbouring
-test `test_build_produces_one_row_per_cell_day` had the same date and was
-passing without checking anything; it now checks a real positive.
-
 ## Result
 
 Full suite: all tests pass, 2 expected failures (the label finding above).
+
