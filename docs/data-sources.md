@@ -36,10 +36,12 @@ Use `source-record.template.json` once for each acquired file. Replace nulls wit
 
 ## Repository integration decisions still required
 
-Main's configured six-season delivery request differs from its configured 2012–2025 range. Confirm the actual six seasons from the acquisition manifests. Do not infer coverage from configuration alone.
+Latest main cc00735 configures 2019–2025, matching six July–June seasons. Confirm actual coverage from acquisition manifests; configuration alone does not prove it.
 
-The PR #3 validation protocol uses bbox 115.65,-32.60,116.30,-31.60, Perth calendar days and 2 km / 2 day event grouping; main uses bbox 115.45,-32.60,116.55,-31.40, UTC days and 1.5 km / 24 hour grouping. Ayon and Sa-ad must agree one version before labels, weather and forecasts are joined. The FS-36 adapter deliberately follows the inspected main schema until that decision is made.
+The now-merged PR #3 validation protocol uses bbox 115.65,-32.60,116.30,-31.60, Perth calendar days and 2 km / 2 day event grouping; main uses bbox 115.45,-32.60,116.55,-31.40, UTC days and 1.5 km / 24 hour grouping. Ayon and Sa-ad must agree one version before labels, weather and forecasts are joined. The FS-36 adapter deliberately follows the inspected main schema until that decision is made.
 
 Main's current grid creates 1,575 centres, with 35 outside its configured bbox. The checker reports these as failures when that grid is supplied; it does not silently drop or move them. A boundary-intersection policy may be legitimate, but it must be explicit before changing the validation rule.
 
-The correction to src/ingest/download_firms.py does not update Ayon's separate src/ingest/firms_client.py seasonal workflow. That workflow still chunks requests at 10 days and skips failed windows. Its request limits, credential-safe errors and complete seasonal coverage need separate review before a real run.
+The correction to src/ingest/download_firms.py does not update Ayon's separate src/ingest/firms_client.py seasonal workflow. Latest main now uses five-day chunks and raises if a download window fails. Credential-safe error reporting and actual source manifests / seasonal coverage still require review.
+
+Latest evidence: Ayon marks FS-21–FS-24 Done; real files were not obtained. See [the current handoff checkpoint](yian-delivery/Progress_Check_2026-10-29.md) before treating reported numbers as measured provenance.

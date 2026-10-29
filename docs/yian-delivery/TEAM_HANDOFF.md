@@ -4,10 +4,12 @@ Based on the 8-page final-delivery plan read from the authorized WhatsApp conver
 
 ## Current evidence
 
+**Latest refresh:** main cc00735 includes merged geography PR #3; FS-21–FS-24 are Done. Ayon reports a real run, but actual inputs / results have not been handed over in the inspected sources. See [checkpoint](Progress_Check_2026-10-29.md).
+
 | Member | Found or supplied | Still needs evidence / action |
 |---|---|---|
-| Ayon | Main now also contains CI, weather acquisition, forecast export and an inner training-season validation split (merged PRs #5 / #6). Earlier baseline suite: 32 local tests. | Actual real files, manifests, measured results and a successful hosted CI run were not obtained. Export / acquisition code now exists; execution evidence is still needed. |
-| Sa-ad | Open [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) contains grid, label and validation work. | Review / merge pending; this delivery did not run its tests. Agree conventions with Ayon. |
+| Ayon | FS-21–FS-24 are Done. Main cc00735 includes weather / forecast code and commits reporting real labels and a real model run. | Actual input / result files and manifests were not obtained. Reported model metrics favour climatology; review original result files before using them. |
+| Sa-ad | Merged [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) contains grid, label and validation work. | Merged into firesight-geo. This refresh passed its 10 tests with pyproj; agree which data conventions the real run used. |
 | Yian | Earlier FIRMS contribution already in main. New catalogue, checker, tests, report and slide on this branch. | [Five-task index](README.md): real statistics, review / CI / merge, integration and rehearsal remain. |
 | Tabib | Final report / slides / submission responsibilities recorded in Jira. | Integrated report / deck, official rules and receipts not obtained during inspection. |
 | Zarif | Dashboard / demo / risk / management responsibilities recorded in Jira; latest screenshot shows Jira.csv handoff. | Dashboard, forecast integration, recording and rehearsal evidence not obtained during inspection. |
@@ -89,7 +91,7 @@ Yian owns traceability and checks. Ayon / Sa-ad supply model results; Tabib coor
 
 1. **Ayon + Sa-ad: one data contract.** Main bbox: 115.45,-32.60,116.55,-31.40; PR #3: 115.65,-32.60,116.30,-31.60. Main uses UTC days and 1.5 km / 24-hour clustering; PR #3 uses Perth days and 2 km / 2 days. Inspected main grid: 1,575 centres, 35 outside configured bbox. Agree boundaries, CRS, dates and grid IDs.
 2. **Ayon: real evidence and valid evaluation.** Inspected raw / processed directories contained only .gitkeep. Supply ignition, weather, forecast, grid, manifests, intervals, units and revision. Confirm six-season coverage against configured dates. Latest main separates early-stopping validation from the held-out season; preserve and review this fix, and document independent calibration evaluation before reporting real results.
-3. **Ayon: remaining ingestion / CI.** This PR corrects src/ingest/download_firms.py. Separate firms_client.py still needs review of 10-day requests and skipped failed windows. Missing downloads are not zero-fire periods. Latest main now includes CI and weather / forecast scripts. Their presence does not establish successful hosted CI or a real run; obtain logs and actual output files.
+3. **Ayon: remaining ingestion / CI.** This PR corrects src/ingest/download_firms.py. Separate firms_client.py now uses five-day requests and rejects failed windows; source manifests and credential-safe errors still need review. Missing downloads are not zero-fire periods. Latest main now includes CI and weather / forecast scripts. Their presence does not establish successful hosted CI or a real run; obtain logs and actual output files.
 4. **Yian: review now, measurements next.** Deliver FS-35 / 36 / 38 / 39 now. After real inputs arrive, run checks, separately verify expected cell-day / seasonal coverage, publish FS-37 measurements and update report / slide.
 5. **Plan author / Ayon + Tabib: complete requirements.** PDF was read page by page but could not be saved. It jumps from Section 4 to Section 6 while referring to Section 5, a real-data gate and supplied scripts / patches. Those materials were not obtained. Confirm gate and official rules before final scope / submission decisions.
 

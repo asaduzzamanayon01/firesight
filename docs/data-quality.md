@@ -28,3 +28,7 @@ Read data-sources.md before collecting real data. Reconcile PR #3's differing bb
 ## Latest upstream integration
 
 Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. The refreshed combined candidate passes 83 local tests and ruff check . with the upstream notebook exclusion. See [latest evidence](yian-delivery/Latest_Integration_Status.md) for the current result; the 75-test evidence above is the earlier snapshot. Hosted fork CI passed on code revision 61851c4 (Python 3.10); review, upstream merge and real-data checks remain pending.
+
+## Current checkpoint after cc00735
+
+Sa-ad’s geography module is now merged. This refresh passed 83 root tests plus 10 separately run geography tests with pyproj, and fixed five new geography lint findings. Actual real inputs are still needed for FS-37 despite FS-21–FS-24 being Done. See [checkpoint](yian-delivery/Progress_Check_2026-10-29.md).

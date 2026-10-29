@@ -1,6 +1,8 @@
 # Latest integration status
 Updated 29 October 2026, Perth time.
 
+**Superseded by the [cc00735 progress check](Progress_Check_2026-10-29.md).** The material below records the earlier 41584f9 integration and CI evidence.
+
 ## Published review
 [PR #7](https://github.com/asaduzzamanayon01/firesight/pull/7) targets upstream main. Review and upstream merge remain pending. **Hosted fork CI passed on code revision 61851c4**: [successful Python 3.10 run](https://github.com/YIAN-WANG-W/firesight/actions/runs/40873721046). The upstream PR Checks tab currently has no checks.
 

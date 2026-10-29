@@ -92,7 +92,7 @@ CI · documented · merged to `main` · any model run logged in MLflow.
 ## Environment
 
 ```bash
-cp .env.example .env          # add your FIRMS key, never commit it
+export FIRMS_MAP_KEY=YOUR_LOCAL_KEY  # replace locally; never commit the key
 export MLFLOW_TRACKING_URI=sqlite:///mlflow.db
 mlflow ui                     # http://localhost:5000
 ```
