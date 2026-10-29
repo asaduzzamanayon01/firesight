@@ -11,11 +11,10 @@ import argparse
 import hashlib
 import json
 import os
+from collections.abc import Sequence
 from datetime import date, datetime, timezone
 from pathlib import Path
-from typing import Sequence
 from urllib.parse import quote
-
 
 FIRMS_AREA_API = "https://firms.modaps.eosdis.nasa.gov/api/area/csv"
 
@@ -110,7 +109,7 @@ def write_download(
     manifest = {
         "source_provider": "NASA FIRMS",
         "product": source,
-        "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
+        "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),  # noqa: UP017
         "query_url": redacted_url(source, bbox, days, end_date),
         "bbox_west_south_east_north": list(bbox),
         "lookback_days": days,
