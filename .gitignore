@@ -229,12 +229,34 @@ data/interim/*
 .env
 .venv/
 venv/
-mlruns/
+/mlruns/
 mlflow.db
-models/
+/models/
 .ipynb_checkpoints/
 # OS and editors
 .DS_Store
 .vscode/
 .idea/
 
+
+# Secrets and keys
+.env.*
+!.env.example
+*.key
+*.pem
+*.secret
+secrets.*
+credentials*.json
+
+# Generated outputs and artefacts
+/reports/
+/results/
+/results_real/
+/results_synthetic/
+*.pkl
+*.joblib
+mlflow.db
+/mlruns/
+/models/
+.pytest_cache/
+.ruff_cache/
