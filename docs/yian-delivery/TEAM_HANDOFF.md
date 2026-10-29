@@ -1,0 +1,96 @@
+# FireSight: team responsibilities and handoff
+
+Based on the 8-page final-delivery plan read from the authorized WhatsApp conversation and repository / Jira inspection on 29 October 2026. **Responsibilities are planned outputs, not proof of completion.** Internal deadlines use Perth time; Tabib must verify official Blackboard requirements.
+
+## Current evidence
+
+| Member | Found or supplied | Still needs evidence / action |
+|---|---|---|
+| Ayon | Main contains ingestion, synthetic-data, feature and model code; baseline suite passed 32 tests locally. | Real inputs, manifests, results, forecast export and hosted CI were not obtained. Code existence does not establish a real run. |
+| Sa-ad | Open [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) contains grid, label and validation work. | Review / merge pending; this delivery did not run its tests. Agree conventions with Ayon. |
+| Yian | Earlier FIRMS contribution already in main. New catalogue, checker, tests, report and slide on this branch. | [Five-task index](README.md): real statistics, review / CI / merge, integration and rehearsal remain. |
+| Tabib | Final report / slides / submission responsibilities recorded in Jira. | Integrated report / deck, official rules and receipts not obtained during inspection. |
+| Zarif | Dashboard / demo / risk / management responsibilities recorded in Jira; latest screenshot shows Jira.csv handoff. | Dashboard, forecast integration, recording and rehearsal evidence not obtained during inspection. |
+
+Missing evidence here does not imply a teammate has done no work elsewhere.
+
+## Ayon — ML, real data and code
+
+| Plan / Jira | Required output | Internal deadline |
+|---|---|---|
+| A1 / FS-19 | Supplied scripts / patches, CI, lint, plan target 40 tests, second-person review / merge | 29 Oct 12:00 |
+| A2 / FS-20 | Rerun synthetic pipeline and compare_models --sample 200000; retain results | 29 Oct 18:00 |
+| A3 / FS-21 | Local FIRMS key, six real label seasons, counts and positive rate | 30 Oct 09:00 |
+| A4 / FS-22 | Real Open-Meteo weather file and missingness record | 30 Oct 12:00 |
+| A5 / FS-23 | Real baseline, LightGBM, calibration, SHAP and saved results | 30 Oct 18:00 |
+| A6 / FS-24 | Dashboard forecast.csv: sample first, real version after real run | Sample 29 Oct 21:00; real Friday evening |
+| A7 / FS-25 | Optional additional horizons after A5 | 31 Oct 09:00 |
+| A8 / FS-26 | README, merged PRs, green CI and v1.0 freeze | 31 Oct 12:00 |
+| A9 / FS-27 | Methodology, Results, Testing, Limitations and Contributions | 31 Oct 18:00 |
+| A10 / FS-28 | Model / results slides, demo support and backup computer | 31 Oct 18:00 |
+| A11 / FS-29 | Submit code and retain receipt | 1 Nov 10:00 |
+
+Feature lags of 1 / 2 / 3 days do not themselves validate 24 / 48 / 72-hour targets. Define target intervals, prediction origin and feature availability.
+
+## Sa-ad — Scrum Master, geography and evaluation
+
+FS-30–FS-34 cover daily checks, evidence, evaluation, grid / literature and sprint review. The plan has eight responsibilities; some are not separately ticketed.
+
+| Plan | Required output | Internal deadline |
+|---|---|---|
+| S1 | Jira administration and Scrum Master handover | 29 Oct 10:00 |
+| S2 | Restore board from real evidence; close Sprint 1 without inventing history | 29 Oct 14:00 |
+| S3 | Epics, tickets, owners, dates, points and Sprint 2 start | 29 Oct 18:00 |
+| S4 | Friday / Saturday standups and daily updates | Daily |
+| S5 | Board, burndown, sprint report, CSV and merged-PR evidence to Zarif | 31 Oct 12:00 |
+| S6 | PR-AUC, Brier, reliability and leave-one-season-out evaluation material | 30 Oct 18:00 |
+| S7 | Grid, labels / leakage conventions and literature | 30 Oct 18:00 |
+| S8 | Sprint 2 closeout and retrospective evidence | 1 Nov 14:00 |
+
+## Yian — data and pipeline
+
+| Plan / Jira | Required output | Internal deadline |
+|---|---|---|
+| Y1 / FS-35 | FIRMS / Open-Meteo catalogue, licence / attribution and run provenance | 29 Oct 21:00 |
+| Y2 / FS-36 | Ignition / weather / forecast schema, duplicate, time, bounds and missingness checks plus tests | 30 Oct 18:00 |
+| Y3 / FS-37 | Measured real event counts, missingness, coverage and known issues | 30 Oct 21:00 |
+| Y4 / FS-38 | Data pipeline, management and implemented security / privacy report sections | 31 Oct 12:00 |
+| Y5 / FS-39 | Data slide, script and rehearsal | 31 Oct; no hour specified |
+
+Yian owns traceability and checks. Ayon / Sa-ad supply model results; Tabib coordinates report and submission. [Delivery index](README.md).
+
+## Tabib — report, presentation and submission
+
+| Plan / Jira | Required output | Internal deadline |
+|---|---|---|
+| T1 / FS-40 | Confirm Blackboard deadline, word / format limits, Turnitin / GenAI rules, presentation slot and earlier claims | 29 Oct 10:00 |
+| T2 / FS-41 | Shared report outline, owners and word allocation | 29 Oct 18:00 |
+| T3 / FS-42 | Factual ethics, SDGs, Indigenous / stakeholder considerations | 30 Oct 18:00 |
+| T4 / FS-43 | Introduction, Conclusion and Chicago 17 references | 31 Oct 12:00 |
+| T5 / FS-44 | Integrate, proofread and reconcile full report | 31 Oct 20:00 |
+| T6 / FS-45 | Integrate slides; agree structure and timing | 31 Oct 18:00 |
+| T7 / FS-46 | Submit report / presentation and retain receipts | 1 Nov 10:00 |
+
+## Zarif — dashboard, demo, risk and management
+
+| Plan / Jira | Required output | Internal deadline |
+|---|---|---|
+| Z1 / FS-47 | Integrate forecast.csv: map, date, probability and actual; label historical backtest / decision support | 30 Oct 21:00 |
+| Z2 / FS-48 | Offline three-minute demo, runbook and backup recording | 31 Oct 12:00 |
+| Z3 / FS-49 | Risk register and responses | 30 Oct 18:00 |
+| Z4 / FS-50 | Dashboard, Innovation / Significance, Sustainability and Project Management sections | 31 Oct 18:00 |
+| Z5 / FS-51 | Demo slides, script and at least two rehearsals | 31 Oct |
+
+## Shared milestones
+
+29 Oct 20:00 standup → 30 Oct 12:00 real-data decision gate → 31 Oct 12:00 freeze → 18:00 slides → 19:00 rehearsal → 20:00 report → 1 Nov 08:00 final read → 10:00 target uploads / receipts. Presentation from the week of 2 November follows the official allocation.
+
+## Resolve these dependencies first
+
+1. **Ayon + Sa-ad: one data contract.** Main bbox: 115.45,-32.60,116.55,-31.40; PR #3: 115.65,-32.60,116.30,-31.60. Main uses UTC days and 1.5 km / 24-hour clustering; PR #3 uses Perth days and 2 km / 2 days. Inspected main grid: 1,575 centres, 35 outside configured bbox. Agree boundaries, CRS, dates and grid IDs.
+2. **Ayon: real evidence and valid evaluation.** Inspected raw / processed directories contained only .gitkeep. Supply ignition, weather, forecast, grid, manifests, intervals, units and revision. Confirm six-season coverage against configured dates. Repair test-season use for early stopping before reporting held-out results; document independent calibration evaluation.
+3. **Ayon: remaining ingestion / CI.** This PR corrects src/ingest/download_firms.py. Separate firms_client.py still needs review of 10-day requests and skipped failed windows. Missing downloads are not zero-fire periods. Hosted workflow and successful real weather / forecast export were not found in inspected main.
+4. **Yian: review now, measurements next.** Deliver FS-35 / 36 / 38 / 39 now. After real inputs arrive, run checks, separately verify expected cell-day / seasonal coverage, publish FS-37 measurements and update report / slide.
+5. **Plan author / Ayon + Tabib: complete requirements.** PDF was read page by page but could not be saved. It jumps from Section 4 to Section 6 while referring to Section 5, a real-data gate and supplied scripts / patches. Those materials were not obtained. Confirm gate and official rules before final scope / submission decisions.
+
+Old FS-5 / FS-6 screenshots concern earlier completed tickets; they do not complete FS-35 / FS-36. Latest WhatsApp Jira.csv is management evidence for Zarif. Use FS keys in commits; mark Done only when acceptance evidence exists.

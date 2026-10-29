@@ -100,4 +100,6 @@ mlflow ui                     # http://localhost:5000
 
 ## Data quality (FS-35 / FS-36)
 
-See [data-quality integration and run instructions](docs/data-quality.md) and [source catalogue](docs/data-sources.md). These local candidate changes have fixture verification; real-run evidence is still required.
+See [data-quality integration and run instructions](docs/data-quality.md) and [source catalogue](docs/data-sources.md). The delivery branch has local fixture verification; real-run evidence, hosted CI and review / merge remain pending.
+
+Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for editable files, task status and next owners, or read the [whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md).

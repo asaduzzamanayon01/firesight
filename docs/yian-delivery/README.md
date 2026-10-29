@@ -1,13 +1,50 @@
-# Yian final data delivery (FS-35–FS-39)
+# Yian’s delivery: files, evidence and remaining work
 
-Prepared 29 October 2026. Code and catalogue changes are in this PR; this folder holds the editable report, data slide and speaker notes, verification evidence and complete delivery archive.
+**Owner:** Yian Wang · **Updated:** 29 October 2026 (Perth) · **Scope:** FS-35–FS-39
 
-The original main suite passed 32 tests. The local integrated candidate passed 75 tests; source/scripts/tests passed Ruff. Full-repository Ruff still has 8 pre-existing notebook issues. No hosted CI or real-data/model run is claimed. The original team code is retained with its existing authorship.
+Catalogue, checker, tests, report and presentation materials are available for team review. **Real-data statistics remain pending.** Publication on the delivery branch does not mean review or merge into upstream main is complete.
 
-FS-35: catalogue and provenance template prepared; actual acquisition manifests pending. FS-36: checker/tests implemented; second-person review and merge pending. FS-37: blocked on Ayon's actual ignition/weather/forecast files, agreed grid and source manifests. FS-38: report contribution supplied for Tabib's integration; measured statistics pending. FS-39: editable slide and script supplied; team integration and personal rehearsal pending.
+## Start here
 
-Before the real run, Ayon and Sa-ad must reconcile main and PR #3's bbox, UTC/Perth event days, clustering and grid conventions. See ../data-quality.md and ../data-sources.md. Raw data and credentials are not included.
+- **Ayon / Sa-ad:** review the [integration instructions](../data-quality.md), code and tests.
+- **Tabib:** use the editable [Word report](Yian_Report_Sections.docx), [Markdown report](Yian_Report_Sections.md), [PowerPoint slide](Yian_Data_Slide.pptx) and [speaker notes](Speaker_Notes.txt).
+- **Whole team:** see [everyone’s responsibilities and handoff order](TEAM_HANDOFF.md).
+- **Offline copy:** [complete archive](FireSight_Yian_Final_Delivery_2026-10-29.zip). It preserves the original local evidence snapshot; this index and Jira record current publication status.
 
-Jira: https://asaduzzamanayon001.atlassian.net/browse/FS-35 through FS-39.
+## Five deliverables
 
-The archive and Repository_Integration_Status.json preserve the pre-publication local verification snapshot. Current publication, CI, review and merge status should be read from the pull request and Jira.
+| Task | Delivered files | Present state | Remaining work |
+|---|---|---|---|
+| [FS-35 · Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | [Catalogue](../data-sources.md), [source-record template](../source-record.template.json) | Prepared; catalogue attached in Jira. | Ayon supplies acquisition manifests, products, dates and units; Yian completes run provenance. |
+| [FS-36 · Quality checks](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | [Instructions](../data-quality.md), [CLI](../../scripts/check_data_quality.py), [module](../../src/quality) and tests | Implemented for repository schemas, CSV and Parquet; **75 local tests passed**. Archive attached in Jira. | Second-person review, hosted CI and upstream merge; agree conventions with PR #3 before the real run. |
+| [FS-37 · Real-data summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | [Required inputs / status](Real_Data_Quality_Status.md) | **Waiting for real inputs.** No real counts, missingness or seasonal coverage measured. | Ayon supplies ignition, weather, forecast, grid and manifests; Yian publishes measured results with hashes and revision. |
+| [FS-38 · Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md) | Editable contribution attached in Jira; Word layout inspected. | Tabib integrates / reviews; Yian adds FS-37 measurements. |
+| [FS-39 · Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | [PowerPoint](Yian_Data_Slide.pptx), [notes](Speaker_Notes.txt) | Editable slide / script attached in Jira; slide rendered and inspected. | Tabib integrates; Yian rehearses and joins team rehearsal. |
+
+All five tasks remain **In Progress**. The repository’s Definition of Done requires review, CI and merge for code work. Commits include relevant FS keys; no automatic Done transition is requested while acceptance work remains.
+
+## Verification
+
+From the repository root after installing requirements.txt, run:
+
+    python -m pytest
+    ruff check src scripts tests
+
+| Check | Observed result | Limit |
+|---|---|---|
+| Unmodified baseline ad480505 | 32 tests passed locally | Baseline result; do not add this to 75. |
+| Integrated candidate | **75 tests passed locally** | Includes original and added tests; controlled fixtures only. |
+| Ruff: src / scripts / tests | Passed locally | Full-repository lint still has 8 pre-existing notebook findings. |
+| Real API / real-data validation / model training | Not performed | Production files and measured results were not obtained. |
+| Hosted CI / approval / upstream merge | Pending | Read the live PR and Jira for later updates. |
+
+See [test log](repository-tests.txt), [integration snapshot](Repository_Integration_Status.json) and [real-input commands / interpretation limits](../data-quality.md). Fixture counts are not real fire or weather statistics. The archive and snapshot were written before remote publication; their local-only status is historical.
+
+## Handoff order
+
+1. **Ayon + Sa-ad:** agree bbox, grid IDs / boundaries, UTC versus Perth event day and clustering. Main and open [PR #3](https://github.com/asaduzzamanayon01/firesight/pull/3) differ. This delivery follows main’s UTC event-day contract.
+2. **Ayon:** supply actual ignition, weather, forecast.csv, grid, manifests, extraction intervals / units and exact run revision. Keep credentials out of GitHub and Jira.
+3. **Yian:** run non-mutating checks; separately confirm expected seasonal / cell-day coverage; publish FS-37 measurements and update report / slide.
+4. **Tabib:** integrate contributions and verify official submission rules. **Zarif:** integrate the forecast and prepare the offline demo. **Sa-ad:** retain authentic sprint / review evidence.
+
+The referenced Section 5 decision gate and supplied scripts / patches were not obtained. Confirm them before deciding final real-data versus synthetic-demo scope. WhatsApp’s Jira.csv is management evidence for Zarif, not a replacement for model inputs.
