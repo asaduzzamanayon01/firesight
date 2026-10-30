@@ -1,0 +1,57 @@
+{
+  "prediction_rows": 3448016,
+  "prediction_nulls": 0,
+  "prediction_duplicate_keys": 0,
+  "prediction_level_metrics_match_saved": true,
+  "mean_pr_auc": 0.0102256655045536,
+  "baseline_mean_pr_auc": 0.004260829218091933,
+  "max_abs_pr_auc_difference_from_published_spatial": 0.0,
+  "max_abs_pr_auc_difference_from_published_baseline": 0.0,
+  "forecast_matches_heldout_predictions": true,
+  "forecast_rows": 22022,
+  "forecast_date_start": "2025-01-10",
+  "forecast_date_end": "2025-01-23",
+  "forecast_actual_positives": 3,
+  "weighted_top5_capture": 0.32078986587183306,
+  "captured_top5": 861,
+  "core_model_policy_unchanged": true,
+  "calibrated": false,
+  "overall_acceptance": false,
+  "scope": "Independent Yian rerun of current main method; methodology and strict boundary review pending",
+  "oof_coverage": {
+    "start": "2019-07-01",
+    "end": "2025-06-30",
+    "basis": "supplied grid IDs x inclusive literal daily date keys; no inferred population",
+    "expected_cells": 1573,
+    "expected_days": 2192,
+    "expected_cell_days": 3448016,
+    "observed_unique_expected_cell_days": 3448016,
+    "missing_cell_days": 0,
+    "cells_absent_entire_window": 0,
+    "dates_absent_all_expected_cells": 0,
+    "duplicate_valid_pair_rows": 0,
+    "unknown_or_missing_cell_rows": 0,
+    "invalid_daily_date_rows": 0,
+    "out_of_window_rows": 0,
+    "passed": true,
+    "issues": []
+  },
+  "forecast_csv_cli_issues": [
+    {
+      "code": "coordinates_outside_study_box_or_invalid",
+      "count": 490,
+      "severity": "error"
+    },
+    {
+      "code": "grid_centres_outside_study_box_or_invalid",
+      "count": 35,
+      "severity": "error"
+    }
+  ],
+  "forecast_csv_coverage_passed": true,
+  "verification_sha256": {
+    "forecast": "59ec60508bfaa0d28c5ba884825c7fc5c25b7e67cababcfb1dcca4200969cecb",
+    "oof": "65b658933e80a63417e7a217aef097a5eae5bd01a905bfa18a34b734b29881b7",
+    "grid": "ec5cf28a917afb4c0ffbab34ee9b89273aaa5bfb33235344d72197b7aeb99084"
+  }
+}

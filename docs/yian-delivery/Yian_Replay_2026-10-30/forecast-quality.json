@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-30T14:47:55.755791+00:00",
+  "data_mode": "real",
+  "data_mode_basis": "caller declaration; provenance must be reviewed separately",
+  "study_bbox": [
+    115.45,
+    -32.6,
+    116.55,
+    -31.4
+  ],
+  "code_revision": "501495d8771d47c22edd39b04800beaf1f710357",
+  "settings": {
+    "weather_features": [
+      "t2m_max",
+      "rh_min",
+      "wind_speed_max",
+      "precip_24h",
+      "kbdi"
+    ],
+    "column_map": {},
+    "date_timezone": "UTC",
+    "schema": "repository",
+    "complete_input_set": false,
+    "start": "2025-01-10",
+    "end": "2025-01-23",
+    "require_complete_cell_days": true
+  },
+  "tables": [
+    {
+      "kind": "forecast",
+      "rows": 22022,
+      "columns": [
+        "cell_id",
+        "lat",
+        "lon",
+        "date",
+        "probability",
+        "actual",
+        "season",
+        "risk_percentile"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "cell_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "probability": 0,
+        "actual": 0,
+        "season": 0,
+        "risk_percentile": 0
+      },
+      "coverage": {
+        "start_utc": "2025-01-10T00:00:00+00:00",
+        "end_utc": "2025-01-23T00:00:00+00:00"
+      },
+      "summary": {
+        "positive_rows": 3,
+        "invalid_label_rows": 0,
+        "positive_rate_valid_labels": 0.0001362274089546817,
+        "season_counts": {
+          "2024-25": 22022
+        }
+      },
+      "issues": [
+        {
+          "code": "coordinates_outside_study_box_or_invalid",
+          "count": 490,
+          "severity": "error"
+        },
+        {
+          "code": "grid_centres_outside_study_box_or_invalid",
+          "count": 35,
+          "severity": "error"
+        }
+      ],
+      "coordinate_check": "performed",
+      "passed": false,
+      "source_columns": [
+        "cell_id",
+        "lat",
+        "lon",
+        "date",
+        "probability",
+        "actual",
+        "season",
+        "risk_percentile"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "sha256": "59ec60508bfaa0d28c5ba884825c7fc5c25b7e67cababcfb1dcca4200969cecb",
+      "input_name": "forecast.csv",
+      "grid_sha256": "ec5cf28a917afb4c0ffbab34ee9b89273aaa5bfb33235344d72197b7aeb99084",
+      "expected_cell_day_coverage": {
+        "start": "2025-01-10",
+        "end": "2025-01-23",
+        "basis": "supplied grid IDs x inclusive literal daily date keys; no inferred population",
+        "expected_cells": 1573,
+        "expected_days": 14,
+        "expected_cell_days": 22022,
+        "observed_unique_expected_cell_days": 22022,
+        "missing_cell_days": 0,
+        "cells_absent_entire_window": 0,
+        "dates_absent_all_expected_cells": 0,
+        "duplicate_valid_pair_rows": 0,
+        "unknown_or_missing_cell_rows": 0,
+        "invalid_daily_date_rows": 0,
+        "out_of_window_rows": 0,
+        "passed": true,
+        "issues": []
+      }
+    }
+  ],
+  "passed": false
+}

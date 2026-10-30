@@ -1,16 +1,13 @@
-Yian Wang — data quality after the spatial update
-30 October 2026. About 75–90 seconds; agree timing with Tabib and rehearse.
+English speaking notes
 
-My work covers the data catalogue, provenance and quality checks. I checked six received event tables containing 2,846 satellite-derived event rows, and 56 weather points with complete time axes and no missing numeric values.
+We checked 2,846 supplied event rows across six seasons and 56 weather point series. The unfiltered labels contain 2,822 positive cell-days. After the existing two-cell static-source exclusion, the model population is 1,573 cells and 2,684 positive cell-days.
 
-The original labels produce 2,822 positive cell-days. The new main pipeline excludes two probable static heat-source cells. I independently reproduced the resulting 2,684 positives across about 3.45 million cell-days, matching the published seasonal result counts. These populations should be named clearly whenever we report a rate.
+I independently replayed the current spatial model on those received labels and locally reconstructed weather. All 3,448,016 held-out predictions are present. Recomputed seasonal scores match the published spatial and baseline CSVs. The 14-day dashboard export contains 22,022 rows for 10–23 January 2025, including three positive cell-days. It matches the held-out scores, with the existing probability floor, and has complete daily grid coverage.
 
-The new published spatial-model CSVs favour LightGBM over the paired baseline. I checked their summary arithmetic, but did not retrain the model or reproduce scores from predictions. The static-source selection and inner-validation separation still need methodological review.
+The export is an uncalibrated historical backtest. The strict checker still flags 35 edge centres, affecting 490 rows in this window. Boundary/calendar-day policy and label-based selection/inner-validation limitations need review before final acceptance. The run record and hashes are included in the replay evidence. Tabib can integrate these updated materials; Zarif can use the provisional export for offline demo testing.
 
-The weather reconstruction retains a failure at 35 grid centres outside the configured boundary. We also still need the actual forecast export and matching run provenance. These are explicit acceptance conditions, alongside agreeing UTC event dates and Perth weather days.
+中文理解提示
 
-Evidence: Spatial_Update_2026-10-30.md, Spatial_Update_Audit_2026-10-30.json; main a86e39b62df5a7237e47e2ef9724ef8c10fef06e; upstream results_real CSVs. Input audit: Real_Data_Quality_Status.md, Real_Data_Audit_2026-10-30.json. Original data forwarded by Victor, 29 October 23:41 Perth. Sa-ad FS-32/FS-33 comments, 30 October.
-Source context: NASA FIRMS API Area https://firms.modaps.eosdis.nasa.gov/api/area/ ; Open-Meteo Historical Weather API https://open-meteo.com/en/docs/historical-weather-api ; licence https://open-meteo.com/en/licence (documentation accessed 29 October 2026).
+Yian 已独立补跑当前空间模型，生成六季共 3,448,016 行留出预测，以及 2025 年 1 月 10–23 日、22,022 行的回测 forecast.csv。逐季指标与已公布 CSV 一致；14 天内含 3 个阳性网格日。它是未经校准的历史回测，使用已有概率下限；边界、日期和评估方法仍需审核。35 个边界中心在本窗口涉及 490 行，未擅自删除。
 
-中文理解
-原始事件记录2,846条不变；过滤前2,822个阳性网格日，最新代码去掉570/571两个高频热源格后为2,684个，模型分母也从1,575格变成1,573格。不要混用这两组统计。新CSV的空间模型分数高于配对baseline，我们复算了汇总算术和标签数量，没有重训模型。过滤用了所有季节标签，内层验证先验也需审阅。35个边缘中心越界、forecast和对应运行记录仍缺；你本人和团队还需排练。
+Evidence: Yian_Replay_2026-10-30/run-manifest.json, prediction-audit.json, forecast-quality.json; MLflow run 328aaa7e10cd4f55873fd0598c704ed3.
