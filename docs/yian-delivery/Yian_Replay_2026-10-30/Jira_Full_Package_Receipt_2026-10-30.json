@@ -1,0 +1,23 @@
+{
+  "issue": "FS-37",
+  "attachment_id": "10036",
+  "filename": "Yian_Replay_Outputs_2026-10-30.zip",
+  "bytes": 25579957,
+  "sha256": "20ef575035fba343f18eadc747020b47f0a784b98acb416e177d065819182e0f",
+  "issue_url": "https://asaduzzamanayon001.atlassian.net/browse/FS-37",
+  "authorization": "User explicitly agreed to share complete derived predictions/weather/grid/model package with existing project members",
+  "includes": [
+    "six-season held-out spatial and baseline predictions",
+    "reconstructed weather and matching filtered grid",
+    "model and evaluation plots",
+    "run/validation records",
+    "Replay report/slide/notes"
+  ],
+  "excludes": [
+    "original received ZIPs",
+    "original seasonal event files"
+  ],
+  "scientific_output_bytes_unchanged": true,
+  "access": "existing Jira project permissions; no access expansion",
+  "summary_attachment_id": "10035"
+}

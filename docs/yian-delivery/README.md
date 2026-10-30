@@ -6,6 +6,8 @@ Yian Wang · **Updated 30 October 2026 (Perth)** · FS-35–FS-39 · [Upstream P
 
 **Verification:** 122 local root tests + 6 subtests and lint pass. See [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) and PR #7 for exact-revision hosted CI. The earlier 95/120-test runs are historical.
 
+**Full run package available:** in [Jira FS-37](https://asaduzzamanayon001.atlassian.net/browse/FS-37), download **10036 — Yian_Replay_Outputs_2026-10-30.zip** (25.6 MB). It contains the full predictions, reconstructed weather/grid, model and verification records. [Contents, hashes and instructions](Yian_Replay_2026-10-30/README.md).
+
 ## Latest upstream follow-up
 
 **PR #15 / main a86e39b is now integrated.** Read the [spatial update and remaining review gates](Spatial_Update_2026-10-30.md). Received-label reconstruction now also reproduces the filtered model population: **1,573 cells / 3,448,016 cell-days / 2,684 positives (0.07784187%)**, after excluding cells 570/571. The original input audit below remains the unfiltered population.
