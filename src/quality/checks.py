@@ -170,14 +170,16 @@ def check_frame(
             valid = lat.between(south, north) & lon.between(west, east)
             issue("coordinates_outside_study_box_or_invalid", int((~valid).sum()))
     numeric = contract.numeric + (features if kind == "weather" else ())
+    if kind == "forecast" and "risk_percentile" in mapped:
+        numeric += ("risk_percentile",)
     for col in numeric:
         if col not in mapped:
             continue
         values = pd.to_numeric(mapped[col], errors="coerce")
         finite = values.map(lambda v: pd.notna(v) and math.isfinite(float(v)))
         issue(f"non_numeric_or_nonfinite_{col}", int((~finite).sum()))
-        if col == "probability":
-            issue("probability_outside_0_1", int((finite & ~values.between(0, 1)).sum()))
+        if col in {"probability", "risk_percentile"}:
+            issue(f"{col}_outside_0_1", int((finite & ~values.between(0, 1)).sum()))
         if col == "actual":
             issue("actual_not_binary", int((finite & ~values.isin([0, 1])).sum()))
     if kind == "forecast" and all(c in mapped for c in ("cell_id", "lat", "lon")):

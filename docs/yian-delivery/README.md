@@ -4,6 +4,14 @@ Yian Wang · **Updated 30 October 2026 (Perth)** · FS-35–FS-39 · [Upstream P
 
 **Real inputs have arrived and the measured audit is published.** Six event tables pass structural checks. Raw weather is complete; locally reconstructed weather fails the current strict bbox rule at 35 grid centres. Full acceptance awaits forecast.csv, actual run provenance and an agreed grid/day policy. Review and upstream merge remain pending.
 
+## Latest upstream follow-up
+
+**PR #15 / main a86e39b is now integrated.** Read the [spatial update and remaining review gates](Spatial_Update_2026-10-30.md). Received-label reconstruction now also reproduces the filtered model population: **1,573 cells / 3,448,016 cell-days / 2,684 positives (0.07784187%)**, after excluding cells 570/571. The original input audit below remains the unfiltered population.
+
+Published CSV arithmetic now supports spatial-model PR-AUC **0.01022567** versus paired filtered baseline **0.00426083**, with 6/6 seasonal wins and top-5% capture **32.08%**. Scores were not rederived from predictions or retraining. The supplied MLflow record still describes the older weather-only run. Source-selection and inner-validation review limitations remain explicit. Local code verification is now **95 root tests + 6 subtests**, **10 separate geography tests**, and lint passed; see current Actions for hosted status.
+
+Use the **2026-10-30_Spatial** report, slide and notes attachments in Jira. Earlier same-day files precede this follow-up; standard online filenames below now point to the refreshed material.
+
 ## Current files for the team
 
 - **Start with the [measured quality report and next owners](Real_Data_Quality_Status.md).** [Detailed JSON and input hashes](Real_Data_Audit_2026-10-30.json) · [archive receipt](Received_Archives_2026-10-30.json) · [offline audit script](../../scripts/audit_received_data.py).

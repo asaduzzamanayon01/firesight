@@ -104,3 +104,8 @@ mlflow ui                     # http://localhost:5000
 Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for the current files and owners. The [30 October measured audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks six supplied event tables and five raw weather batches: 2,846 event rows, 2,822 positive cell-days, and complete 56-point weather arrays. Reconstructed weather fails the strict bbox rule for 35 grid centres; forecast.csv and actual run provenance remain pending. No model scores were reproduced by this audit.
 
 [Checker instructions](docs/data-quality.md) · [Source catalogue](docs/data-sources.md) · [Whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md). PR #7 awaits second-person review and upstream merge. Fixture/CI tests and measured data checks are distinct.
+
+
+### Latest spatial/filter update
+
+Main a86e39b / PR #15 is integrated. See [current evidence](docs/yian-delivery/Spatial_Update_2026-10-30.md): static-source filtering reproduces 1,573 cells / 3,448,016 cell-days / 2,684 positives (0.07784187%), replacing the unfiltered population only for the new model run. Published spatial/baseline CSV means are 0.01022567 / 0.00426083; summary arithmetic and counts are checked, with selection/validation limits retained. The forecast exporter adds risk_percentile. Local root suite: 95 passed + 6 subtests; geography: 10 separately; lint passed. Current hosted smoke/CI status is linked from PR #7.

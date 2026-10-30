@@ -37,3 +37,8 @@ Sa-ad’s geography module is now merged. This refresh passed 83 root tests plus
 ## Real-file audit on 30 October
 
 The forwarded six-season ignition files and five raw weather JSON batches were checked offline. See [measured report](yian-delivery/Real_Data_Quality_Status.md) and [audit script](../scripts/audit_received_data.py). Event checks pass; reconstructed weather retains the existing strict bounds failure (35 grid centres / 76,720 rows). No forecast was supplied. The earlier waiting-for-files notes describe historical checkpoints.
+
+
+## PR 15 forecast extension and current evidence
+
+The exporter now adds `risk_percentile` to the seven required fields. If present, FS-36 validates that it is numeric, finite and in [0,1], while retaining support for the agreed seven-field format. It is a relative daily rank, not a calibrated probability. The actual export remains absent. See [current spatial update](yian-delivery/Spatial_Update_2026-10-30.md) for filtered population reconciliation and methodological review limits.

@@ -45,3 +45,8 @@ Main's current grid creates 1,575 centres, with 35 outside its configured bbox. 
 The correction to src/ingest/download_firms.py does not update Ayon's separate src/ingest/firms_client.py seasonal workflow. Latest main now uses five-day chunks and raises if a download window fails. Credential-safe error reporting and actual source manifests / seasonal coverage still require review.
 
 Current receipt: 2019–2025 event tables contain 2,846 rows, with a supplied grouped-detection-count sum of 24,968. Weather has 56 points over 2018-07-01–2025-06-30, including spin-up. Archive and member SHA256 values, units, returned coordinates and known provenance gaps are retained in the [30 October audit](yian-delivery/Real_Data_Quality_Status.md). Current main labels reproduce 0.08174024% positives; model PR-AUC remains author-reported.
+
+
+## Follow-up after main a86e39b
+
+The [spatial update](yian-delivery/Spatial_Update_2026-10-30.md) reconciles the new two-cell exclusion with received labels: 1,573 cells, 2,684 positive cell-days, 0.07784187%. Original unfiltered counts remain 1,575 cells / 2,822 positives / 0.08174024%. The new exporter adds risk_percentile (daily relative rank, [0,1]); the seven-field forecast contract remains required. Original forecast and acquisition manifests remain absent. Published results_real summaries are now available; their source hashes and arithmetic checks are recorded without claiming prediction-level reproduction.

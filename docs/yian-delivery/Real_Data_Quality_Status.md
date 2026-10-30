@@ -2,7 +2,11 @@
 
 Yian Wang · 30 October 2026 (Perth) · FS-35–FS-39 · supersedes the 29 October waiting-for-files checkpoint.
 
-**The six seasonal event tables and five raw weather batches have been received and checked. Full three-table acceptance remains pending.** Ignition structural checks pass. Locally reconstructed weather has complete values but fails the current strict coordinate rule because 35 reconstructed grid centres lie outside the configured bbox. forecast.csv and run-specific provenance are still missing. No model training or performance reproduction was performed.
+**The six seasonal event tables and five raw weather batches have been received and checked. Full three-table acceptance remains pending.** Ignition structural checks pass. Locally reconstructed weather has complete values but fails the current strict coordinate rule because 35 reconstructed grid centres lie outside the configured bbox. forecast.csv and run-specific provenance are still missing. Published metrics are now accessible, as described in the follow-up; no model training or prediction-based performance reproduction was performed.
+
+## Current main population and result follow-up
+
+Main has advanced to a86e39b through PR #15. The original input measurements below remain valid. Independently applying the new filter yields **1,573 cells, 3,448,016 cell-days and 2,684 positives (0.07784187%)**, exactly matching the new published result counts. Published CSV means are 0.01022567 spatial PR-AUC versus 0.00426083 paired baseline; top-5% capture arithmetic is 861/2,684 = 32.08%. Original predictions and a matching spatial MLflow run are still missing, so this is count/arithmetic reconciliation rather than model reproduction. Read the [full follow-up and review limits](Spatial_Update_2026-10-30.md). The older weather-only comparison is historical.
 
 ## Receipt and evidence
 
@@ -63,7 +67,7 @@ The reconstructed table has t2m_max, rh_min, wind_speed_max, precip_24h and kbdi
 | Tabib | Integrate the refreshed report and slide and preserve the stated limitations | Use this dated evidence rather than earlier waiting-for-files attachments |
 | Zarif | Integrate the supplied forecast into the dashboard and label it as historical backtest; retain offline demo evidence | These ZIPs contain no dashboard forecast export |
 
-Main event dates follow UTC while supplied weather is grouped by Australia/Perth days. Reanalysis availability and simplified KBDI still require explicit retrospective interpretation. The author's model result (LightGBM PR-AUC 0.0021 versus climatology 0.0064) remains author-reported; it has not been reproduced by this audit.
+Main event dates follow UTC while supplied weather is grouped by Australia/Perth days. Reanalysis availability and simplified KBDI still require explicit retrospective interpretation. The earlier weather-only comparison (LightGBM 0.0021 versus climatology 0.0064) is historical. New spatial/filtered-baseline CSVs are now checked arithmetically in the linked follow-up; no predictions-based score reproduction is claimed.
 
 ## Reproduce offline
 

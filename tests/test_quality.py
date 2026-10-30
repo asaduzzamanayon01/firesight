@@ -92,6 +92,27 @@ class QualityTests(unittest.TestCase):
             self.codes(forecast().assign(probability=float("inf"))),
         )
 
+    def test_risk_percentile_accepts_endpoints_without_changing_input(self):
+        frame = forecast().assign(risk_percentile=[0.0, 1.0])
+        before = frame.copy(deep=True)
+        self.assertTrue(self.check(frame)["passed"])
+        pd.testing.assert_frame_equal(frame, before)
+
+    def test_risk_percentile_rejects_values_outside_unit_interval(self):
+        for value in (-0.1, 1.1):
+            with self.subTest(value=value):
+                result = self.check(forecast().assign(risk_percentile=value))
+                self.assertFalse(result["passed"])
+                self.assertIn("risk_percentile_outside_0_1", {i["code"] for i in result["issues"]})
+
+    def test_risk_percentile_rejects_non_numeric_missing_and_nonfinite_values(self):
+        for value in (None, "bad", float("nan"), float("inf")):
+            with self.subTest(value=value):
+                result = self.check(forecast().assign(risk_percentile=value))
+                self.assertFalse(result["passed"])
+                self.assertIn("non_numeric_or_nonfinite_risk_percentile",
+                              {i["code"] for i in result["issues"]})
+
     def test_actual_binary(self):
         self.assertIn("actual_not_binary", self.codes(forecast().assign(actual=2)))
 

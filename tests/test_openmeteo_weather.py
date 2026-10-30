@@ -80,6 +80,10 @@ def test_forecast_export_has_the_agreed_columns():
         "season": "2023-24", "ignition": 0, "y_prob": 0.003,
     })
     out = export(oof, start=None, days=3, calibrated=False)
-    assert list(out.columns) == ["cell_id", "lat", "lon", "date", "probability", "actual", "season"]
+    assert list(out.columns) == [
+        "cell_id", "lat", "lon", "date", "probability", "actual", "season", "risk_percentile"
+    ]
+    assert out["probability"].min() > 0
+    assert out["risk_percentile"].between(0, 1).all()
     assert out["date"].nunique() == 3
     assert out["lat"].notna().all()

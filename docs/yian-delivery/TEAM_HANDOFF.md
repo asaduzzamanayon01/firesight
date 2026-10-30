@@ -2,7 +2,13 @@
 
 Based on the 8-page final-delivery plan read from the authorized WhatsApp conversation and repository / Jira inspection on 29 October 2026, refreshed against upstream main 41584f9 during PR preparation. **Responsibilities are planned outputs, not proof of completion.** Internal deadlines use Perth time; Tabib must verify official Blackboard requirements.
 
-## Current evidence
+## Latest follow-up after PR 15
+
+[Current spatial update](Spatial_Update_2026-10-30.md): main a86e39b adds results_real evidence and a static-cell filter. Filtered counts independently match the CSVs (1,573 cells, 2,684 positive cell-days); aggregate means favour spatial LightGBM, with evaluation/provenance review limits retained. Sa-ad's FS-30/32/33 and new FS-52/53/54 are Done; his FS-32 comment confirms evaluation draft/review and pending final integration. His FS-33 comment records 24-hour real clustering. Actual forecast, edge/day policy and matching spatial-run evidence remain open. **S1/S2/S3 now correspond to FS-52/53/54**, respectively; do not infer authentic sprint artefacts solely from Done status.
+
+Sa-ad's [PR #14](https://github.com/asaduzzamanayon01/firesight/pull/14) is open with grid/label verification and protocol drafts; its two expected-failure examples document 24-hour clustering limits. Edge overshoot is intentional in that draft. Review/adoption remains pending; this delivery does not merge another member's PR or alter the clustering window.
+
+## Earlier received-file checkpoint
 
 **30 October update:** Six seasonal event files and five weather JSON batches have arrived from Victor. [Measured audit and owners](Real_Data_Quality_Status.md) supersedes earlier waiting-for-files statements. Responsibilities below are preserved from the plan.
 
@@ -36,13 +42,13 @@ Feature lags of 1 / 2 / 3 days do not themselves validate 24 / 48 / 72-hour targ
 
 ## Sa-ad — Scrum Master, geography and evaluation
 
-FS-30–FS-34 cover daily checks, evidence, evaluation, grid / literature and sprint review. The plan has eight responsibilities; some are not separately ticketed.
+FS-30–FS-34 cover daily checks, evidence, evaluation, grid/literature and sprint review. The new FS-52/53/54 cover S1/S2/S3, so all eight responsibilities are now mapped.
 
 | Plan | Required output | Internal deadline |
 |---|---|---|
-| S1 | Jira administration and Scrum Master handover | 29 Oct 10:00 |
-| S2 | Restore board from real evidence; close Sprint 1 without inventing history | 29 Oct 14:00 |
-| S3 | Epics, tickets, owners, dates, points and Sprint 2 start | 29 Oct 18:00 |
+| S1 / FS-52 | Jira administration and Scrum Master handover | 29 Oct 10:00 |
+| S2 / FS-53 | Restore board from real evidence; close Sprint 1 without inventing history | 29 Oct 14:00 |
+| S3 / FS-54 | Epics, tickets, owners, dates, points and Sprint 2 start | 29 Oct 18:00 |
 | S4 | Friday / Saturday standups and daily updates | Daily |
 | S5 | Board, burndown, sprint report, CSV and merged-PR evidence to Zarif | 31 Oct 12:00 |
 | S6 | PR-AUC, Brier, reliability and leave-one-season-out evaluation material | 30 Oct 18:00 |

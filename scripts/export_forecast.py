@@ -13,8 +13,11 @@ cell_id        grid cell (see src/features/grid.py)
 lat, lon       cell centre (EPSG:4326)
 date           the day the forecast is for
 probability    predicted chance of an ignition in that cell on that day
+               (floored at 0.00001: a fire can start anywhere, so never exactly 0)
 actual         1 if a fire really started in that cell that day, else 0
 season         fire season label, for example 2024-25
+risk_percentile  rank of the cell among all cells THAT DAY, 0 to 1 (1 = highest risk).
+               Colour the map with this, because raw probabilities are all tiny.
 
 Run:
     PYTHONPATH=. python -m scripts.export_forecast --days 14
@@ -28,6 +31,8 @@ import pandas as pd
 
 from src.config import CFG
 from src.features.grid import cell_centroids
+
+PROB_FLOOR = 1e-5
 
 
 def export(oof: pd.DataFrame, start: str | None, days: int, calibrated: bool) -> pd.DataFrame:
@@ -52,7 +57,9 @@ def export(oof: pd.DataFrame, start: str | None, days: int, calibrated: bool) ->
     cent = cell_centroids().rename(columns={"centroid_lat": "lat", "centroid_lon": "lon"})
     out = win.merge(cent, on="cell_id", how="left")
     out = out.rename(columns={"y_prob": "probability", "ignition": "actual"})
-    cols = ["cell_id", "lat", "lon", "date", "probability", "actual", "season"]
+    out["probability"] = out["probability"].clip(lower=PROB_FLOOR)
+    out["risk_percentile"] = out.groupby("date")["probability"].rank(pct=True, method="average")
+    cols = ["cell_id", "lat", "lon", "date", "probability", "actual", "season", "risk_percentile"]
     return out[cols].sort_values(["date", "cell_id"]).reset_index(drop=True)
 
 

@@ -238,8 +238,6 @@ mlflow.db
 .vscode/
 .idea/
 
-# Local quality evidence (select intentionally for the assessment, never bulk-add)
-reports/data-quality/
 
 # Secrets and keys
 .env.*
@@ -253,7 +251,6 @@ credentials*.json
 # Generated outputs and artefacts
 /reports/
 /results/
-/results_real/
 /results_synthetic/
 *.pkl
 *.joblib
@@ -262,3 +259,6 @@ mlflow.db
 /models/
 .pytest_cache/
 .ruff_cache/
+
+# Local quality evidence (select intentionally for the assessment, never bulk-add)
+reports/data-quality/
