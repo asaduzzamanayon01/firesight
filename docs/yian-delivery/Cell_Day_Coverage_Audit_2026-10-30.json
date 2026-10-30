@@ -1,7 +1,6 @@
 {
   "schema_version": 1,
   "scope": "Explicit daily-key coverage of locally reconstructed unfiltered weather; not an author-supplied model-run export",
-  "source_processing_revision": "a86e39b62df5a7237e47e2ef9724ef8c10fef06e",
   "weather_name": "weather_reconstructed.parquet",
   "weather_sha256": "453b28f572a6a88a2b2f091e01323cc97cf2e5adea2633188d22d440fa1c780d",
   "grid_name": "grid_reconstructed.csv",
@@ -30,5 +29,7 @@
     "outside_bbox_rows": 76720
   },
   "forecast_csv": "not supplied; no forecast acceptance claimed",
-  "interpretation": "A complete key lattice does not approve boundary/calendar-day policies, feature validity, provenance, or forecast performance."
+  "interpretation": "A complete key lattice does not approve boundary/calendar-day policies, feature validity, provenance, or forecast performance.",
+  "upstream_revision_at_coverage_check": "a86e39b62df5a7237e47e2ef9724ef8c10fef06e",
+  "weather_reconstruction_revision": "e555d2aa41dd1be1d44d7bb9ebbe6be8feca3b54"
 }
