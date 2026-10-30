@@ -1,10 +1,24 @@
-# FS-35 / FS-36 data quality integration
+# FS-35 and FS-36 data quality integration
 
-Owner: Yian Wang. Local integration candidate based on main ad480505e229fc118b6e8b1a1a9796c2d48bb550, inspected 29 October 2026. Not a merged commit. Real data validation remains pending.
+Owner: Yian Wang. Updated 30 October 2026. Current code integrates upstream main **a86e39b / PR #15**; delivery code revision **c72d464** passes hosted Python 3.11 CI. PR #7 awaits review and upstream merge. Start at the [current handoff index](yian-delivery/README.md) and [spatial/filter reconciliation](yian-delivery/Spatial_Update_2026-10-30.md).
 
-The CLI defaults to config/config.yaml's bbox and five weather columns. Repository ignition inputs use event_id, latitude, longitude, acq_datetime, detections_in_event, date. The adapter checks that the date equals the UTC acquisition day, preserves subsecond event precision, and checks IDs and positive integer detection counts. Weather inputs use cell_id, date and the configured numeric fields; supply a grid with unique cell_id plus centroid_lat/centroid_lon or lat/lon. Forecast inputs use cell_id, lat, lon, date, probability, actual, season. Do not use an OOF predictions file as forecast.csv without Ayon's documented exporter.
+## Inputs and supported schemas
 
-From the integrated repository root, after installing requirements.txt:
+The CLI reads CSV and Parquet. Defaults come from config/config.yaml: bbox [115.45,-32.60,116.55,-31.40] and weather features t2m_max, rh_min, wind_speed_max, precip_24h, kbdi.
+
+| Input | Required structure | Interpretation |
+|---|---|---|
+| Seasonal ignition events | event_id, latitude, longitude, acq_datetime, detections_in_event, date | Subsecond acquisition precision retained; date must match UTC acquisition day; detection counts must be positive integers |
+| Weather | cell_id, date and all five configured numeric features | Supply a grid to resolve rows without coordinates |
+| Grid | Unique cell_id and WGS84 centroid_lat/centroid_lon or lat/lon | Current strict rule checks every supplied centre against bbox; current main grid has 35 flagged edge centres |
+| Forecast | cell_id, lat, lon, date, probability, actual, season | Finite probability in [0,1], binary actual, consistent cell coordinates and unique cell/date keys |
+| Optional forecast extension | risk_percentile | If present, finite numeric values in [0,1]; daily relative rank, not a calibrated probability |
+
+Event IDs reset in the six received seasonal files. Validate each file independently or use the received-data audit below. A combined key must include the source season; never deduplicate those files by bare event_id. The adapter follows main's UTC event-day contract. --date-timezone does not convert that repository event-day rule into the geography module's Perth-day convention.
+
+## Run the ordinary validator
+
+From a clone of the delivery branch after installing requirements.txt:
 
 ```bash
 python -m pytest
@@ -14,31 +28,30 @@ python scripts/check_data_quality.py \
   --weather data/processed/weather.parquet \
   --grid data/processed/grid.csv \
   --forecast data/processed/forecast.csv \
-  --data-mode real --output-dir reports/data-quality/ACTUAL_RUN
+  --data-mode real --revision ACTUAL_DELIVERY_COMMIT \
+  --output-dir reports/data-quality/ACTUAL_RUN
 ```
 
-Replace example filenames with the actual supplied files. This command is not a claim that those files exist. Add --start YYYY-MM-DD and --end YYYY-MM-DD to check an agreed interval; these check supplied rows against the bounds, not that every expected day exists. Optional --revision should contain the actual integrated commit, not the unmodified base SHA. --bbox and --weather-features explicitly override config. --schema canonical supports the earlier lat/lon/date ignition fixture schema and explicit column maps. The repository adapter currently follows main's UTC event-day rule; --date-timezone does not switch that event-day contract to PR #3's Perth-day protocol.
+Replace placeholders with supplied filenames and the actual code revision. The example does not assert those files exist. Use Ayon's documented exporter rather than renaming an OOF-prediction file to forecast.csv.
 
-Results: quality-report.json and quality-summary.md, with file SHA256, missing counts, timestamps, duplicate and coordinate errors, label summaries, and the caller-declared data mode. Exit 0 means supplied inputs passed configured checks; 1 means a failure, including an unreadable file; 2 means invalid arguments. Fewer than all three tables may be checked, but complete_input_set remains false. A pass does not authenticate provenance, confirm full seasonal coverage, establish feature availability at issue time or certify a scientifically correct event definition.
+Optional --start YYYY-MM-DD and --end YYYY-MM-DD constrain supplied dates; they do not establish complete coverage of every expected day. --bbox and --weather-features override config explicitly. --schema canonical supports earlier lat/lon/date ignition fixtures and explicit column maps. A caller-declared real mode does not authenticate acquisition provenance.
 
-Validation on this candidate: 75 tests passed (32 original tests, with corrected downloader date expectations, plus 43 added checks). Controlled CSV and Parquet fixtures only. Ruff passes for Python source/scripts/tests. Full-repository Ruff still reports eight pre-existing notebook findings. No real API request, model training or hosted CI run was performed.
+Outputs are quality-report.json and quality-summary.md with SHA256 values, missing counts, time coverage, duplicate/coordinate errors and label summaries. Ordinary CLI exits: **0** configured checks pass, **1** invalid/unreadable input, **2** invalid arguments. A partial table set can be checked, but complete_input_set stays false. No source rows are repaired or deleted.
 
-Read data-sources.md before collecting real data. Reconcile PR #3's differing bbox, timezone, clustering and grid with Ayon and Sa-ad. Preserve provider responses and source manifests; do not count missing downloads as zero-fire seasons. Reports and raw files remain local unless explicitly selected for evidence submission.
+## Reproduce the supplied-file audits
 
-## Latest upstream integration
+[Original received-data audit](../scripts/audit_received_data.py) checks all six event tables and five weather JSON batches, reconstructing weather with existing main transformations. Its processing-code snapshot is recorded in the [original audit](yian-delivery/Real_Data_Quality_Status.md). Originals remain local; archive/member hashes and aggregate evidence are shared.
 
-Main 41584f9 now supplies CI, weather acquisition and forecast export scripts. The refreshed combined candidate passes 83 local tests and ruff check . with the upstream notebook exclusion. See [latest evidence](yian-delivery/Latest_Integration_Status.md) for the current result; the 75-test evidence above is the earlier snapshot. Hosted fork CI passed on code revision 61851c4 (Python 3.10); review, upstream merge and real-data checks remain pending.
+[Spatial update audit](../scripts/audit_spatial_update.py) applies the new static-cell filter to the same received events and reconciles published CSV arithmetic. It independently reproduces **1,573 cells / 3,448,016 cell-days / 2,684 positives (0.07784187%)**. The original unfiltered population remains **1,575 cells / 3,452,400 cell-days / 2,822 positives (0.08174024%)**. Full commands and input hashes are in the [spatial checkpoint](yian-delivery/Spatial_Update_2026-10-30.md) and its linked audit JSON.
 
-## Current checkpoint after cc00735
+These audit scripts exit successfully when execution completes; inspect table passed/issue fields and overall_acceptance. Successful audit execution does not override the preserved strict weather-boundary failure, missing forecast or methodological review gates. No model is retrained by either audit.
 
-Sa-ad’s geography module is now merged. This refresh passed 83 root tests plus 10 separately run geography tests with pyproj, and fixed five new geography lint findings. Actual real inputs are still needed for FS-37 despite FS-21–FS-24 being Done. See [checkpoint](yian-delivery/Progress_Check_2026-10-29.md).
+## Verification and acceptance still open
 
+[Hosted CI on code revision c72d464 passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928): **95 tests**, lint, synthetic-data generation and baseline smoke. Local root tests also passed with six subtests. Geography tests: **10 passed separately with pyproj**, outside the hosted root suite. Sa-ad's pending PR #14 examples were checked separately: **7 passed / 2 expected failures** documenting clustering limits. These are separate scopes; do not add them into a single hosted-test total.
 
-## Real-file audit on 30 October
+Received event structural checks pass. Raw weather point time axes are complete, with zero missing/nonfinite inspected values. Locally reconstructed weather still flags **35 outside-bbox grid centres / 76,720 rows**. Sa-ad's draft explains intended edge overshoot; the team must approve an explicit edge-cell acceptance rule and calendar-day/event definition. Preserve this result until that decision, rather than dropping rows or moving centres to manufacture a pass.
 
-The forwarded six-season ignition files and five raw weather JSON batches were checked offline. See [measured report](yian-delivery/Real_Data_Quality_Status.md) and [audit script](../scripts/audit_received_data.py). Event checks pass; reconstructed weather retains the existing strict bounds failure (35 grid centres / 76,720 rows). No forecast was supplied. The earlier waiting-for-files notes describe historical checkpoints.
+Ayon/Sa-ad also need to review the all-season label-derived static mask and spatial priors built before inner validation. Actual forecast.csv, held-out predictions, matching spatial-run provenance and source manifests remain absent. Passing tests and checking published summary arithmetic do not establish acquisition completeness, prediction-time availability, calibrated probabilities or unbiased model generalisation.
 
-
-## PR 15 forecast extension and current evidence
-
-The exporter now adds `risk_percentile` to the seven required fields. If present, FS-36 validates that it is numeric, finite and in [0,1], while retaining support for the agreed seven-field format. It is a relative daily rank, not a calibrated probability. The actual export remains absent. See [current spatial update](yian-delivery/Spatial_Update_2026-10-30.md) for filtered population reconciliation and methodological review limits.
+Read the [catalogue](data-sources.md) for provenance/attribution and the [current team index](yian-delivery/README.md) for next owners. Earlier 32/75/83-test integration snapshots are historical; they remain in the original archive and dated checkpoint files.

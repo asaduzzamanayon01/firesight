@@ -6,7 +6,7 @@ Checked 30 October 2026 (Perth). This follow-up supersedes earlier statements th
 
 [PR #15](https://github.com/asaduzzamanayon01/firesight/pull/15) is merged at **a86e39b62df5a7237e47e2ef9724ef8c10fef06e**, after cc00735. It adds spatial/recent-activity features, a static-source filter, a risk_percentile export field and tracked results_real CSV/plot files. The delivery branch retains these upstream changes. No forecast.csv or original acquisition manifests are tracked in that snapshot.
 
-The new upstream [CI run](https://github.com/asaduzzamanayon01/firesight/actions/runs/40915755039/job/123595400476) failed collecting tests because the bare pytest entry point did not find src/scripts. The delivery workflow changes that command to python -m pytest, retains the upstream Python 3.11 lint/test/synthetic-baseline smoke steps, and checks fork branch pushes too. Local root suite: **95 passed with 6 subtests**; geography suite: **10 passed separately**; Ruff passed. Hosted status must be checked in [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions); a local pass is not a hosted smoke-test result.
+The upstream [CI run](https://github.com/asaduzzamanayon01/firesight/actions/runs/40915755039/job/123595400476) failed collecting tests because the bare pytest entry point did not find src/scripts. The delivery workflow fixes the command to python -m pytest, retains Python 3.11 lint/test/synthetic-baseline smoke steps, and checks fork branch pushes too. **Hosted CI on code revision c72d464 passed:** [95 tests, lint and synthetic-generation/baseline smoke](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928). Local root tests also passed with six subtests; geography suite: **10 passed separately**. Geography tests are outside that hosted root suite. For later documentation-only revisions, see [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions).
 
 ## Received labels independently reconciled with published counts
 
@@ -27,6 +27,19 @@ Invoking the new build/drop_static_sources functions on the six received event f
 | Earlier weather-only mean PR-AUC | 0.00213001, on the unfiltered population |
 
 These means/capture fractions are recalculated from the published aggregate CSVs, **not predictions or a new training run**. The baseline and spatial CSVs use matching season counts; the older weather-only CSV uses a different population. Do not present weather-only versus spatial as a controlled feature-only comparison. See [audit JSON with source hashes](Spatial_Update_Audit_2026-10-30.json) and [offline reconciliation script](../../scripts/audit_spatial_update.py). Relevant upstream inputs: [results_real](../../results_real/).
+
+## Reproduce the filtered-label and CSV reconciliation
+
+From the delivery branch root, with the original six Parquet members extracted unchanged into INPUTS/extracted/ignitions:
+
+```bash
+PYTHONPATH=. python scripts/audit_spatial_update.py \
+  --events-dir INPUTS/extracted/ignitions \
+  --results-dir results_real \
+  --output LOCAL_OUTPUT/spatial-update-audit.json
+```
+
+This command rebuilds cell-day labels, applies the existing main filter and checks the published result-summary arithmetic. It writes a local aggregate JSON; it does not train a model or obtain missing forecasts/run provenance. Match the input hashes in the published audit before comparing results.
 
 ## Remaining model and provenance limits
 

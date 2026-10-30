@@ -8,8 +8,8 @@ Maintainer: Yian Wang. Updated 30 October 2026. The [measured receipt and qualit
 | Open-Meteo Historical Weather API | Historical weather input to Ayon's processing | Endpoint, model selection, requested and returned coordinates, dates, timezone, daily/hourly variables, units, response metadata, retrieval UTC, SHA256, transformation revision | API data: CC BY 4.0. Credit Open-Meteo, link the licence, identify transformations, and retain relevant underlying dataset attribution. Data licence differs from API service terms | Source documentation verified. 56 raw response points supplied, with complete expected date axes and 0 missing/nonfinite variables; no original processed weather.parquet supplied |
 | Processed ignition table | Quality input, before modelling | Parent FIRMS manifests, detection filters, event grouping, dates/timezone, grid assignment and label rule | Inherits source conditions. The supplied events are not independently verified ignition causes | Repository adapter checks event_id, latitude, longitude, acq_datetime, detections_in_event and date. Acquisition instants are treated as UTC; the daily date must match the UTC day |
 | Processed weather table | Quality input, before feature joining | Parent response manifests, cell/date keys, aggregation rule and native units, output SHA256 | Retain Open-Meteo and upstream attribution after aggregation | Defaults read config/config.yaml: t2m_max, rh_min, wind_speed_max, precip_24h, kbdi. Response units inspected: °C, m/s, mm and %. Existing simplified KBDI code reused offline; reconstruction is not the original model-run table |
-| Analysis grid | Coordinates for weather rows lacking lat/lon | Approved boundary, metric CRS used to construct 3 km cells, grid revision, unique cell IDs and WGS84 centres | Record the boundary dataset's actual licence | Main bbox: 115.45,-32.60,116.55,-31.40; nominal 3 km and EPSG:7850. Main uses approximate lon/lat bins; PR #3 proposes a metric grid with different bbox and local dates. Final grid not agreed |
-| forecast.csv | Historical dashboard backtest | Source run ID, model revision, data mode, period, input hashes and export revision | Retain source notices and describe model-derived probabilities | Team plan fixes cell_id, lat, lon, date, probability, actual, season |
+| Analysis grid | Coordinates for weather rows lacking lat/lon | Approved boundary, actual construction CRS/method, grid revision, unique cell IDs and WGS84 centres | Record the boundary dataset's actual licence | Main bbox: 115.45,-32.60,116.55,-31.40; nominal 3 km approximate lon/lat bins. The metric grid from merged PR #3 coexists in firesight-geo with a different bbox/local-day rule. Sa-ad's pending PR #14 documents intended main-grid overshoot; acceptance and actual run artefact remain pending |
+| forecast.csv | Historical dashboard backtest | Source run ID, model revision, data mode, period, input hashes and export revision | Retain source notices and describe model-derived probabilities | Seven required fields: cell_id, lat, lon, date, probability, actual, season. Current exporter adds risk_percentile: daily relative rank in [0,1], not a calibrated probability. Actual file not supplied |
 
 ## FIRMS date handling
 
@@ -36,7 +36,7 @@ Use `source-record.template.json` once for each acquired file. Replace nulls wit
 
 ## Repository integration decisions still required
 
-Latest main cc00735 configures 2019–2025, matching six July–June seasons. Confirm actual coverage from acquisition manifests; configuration alone does not prove it.
+Inspected main a86e39b configures 2019–2025, matching six July–June seasons. Received event counts and raw weather axes have been measured; original source-window completeness still requires acquisition manifests.
 
 The now-merged PR #3 validation protocol uses bbox 115.65,-32.60,116.30,-31.60, Perth calendar days and 2 km / 2 day event grouping; main uses bbox 115.45,-32.60,116.55,-31.40, UTC days and 1.5 km / 24 hour grouping. Ayon and Sa-ad must agree one version before labels, weather and forecasts are joined. The FS-36 adapter deliberately follows the inspected main schema until that decision is made.
 
@@ -44,7 +44,7 @@ Main's current grid creates 1,575 centres, with 35 outside its configured bbox. 
 
 The correction to src/ingest/download_firms.py does not update Ayon's separate src/ingest/firms_client.py seasonal workflow. Latest main now uses five-day chunks and raises if a download window fails. Credential-safe error reporting and actual source manifests / seasonal coverage still require review.
 
-Current receipt: 2019–2025 event tables contain 2,846 rows, with a supplied grouped-detection-count sum of 24,968. Weather has 56 points over 2018-07-01–2025-06-30, including spin-up. Archive and member SHA256 values, units, returned coordinates and known provenance gaps are retained in the [30 October audit](yian-delivery/Real_Data_Quality_Status.md). Current main labels reproduce 0.08174024% positives; model PR-AUC remains author-reported.
+Current receipt: 2019–2025 event tables contain 2,846 rows, with a supplied grouped-detection-count sum of 24,968. Weather has 56 points over 2018-07-01–2025-06-30, including spin-up. Archive/member SHA256 values, units, returned coordinates and provenance gaps are retained in the [received-file audit](yian-delivery/Real_Data_Quality_Status.md). Before static-cell filtering, labels are 0.08174024% positive. The latest filtered model population is 0.07784187% positive; its counts and published result-summary arithmetic are reconciled in the [spatial audit](yian-delivery/Spatial_Update_2026-10-30.md). Model scores have not been independently rederived from predictions.
 
 
 ## Follow-up after main a86e39b

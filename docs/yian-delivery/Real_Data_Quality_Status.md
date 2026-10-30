@@ -35,7 +35,7 @@ Each file contains event_id, latitude, longitude, acq_datetime, detections_in_ev
 
 **event_id is scoped to its seasonal file.** Bare IDs repeat across seasons (2,226 rows after the first occurrence), while (source season, event_id) is unique. Do not deduplicate the concatenation by bare event_id. Do not call these 2,846 rows independently confirmed ignition causes. The 24,968 number is the supplied grouped-detection-count sum, not a newly counted raw FIRMS table.
 
-With the current main grid, all 2,846 rows receive a cell ID. They map to **2,822 positive cell-days**; 24 cell-days each contain multiple event rows. A 1,575-cell × 2,192-day spine for 2019-07-01 through 2025-06-30 has **3,452,400 cell-days**. The measured label proportion is **0.08174024%**, consistent with the author's rounded 0.0817%. This independently reproduces the label proportion under the current main assumptions; it does not reproduce model scores or verify source-window completeness. An event-free day does not prove a successful zero-detection download.
+Before applying PR #15's static-cell filter, all 2,846 event rows receive a main-grid cell ID. They map to **2,822 positive cell-days**; 24 cell-days each contain multiple event rows. The original 1,575-cell × 2,192-day spine for 2019-07-01 through 2025-06-30 has **3,452,400 cell-days** and a positive proportion of **0.08174024%**, consistent with the author's earlier rounded 0.0817%. These are explicitly unfiltered measurements; the latest filtered model population is 1,573 cells / 2,684 positives, as reconciled above. Neither reconstruction reproduces model scores or verifies source-window completeness. An event-free day does not prove a successful zero-detection download.
 
 ## Raw weather and local reconstruction
 

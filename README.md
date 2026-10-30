@@ -1,8 +1,10 @@
 # FireSight
 
-Predicting where bushfires are likely to **start** across the Perth
-peri-urban interface: calibrated ignition probability on a 3 km grid, 24 to
-72 hours ahead.
+Historical bushfire ignition-risk backtests across the Perth peri-urban
+interface, using daily satellite-derived event labels on a nominal 3 km grid.
+The current implementation uses one-day-lagged weather. Additional forecast
+horizons remain planned under FS-25; source availability and calibrated
+probability quality still require review.
 
 Group 14 · COMP6002 Semester 2 2026 · Master of AI, Curtin University
 
@@ -22,8 +24,10 @@ make pipeline     # baseline -> train -> calibrate -> explain
 make test
 ```
 
-`make pipeline` runs end to end in about two minutes and writes figures to
-`reports/figures/` and metrics to `reports/`.
+`make pipeline` runs baseline, training, calibration and explanation stages,
+writing figures to `reports/figures/` and metrics to `reports/`. Runtime depends
+on the data and machine. The current hosted smoke test verifies synthetic
+data generation and the baseline stage; see the [current CI run](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928).
 
 ## Repository layout
 
@@ -50,28 +54,33 @@ docs/decisions.md             Why every non-obvious choice was made
 
 ## Three things to understand before reading the code
 
-**1. The unit of analysis is the cell-day.** One 3 km cell on one date,
-labelled 1 if a fire *started* there. Only the first detection of each fire
-event counts, otherwise the model learns spread rather than ignition.
+**1. The unit of analysis is the cell-day.** A cell/date is positive when it
+contains the first observation of a supplied grouped event. These labels
+are satellite-derived proxies for ignition. Sa-ad's pending PR #14 documents
+cases where the current 24-hour clustering can split a spreading fire; the
+team's label-definition decision remains open.
 
-**2. The received 2019–2025 labels are 0.08174024% positive** under the
-current main grid (2,822 of 3,452,400 cell-days); earlier ~0.3% figures describe
-initial expectations/development data. This motivates checking `scale_pos_weight` at training time, PR-AUC and Brier
-instead of accuracy, and isotonic calibration afterwards.
+**2. The latest filtered model population is 0.07784187% positive:**
+2,684 of 3,448,016 cell-days over 1,573 cells. The original unfiltered
+received-label audit has 2,822 of 3,452,400 positives (0.08174024%) over
+1,575 cells. Keep those populations separate when reporting model metrics.
+Earlier ~0.3% figures describe initial expectations/development data.
 
-**3. Weather is lagged by one day, always.** To predict day D we may only use
-data available before day D. `tests/test_leakage.py` asserts this, and CI
-fails the build if it regresses.
+**3. Weather features use a one-day lag.** Implementation tests exercise the
+lag and rolling windows. They do not establish historical reanalysis
+availability or resolve UTC event days versus Perth weather days. The
+[current review gates](docs/yian-delivery/Spatial_Update_2026-10-30.md) also
+cover static-cell selection and the inner-validation priors.
 
 ## Metrics
 
 | Metric | Answers | Note |
 |---|---|---|
-| PR-AUC | Can we rank cells? | Random baseline = the evaluated dataset/fold positive rate; full received-label rate is ~0.0008174 |
+| PR-AUC | Can we rank cells? | Random reference is the evaluated population/fold positive fraction; full filtered population ~0.0007784, unfiltered ~0.0008174 |
 | Brier | Are the probabilities right? | Lower is better |
 | Brier skill | Better than always guessing the base rate? | 0 = no skill |
 | Reliability | Does "20%" mean 20%? | Plotted every run |
-| Precision@k | Of the top k cells, how many burnt? | What DFES actually acts on |
+| Precision@k | How many top-ranked cell-days have positive labels? | Existing pooled ranking; published daily capture statistics are reported separately |
 
 Accuracy is not reported. See `docs/decisions.md` D2.
 
@@ -101,7 +110,7 @@ mlflow ui                     # http://localhost:5000
 
 ## Data quality and current delivery
 
-Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for the current files and owners. The [30 October measured audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks six supplied event tables and five raw weather batches: 2,846 event rows, 2,822 positive cell-days, and complete 56-point weather arrays. Reconstructed weather fails the strict bbox rule for 35 grid centres; forecast.csv and actual run provenance remain pending. No model scores were reproduced by this audit.
+Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for current files and owners, then the [latest spatial/filter reconciliation](docs/yian-delivery/Spatial_Update_2026-10-30.md). The original [received-file audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks 2,846 event rows and 56 raw weather points; its 2,822 positive cell-days are explicitly unfiltered. Latest filtered model counts are 2,684 positives over 1,573 cells. Strict coordinate validation retains 35 outside-bbox centres; Sa-ad documents intended edge coverage, while approval of the acceptance rule remains pending. Actual forecast and run provenance are still required. Published summary arithmetic has been checked; prediction-level model scores have not been reproduced.
 
 [Checker instructions](docs/data-quality.md) · [Source catalogue](docs/data-sources.md) · [Whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md). PR #7 awaits second-person review and upstream merge. Fixture/CI tests and measured data checks are distinct.
 
