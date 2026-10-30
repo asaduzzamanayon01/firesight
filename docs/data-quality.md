@@ -1,6 +1,6 @@
 # FS-35 and FS-36 data quality integration
 
-Owner: Yian Wang. Updated 30 October 2026. Current code integrates upstream main **a86e39b / PR #15**; delivery code revision **c72d464** passes hosted Python 3.11 CI. PR #7 awaits review and upstream merge. Start at the [current handoff index](yian-delivery/README.md) and [spatial/filter reconciliation](yian-delivery/Spatial_Update_2026-10-30.md).
+Owner: Yian Wang. Updated 30 October 2026. Current code integrates upstream main **a86e39b / PR #15**. The latest follow-up adds explicit expected cell/day coverage and passes **120 local tests + 6 subtests** and lint; use the [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) for revision-specific hosted evidence. PR #7 awaits review and upstream merge. Start at the [current handoff index](yian-delivery/README.md) and [spatial/filter reconciliation](yian-delivery/Spatial_Update_2026-10-30.md).
 
 ## Inputs and supported schemas
 
@@ -36,6 +36,26 @@ Replace placeholders with supplied filenames and the actual code revision. The e
 
 Optional --start YYYY-MM-DD and --end YYYY-MM-DD constrain supplied dates; they do not establish complete coverage of every expected day. --bbox and --weather-features override config explicitly. --schema canonical supports earlier lat/lon/date ignition fixtures and explicit column maps. A caller-declared real mode does not authenticate acquisition provenance.
 
+### Require an explicit complete daily population
+
+Add **--require-complete-cell-days**, together with **--grid, --start and --end**, to require every supplied grid cell on every inclusive calendar day. It applies to supplied weather/forecast tables in either schema; sparse ignition-event tables are excluded. This opt-in requirement leaves ordinary validation unchanged.
+
+```bash
+python scripts/check_data_quality.py \
+  --forecast data/processed/forecast.csv \
+  --grid data/processed/ACTUAL_APPROVED_RUN_GRID.csv \
+  --start ACTUAL_YYYY-MM-DD --end ACTUAL_YYYY-MM-DD \
+  --require-complete-cell-days --data-mode real \
+  --revision ACTUAL_DELIVERY_COMMIT \
+  --output-dir reports/data-quality/ACTUAL_RUN
+```
+
+Replace every placeholder and use the **approved actual run population and its exact date window**. Do not use the unfiltered 1,575-cell grid to require coverage from an intentionally filtered 1,573-cell model export. The checker does not infer static-cell exclusions, edge-cell acceptance or the correct calendar-day rule. For outputs with different date windows, run separate commands. A future-horizon or otherwise different forecast contract needs explicit agreement before applying this retrospective daily contract.
+
+Both reports show expected/observed unique cell-days, missing pairs, cells absent throughout the window, dates absent across all expected cells and a grid SHA256. Duplicate rows, unknown cells, out-of-window dates and malformed daily dates cannot fill gaps. Bad coverage returns exit **1**; missing required coverage arguments return **2**. Key presence does not approve coordinates, feature values, acquisition completeness or model performance. Issue counts overlap and must not be summed as a count of distinct bad rows.
+
+The [coverage addendum and reproduction steps](yian-delivery/Cell_Day_Coverage_Update_2026-10-30.md) record a full check of the locally reconstructed, unfiltered weather: **3,452,400 / 3,452,400 unique expected pairs**, no gaps or duplicates. This is a key-coverage result; the existing strict bbox failure remains.
+
 Outputs are quality-report.json and quality-summary.md with SHA256 values, missing counts, time coverage, duplicate/coordinate errors and label summaries. Ordinary CLI exits: **0** configured checks pass, **1** invalid/unreadable input, **2** invalid arguments. A partial table set can be checked, but complete_input_set stays false. No source rows are repaired or deleted.
 
 ## Reproduce the supplied-file audits
@@ -48,7 +68,7 @@ These audit scripts exit successfully when execution completes; inspect table pa
 
 ## Verification and acceptance still open
 
-[Hosted CI on code revision c72d464 passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928): **95 tests**, lint, synthetic-data generation and baseline smoke. Local root tests also passed with six subtests. Geography tests: **10 passed separately with pyproj**, outside the hosted root suite. Sa-ad's pending PR #14 examples were checked separately: **7 passed / 2 expected failures** documenting clustering limits. These are separate scopes; do not add them into a single hosted-test total.
+The latest coverage follow-up passes **120 local root tests + 6 subtests** and lint, including 25 new regressions for missing days/cells/pairs, duplicate masking, invalid keys, explicit filtered grids and CLI behavior. [Hosted CI on the earlier code revision c72d464 passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928): **95 tests**, lint, synthetic-data generation and baseline smoke. See [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) and PR #7 for the latest exact-revision hosted result. Geography tests: **10 passed separately with pyproj** on c72d464, outside the hosted root suite. Sa-ad's pending PR #14 examples were checked separately: **7 passed / 2 expected failures** documenting clustering limits. These are separate scopes; do not add them into a single hosted-test total.
 
 Received event structural checks pass. Raw weather point time axes are complete, with zero missing/nonfinite inspected values. Locally reconstructed weather still flags **35 outside-bbox grid centres / 76,720 rows**. Sa-ad's draft explains intended edge overshoot; the team must approve an explicit edge-cell acceptance rule and calendar-day/event definition. Preserve this result until that decision, rather than dropping rows or moving centres to manufacture a pass.
 

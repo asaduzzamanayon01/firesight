@@ -2,7 +2,9 @@
 
 Yian Wang · **Updated 30 October 2026 (Perth)** · FS-35–FS-39 · [Upstream PR #7](https://github.com/asaduzzamanayon01/firesight/pull/7)
 
-**Current delivery:** measured source-file checks and filtered-label reconciliation are complete for the supplied material; report/slide/notes use the **2026-10-30_Spatial** version. Code CI on c72d464 passed 95 tests, lint and synthetic baseline smoke. Full acceptance awaits forecast.csv, matching run provenance and agreed spatial/calendar-day/evaluation rules. PR #7 is open and awaits review/merge.
+**Current delivery:** measured source-file checks and filtered-label reconciliation are complete for the supplied material; report/slide/notes use the **2026-10-30_Spatial** version. The latest checker additionally detects missing expected cell/days and passes **120 local tests + 6 subtests** and lint; see [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) for exact-revision hosted CI. Full acceptance awaits forecast.csv, matching run provenance and agreed spatial/calendar-day/evaluation rules. PR #7 is open and awaits review/merge.
+
+**Latest quality follow-up:** [expected cell/day coverage, measured evidence and usage](Cell_Day_Coverage_Update_2026-10-30.md). The locally reconstructed unfiltered weather has **3,452,400 / 3,452,400 unique expected pairs**, with no missing cell/days. Its strict boundary failure remains. This addendum extends FS-36/FS-37; the Spatial Word/PPT/notes and published model statistics remain current.
 
 ## Latest upstream follow-up
 
@@ -18,6 +20,7 @@ Use the **2026-10-30_Spatial** report, slide and notes attachments in Jira. Earl
 - **Original input evidence:** [received-file audit](Real_Data_Quality_Status.md), [detailed JSON and input hashes](Real_Data_Audit_2026-10-30.json), [archive receipt](Received_Archives_2026-10-30.json) and [original offline audit](../../scripts/audit_received_data.py). These retain the unfiltered population.
 - **Tabib:** refreshed editable [Word](Yian_Report_Sections.docx), [Markdown](Yian_Report_Sections.md), [one-slide PowerPoint](Yian_Data_Slide.pptx) and [speaker notes](Speaker_Notes.txt).
 - **Ayon / Sa-ad:** [catalogue](../data-sources.md), [quality module and run instructions](../data-quality.md), [whole-team responsibilities](TEAM_HANDOFF.md).
+- **Actual-export acceptance:** use the [explicit coverage option](../data-quality.md#require-an-explicit-complete-daily-population) with the approved run grid and exact date window; [coverage audit JSON](Cell_Day_Coverage_Audit_2026-10-30.json) records only the locally reconstructed unfiltered population.
 - **Historical evidence:** [29 October checkpoint](Progress_Check_2026-10-29.md), [earlier integration](Latest_Integration_Status.md), [original archive](FireSight_Yian_Final_Delivery_2026-10-29.zip). Their waiting-for-input statements are superseded by the measured report above.
 
 ## Measured receipt
@@ -37,7 +40,7 @@ Use the **2026-10-30_Spatial** report, slide and notes attachments in Jira. Earl
 | Task | Current delivery | Remaining acceptance |
 |---|---|---|
 | [FS-35 Catalogue](https://asaduzzamanayon001.atlassian.net/browse/FS-35) | Source catalogue now records received fields, units, dates and archive hashes | Ayon supplies original acquisition manifests and selected weather model; Yian reconciles provenance |
-| [FS-36 Checker](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | Validator, risk_percentile checks and reproducible audits; hosted CI passed | Second-person review and upstream merge; approved grid/day policy |
+| [FS-36 Checker](https://asaduzzamanayon001.atlassian.net/browse/FS-36) | Validator, risk_percentile checks, explicit expected cell/day coverage and reproducible audits; 120 local tests pass | Second-person review and upstream merge; approved grid/day policy |
 | [FS-37 Real summary](https://asaduzzamanayon001.atlassian.net/browse/FS-37) | Actual received-file measurements complete; detailed failure/limits published | Validate forecast and actual run grid/weather, resolve policy and obtain run provenance |
 | [FS-38 Report](https://asaduzzamanayon001.atlassian.net/browse/FS-38) | Word and Markdown updated with measured counts and limitations | Tabib integrates/reviews final report |
 | [FS-39 Presentation](https://asaduzzamanayon001.atlassian.net/browse/FS-39) | Editable data slide and script updated with measurements and remaining gate | Tabib integrates; Yian and team rehearse |
@@ -46,6 +49,8 @@ Keep all five In Progress while their remaining acceptance work is open. Code pu
 
 ## Code verification
 
-**Current code revision c72d464:** [hosted Python 3.11 CI passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928), with **95 tests**, lint, synthetic data generation and baseline smoke. Local root tests also passed with six subtests; **10 geography tests passed separately with pyproj**. Sa-ad's pending PR #14 test file was checked separately: **7 passed / 2 expected failures** documenting clustering limits. Those separate checks are not added to the hosted 95-test count. Historical 83-test snapshots remain in the older checkpoint files. For later documentation-only revisions, check [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions).
+**Latest coverage follow-up:** **120 local root tests + 6 subtests**, lint passed. The 25 added cases exercise missing populations, duplicate masking, invalid dates/IDs, filtered grid selection, no source mutation and the opt-in CLI/report behavior. Hosted results are revision-specific: [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions) and PR #7 link the current run.
+
+**Earlier code revision c72d464:** [hosted Python 3.11 CI passed](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928), with **95 tests**, lint, synthetic data generation and baseline smoke. Local root tests also passed with six subtests; **10 geography tests passed separately with pyproj**. Sa-ad's pending PR #14 test file was checked separately: **7 passed / 2 expected failures** documenting clustering limits. Those separate checks are not added to the root-test count. Historical 83-test snapshots remain in the older checkpoint files.
 
 The [quality report](Real_Data_Quality_Status.md) gives an offline reproduction command. Its audit process completing successfully does not override a table's failed validation or missing forecast. No new model run was performed and no original model-score reproduction is claimed.

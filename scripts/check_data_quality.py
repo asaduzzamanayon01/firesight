@@ -11,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.config import CFG  # noqa: E402
 from src.quality.checks import check_frame, file_sha256, read_table, validate_bbox, write_report  # noqa: E402
+from src.quality.coverage import check_cell_day_coverage  # noqa: E402
 from src.quality.repository import check_repository_frame  # noqa: E402
 
 
@@ -44,6 +45,11 @@ def main(argv=None):
     )
     parser.add_argument("--start", type=date.fromisoformat)
     parser.add_argument("--end", type=date.fromisoformat)
+    parser.add_argument(
+        "--require-complete-cell-days",
+        action="store_true",
+        help="require every grid cell on every inclusive start/end day for weather/forecast",
+    )
     parser.add_argument("--data-mode", choices=["real", "synthetic", "test-fixture"], required=True)
     parser.add_argument("--revision", help="actual source commit SHA if known")
     parser.add_argument("--output-dir", type=Path, default=Path("reports/data-quality"))
@@ -53,6 +59,10 @@ def main(argv=None):
         parser.error("provide at least one input table")
     if args.start and args.end and args.start > args.end:
         parser.error("start must be on or before end")
+    if args.require_complete_cell_days and (
+        not args.grid or not args.start or not args.end or not (args.weather or args.forecast)
+    ):
+        parser.error("--require-complete-cell-days requires --grid, --start, --end and weather/forecast")
     try:
         bbox = validate_bbox([float(p) for p in args.bbox.split(",")])
         # Validate the timezone even for empty inputs.
@@ -71,6 +81,11 @@ def main(argv=None):
             frame = read_table(path)
             mapping = mappings.get(kind, {})
             frame = frame.rename(columns=mapping)
+            coverage = (
+                check_cell_day_coverage(frame, read_table(args.grid), start=args.start, end=args.end)
+                if args.require_complete_cell_days and kind in {"weather", "forecast"}
+                else None
+            )
             if (
                 args.schema == "canonical"
                 and kind == "weather"
@@ -106,8 +121,12 @@ def main(argv=None):
             )
             result["sha256"] = file_sha256(path)
             result["input_name"] = path.name
-            if kind == "weather" and args.grid:
+            if kind in {"weather", "forecast"} and args.grid:
                 result["grid_sha256"] = file_sha256(args.grid)
+            if coverage is not None:
+                result["expected_cell_day_coverage"] = coverage
+                result["issues"].extend(coverage["issues"])
+                result["passed"] = result["passed"] and coverage["passed"]
         except (ValueError, OSError, ImportError, TypeError):
             # No exception repr: source data and credential-bearing paths stay out of logs.
             result = {
@@ -137,6 +156,7 @@ def main(argv=None):
             "complete_input_set": set(paths) == {"ignitions", "weather", "forecast"},
             "start": str(args.start) if args.start else None,
             "end": str(args.end) if args.end else None,
+            "require_complete_cell_days": args.require_complete_cell_days,
         },
     )
     print(

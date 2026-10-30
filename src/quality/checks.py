@@ -290,6 +290,24 @@ def write_report(results, output_dir, *, data_mode, bbox, revision=None, setting
             "Coverage: " + json.dumps(result.get("coverage", {})),
             "",
             "Summary: " + json.dumps(result.get("summary", {})),
+        ]
+        expected = result.get("expected_cell_day_coverage")
+        if expected is not None:
+            lines += [
+                "",
+                "Expected cell/day coverage: **" + ("PASS" if expected["passed"] else "FAIL") + "**",
+                "",
+                f"Supplied grid: {expected['expected_cells']:,} cells; inclusive window: "
+                f"{expected['start']} to {expected['end']} ({expected['expected_days']:,} days).",
+                "",
+                f"Unique expected pairs observed: {expected['observed_unique_expected_cell_days']:,} / "
+                f"{expected['expected_cell_days']:,}; missing pairs: {expected['missing_cell_days']:,}; "
+                f"cells absent throughout: {expected['cells_absent_entire_window']:,}; "
+                f"dates absent across all expected cells: {expected['dates_absent_all_expected_cells']:,}.",
+                "",
+                f"Grid SHA256: `{result.get('grid_sha256', 'unavailable')}`",
+            ]
+        lines += [
             "",
             "Missing values by column:",
         ]

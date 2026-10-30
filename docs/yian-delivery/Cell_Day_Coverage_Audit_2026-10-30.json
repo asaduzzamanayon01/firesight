@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scope": "Explicit daily-key coverage of locally reconstructed unfiltered weather; not an author-supplied model-run export",
+  "source_processing_revision": "a86e39b62df5a7237e47e2ef9724ef8c10fef06e",
+  "weather_name": "weather_reconstructed.parquet",
+  "weather_sha256": "453b28f572a6a88a2b2f091e01323cc97cf2e5adea2633188d22d440fa1c780d",
+  "grid_name": "grid_reconstructed.csv",
+  "grid_sha256": "b4721660845dd77aca78179b60e74c20313201c3489ca8501595aa8169b78a3b",
+  "coverage": {
+    "start": "2019-07-01",
+    "end": "2025-06-30",
+    "basis": "supplied grid IDs x inclusive literal daily date keys; no inferred population",
+    "expected_cells": 1575,
+    "expected_days": 2192,
+    "expected_cell_days": 3452400,
+    "observed_unique_expected_cell_days": 3452400,
+    "missing_cell_days": 0,
+    "cells_absent_entire_window": 0,
+    "dates_absent_all_expected_cells": 0,
+    "duplicate_valid_pair_rows": 0,
+    "unknown_or_missing_cell_rows": 0,
+    "invalid_daily_date_rows": 0,
+    "out_of_window_rows": 0,
+    "passed": true,
+    "issues": []
+  },
+  "overall_weather_acceptance": false,
+  "strict_bbox_failure_preserved": {
+    "outside_bbox_centres": 35,
+    "outside_bbox_rows": 76720
+  },
+  "forecast_csv": "not supplied; no forecast acceptance claimed",
+  "interpretation": "A complete key lattice does not approve boundary/calendar-day policies, feature validity, provenance, or forecast performance."
+}
