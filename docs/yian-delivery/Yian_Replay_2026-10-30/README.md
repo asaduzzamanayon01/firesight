@@ -6,7 +6,7 @@
 
 - **Dashboard export:** [forecast.csv.zip](forecast.csv.zip), containing forecast.csv for **10–23 January 2025**. Extract and point the existing dashboard loader to it. There are **22,022 rows = 1,573 cells × 14 days**, including three positive cell-days.
 - **Export grid:** [grid.csv](grid.csv). Use this filtered 1,573-cell grid with this export, not the unfiltered 1,575-cell grid.
-- **Full output bundle in [Jira FS-37](https://asaduzzamanayon001.atlassian.net/browse/FS-37):** `Yian_Replay_Outputs_2026-10-30.zip`. It includes both models' held-out predictions, the actual reconstructed weather/grid used, the final model, run/validation records and plots. Original source ZIPs/event files remain local and are identified by hashes.
+- **Full output bundle prepared locally:** `Yian_Replay_Outputs_2026-10-30.zip` contains both models' held-out predictions, reconstructed weather/grid, the final model and run/validation records. Upload to Jira FS-37 is **pending explicit payload authorization** after automatic review rejected the full-data upload. In the meantime, **Yian_Replay_Summary_2026-10-30.zip** in [FS-37](https://asaduzzamanayon001.atlassian.net/browse/FS-37) contains only aggregate metrics, hashes and documentation. Original received ZIPs/event files remain local.
 - **Run provenance:** [manifest](run-manifest.json) and [portable MLflow run record](mlflow-run-record.json). Run **328aaa7e10cd4f55873fd0598c704ed3**, status **FINISHED**. Core code is based on 501495d, which integrates main a86e39b; the new runner's own SHA256 and per-file hashes identify the exact executed source. A later publication commit does not change the run's recorded source snapshot.
 - **Checks:** [prediction audit](prediction-audit.json), [strict forecast quality](forecast-quality.md), [quality JSON](forecast-quality.json).
 
@@ -37,7 +37,7 @@ python -m scripts.reproduce_received_run \
   --forecast-start 2025-01-10 --forecast-days 14
 ```
 
-The runner refuses to overwrite an existing directory and keeps process-local output paths. It builds labels/features, runs the unchanged spatial model, computes the equivalent baseline and capture summaries, exports forecast.csv, validates it and records MLflow provenance. Model artifacts and full-size data are in the Jira bundle, not duplicated as large Git objects. [Runner](../../../scripts/reproduce_received_run.py).
+The runner refuses to overwrite an existing directory and keeps process-local output paths. It builds labels/features, runs the unchanged spatial model, computes the equivalent baseline and capture summaries, exports forecast.csv, validates it and records MLflow provenance. Model artifacts and full-size data are prepared in the local full bundle pending upload authorization; the Jira summary contains no row-level predictions, weather/grid tables or model files. [Runner](../../../scripts/reproduce_received_run.py).
 
 ## Next owners
 
