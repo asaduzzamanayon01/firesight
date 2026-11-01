@@ -259,3 +259,6 @@ mlflow.db
 /models/
 .pytest_cache/
 .ruff_cache/
+
+# Local quality evidence (select intentionally for the assessment, never bulk-add)
+reports/data-quality/

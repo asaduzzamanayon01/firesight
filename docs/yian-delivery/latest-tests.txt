@@ -1,0 +1,7 @@
+Combined candidate based on upstream main 41584f9; Python 3.12 local execution.
+83 tests passed; a separate collection check confirmed 83 tests.
+........................................................................ [ 86%]
+...........                                                              [100%]
+
+Collection check:
+83 tests collected in 1.59s

@@ -1,0 +1,136 @@
+{
+  "upstream_revision": "a86e39b62df5a7237e47e2ef9724ef8c10fef06e",
+  "evidence_scope": "received-label reconstruction and arithmetic over supplied metrics; no model retraining",
+  "events": [
+    {
+      "file": "ignitions_2019-07-01.parquet",
+      "sha256": "69f6dd09ddc9a7a40b92157e16a8cfb708cb9b0d5781f1cbf99a8c86fe5d04a4"
+    },
+    {
+      "file": "ignitions_2020-07-01.parquet",
+      "sha256": "185d788be31064c27546af8f9efdeee6b0e37a6438a5a861c0174bc9033fa22c"
+    },
+    {
+      "file": "ignitions_2021-07-01.parquet",
+      "sha256": "6f7218a0d92caa3cbbe0f8a8407f0deaaddc30ef6acfaf3b0b028da890c8d643"
+    },
+    {
+      "file": "ignitions_2022-07-01.parquet",
+      "sha256": "78603a3456abbd7b30645a1095a0405f8165a35cde24c17af2b098969ae6d0b3"
+    },
+    {
+      "file": "ignitions_2023-07-01.parquet",
+      "sha256": "0caec1abe927b73a3bda604964583c56d169c4ece94bb420fe96cf6a47e1c2e9"
+    },
+    {
+      "file": "ignitions_2024-07-01.parquet",
+      "sha256": "45dfbc81a1c95e27c2d7776286268ade154c4a51649ea1c1443c528a81722f0f"
+    }
+  ],
+  "result_csv_hashes": {
+    "static_cells.csv": "c59ce613dddf0ed7bc6e583220014761ccf0d34783d9d873c581d6ab80326509",
+    "mlflow_runs_REAL_only.csv": "e07895a02ca3e2075da28b55cfa1fab80cf9180cf55c999d61d6c94f0cba9669",
+    "lgbm_cv_spatial.csv": "13581b5146da45fe98d06b165b491a03e8e509fd74ed67077c315e9b093a89f9",
+    "baseline_cv.csv": "a66aba5f87c12f72b7386c48d2868c74945b31821cf2934f0f433674788b66c8",
+    "demo_stats.csv": "626a0aa83991e19a8da66b46d3815e6202010e5e96a19a4b0479b236c086ef57",
+    "lgbm_cv_weather_only.csv": "9c78b16e4c06c46bc9a5812c48ae7c16de49a36c03bcec12c1951db06f180d50"
+  },
+  "unfiltered": {
+    "cells": 1575,
+    "rows": 3452400,
+    "positive_cell_days": 2822
+  },
+  "filtered": {
+    "cells": 1573,
+    "rows": 3448016,
+    "positive_cell_days": 2684,
+    "positive_rate_percent": 0.07784186616303405
+  },
+  "removed_cells": [
+    {
+      "cell_id": 570,
+      "ignition_days": 99
+    },
+    {
+      "cell_id": 571,
+      "ignition_days": 39
+    }
+  ],
+  "removed_matches_published": true,
+  "filtered_season_counts": [
+    {
+      "season": "2019-20",
+      "n": 575718,
+      "n_positive": 576
+    },
+    {
+      "season": "2020-21",
+      "n": 574145,
+      "n_positive": 507
+    },
+    {
+      "season": "2021-22",
+      "n": 574145,
+      "n_positive": 507
+    },
+    {
+      "season": "2022-23",
+      "n": 574145,
+      "n_positive": 384
+    },
+    {
+      "season": "2023-24",
+      "n": 575718,
+      "n_positive": 326
+    },
+    {
+      "season": "2024-25",
+      "n": 574145,
+      "n_positive": 384
+    }
+  ],
+  "published_counts_match": {
+    "baseline": true,
+    "spatial": true
+  },
+  "published_pr_auc": {
+    "spatial_mean": 0.0102256655045536,
+    "baseline_filtered_mean": 0.004260829218091933,
+    "weather_only_unfiltered_mean": 0.002130007412388783,
+    "spatial_beats_paired_baseline_seasons": 6,
+    "paired_seasons": 6,
+    "baseline_spatial_counts_identical": true
+  },
+  "demo_capture": [
+    {
+      "top_share": 0.05,
+      "captured_sum": 861,
+      "positive_sum": 2684,
+      "weighted_capture_rate": 0.32078986587183306
+    },
+    {
+      "top_share": 0.1,
+      "captured_sum": 1223,
+      "positive_sum": 2684,
+      "weighted_capture_rate": 0.45566318926974664
+    }
+  ],
+  "mlflow_export": {
+    "runs": 1,
+    "mean_pr_auc_values": [
+      0.0021300074123888
+    ],
+    "logged_source_revisions": [
+      "fae5ba35b2a9f328ccf4656e19539d3778d36d5b"
+    ],
+    "matches_spatial_mean": false
+  },
+  "limits": [
+    "Aggregate metrics are checked arithmetically, not recomputed from held-out predictions.",
+    "Static-source mask uses ignition labels across all six seasons before LOSO; an independent source mask or fold-specific sensitivity check is needed before unbiased evaluation claims.",
+    "The original weather-only metrics and new spatial/baseline metrics use different populations.",
+    "The provided MLflow export describes the earlier weather-only result, not the new spatial model run.",
+    "Original acquisition manifests, processed model inputs and forecast.csv remain absent.",
+    "The 35 outside-bbox main grid centres are not repaired by excluding cells 570/571."
+  ]
+}

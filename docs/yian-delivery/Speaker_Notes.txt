@@ -1,0 +1,13 @@
+English speaking notes
+
+We checked 2,846 supplied event rows across six seasons and 56 weather point series. The unfiltered labels contain 2,822 positive cell-days. After the existing two-cell static-source exclusion, the model population is 1,573 cells and 2,684 positive cell-days.
+
+I independently replayed the current spatial model on those received labels and locally reconstructed weather. All 3,448,016 held-out predictions are present. Recomputed seasonal scores match the published spatial and baseline CSVs. The 14-day dashboard export contains 22,022 rows for 10–23 January 2025, including three positive cell-days. It matches the held-out scores, with the existing probability floor, and has complete daily grid coverage.
+
+The export is an uncalibrated historical backtest. The strict checker still flags 35 edge centres, affecting 490 rows in this window. Boundary/calendar-day policy and label-based selection/inner-validation limitations need review before final acceptance. The run record and hashes are included in the replay evidence. Tabib can integrate these updated materials; Zarif can use the provisional export for offline demo testing.
+
+中文理解提示
+
+Yian 已独立补跑当前空间模型，生成六季共 3,448,016 行留出预测，以及 2025 年 1 月 10–23 日、22,022 行的回测 forecast.csv。逐季指标与已公布 CSV 一致；14 天内含 3 个阳性网格日。它是未经校准的历史回测，使用已有概率下限；边界、日期和评估方法仍需审核。35 个边界中心在本窗口涉及 490 行，未擅自删除。
+
+Evidence: Yian_Replay_2026-10-30/run-manifest.json, prediction-audit.json, forecast-quality.json; MLflow run 328aaa7e10cd4f55873fd0598c704ed3.

@@ -1,0 +1,10 @@
+Observed local test output, 29 October 2026
+Base main: 32 passed in 29.33s
+Integrated candidate: 75 passed in 11.36s
+Command from candidate root: python -m pytest
+
+Python lint command: ruff check src scripts tests
+All checks passed!
+
+Full repository Ruff still reports 8 existing notebook findings: I001 x1, E702 x5, F541 x1, B905 x1.
+No real-data request, model-training run, PR #3 tests or hosted CI execution is claimed.

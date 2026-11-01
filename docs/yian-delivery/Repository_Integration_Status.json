@@ -1,0 +1,66 @@
+{
+  "checked_date_perth": "2026-10-29",
+  "repository": "https://github.com/asaduzzamanayon01/firesight",
+  "baseline_revision": "ad480505e229fc118b6e8b1a1a9796c2d48bb550",
+  "candidate_status": "local modified snapshot; no commit, push, merge or hosted CI",
+  "baseline_tests": {
+    "passed": 32,
+    "seconds": 29.33
+  },
+  "candidate_tests": {
+    "passed": 75,
+    "seconds": 11.36,
+    "command": "python -m pytest",
+    "data": "controlled fixtures, not real observations"
+  },
+  "candidate_python_lint": {
+    "passed": true,
+    "command": "ruff check src scripts tests"
+  },
+  "full_repository_lint": {
+    "passed": false,
+    "findings": 8,
+    "location": "notebooks/01_eda_ignitions.ipynb",
+    "baseline_findings": 12
+  },
+  "changed_files": [
+    ".gitignore",
+    "Makefile",
+    "README.md",
+    "docs/data-quality.md",
+    "docs/data-sources.md",
+    "docs/source-record.template.json",
+    "requirements.txt",
+    "scripts/check_data_quality.py",
+    "src/ingest/download_firms.py",
+    "src/quality/__init__.py",
+    "src/quality/checks.py",
+    "src/quality/repository.py",
+    "tests/fixtures/forecast.csv",
+    "tests/fixtures/grid.csv",
+    "tests/fixtures/ignitions.csv",
+    "tests/fixtures/weather.csv",
+    "tests/test_download_firms.py",
+    "tests/test_quality.py",
+    "tests/test_quality_repository.py"
+  ],
+  "real_data_files_obtained": false,
+  "grid_audit": {
+    "cells": 1575,
+    "centres_outside_configured_bbox": 35
+  },
+  "open_pr": {
+    "url": "https://github.com/asaduzzamanayon01/firesight/pull/3",
+    "head": "c30f434a3f95d51f09d87bdb19c7267bd33ef2f0",
+    "merged": false,
+    "tests_run_here": false
+  },
+  "test_environment": {
+    "python": "3.12.14",
+    "pandas": "2.2.3",
+    "pyarrow": "26.0.0",
+    "scikit_learn": "1.9.1",
+    "pytest": "9.2.0",
+    "PyYAML": "6.0.3"
+  }
+}

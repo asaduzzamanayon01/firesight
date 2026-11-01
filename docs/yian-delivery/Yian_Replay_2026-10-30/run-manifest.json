@@ -1,0 +1,303 @@
+{
+  "operator": "Yian Wang",
+  "run_purpose": "independent received-input replay; provisional retrospective backtest",
+  "started_utc": "2026-10-30T14:43:15.588564+00:00",
+  "core_source_revision": "501495d8771d47c22edd39b04800beaf1f710357",
+  "runner_sha256": "4abcc77d8a33927de1ac1830445cd3897a6d3c380fc78b967113a7dc92da1ffc",
+  "runtime": {
+    "python": "3.12.14",
+    "packages": {
+      "pandas": "2.2.3",
+      "numpy": "2.3.5",
+      "pyarrow": "25.0.1",
+      "scikit-learn": "1.9.1",
+      "lightgbm": "4.7.0",
+      "mlflow": "3.17.2",
+      "matplotlib": "3.11.2"
+    }
+  },
+  "inputs": [
+    {
+      "name": "ignitions_2019-07-01.parquet",
+      "sha256": "69f6dd09ddc9a7a40b92157e16a8cfb708cb9b0d5781f1cbf99a8c86fe5d04a4"
+    },
+    {
+      "name": "ignitions_2020-07-01.parquet",
+      "sha256": "185d788be31064c27546af8f9efdeee6b0e37a6438a5a861c0174bc9033fa22c"
+    },
+    {
+      "name": "ignitions_2021-07-01.parquet",
+      "sha256": "6f7218a0d92caa3cbbe0f8a8407f0deaaddc30ef6acfaf3b0b028da890c8d643"
+    },
+    {
+      "name": "ignitions_2022-07-01.parquet",
+      "sha256": "78603a3456abbd7b30645a1095a0405f8165a35cde24c17af2b098969ae6d0b3"
+    },
+    {
+      "name": "ignitions_2023-07-01.parquet",
+      "sha256": "0caec1abe927b73a3bda604964583c56d169c4ece94bb420fe96cf6a47e1c2e9"
+    },
+    {
+      "name": "ignitions_2024-07-01.parquet",
+      "sha256": "45dfbc81a1c95e27c2d7776286268ade154c4a51649ea1c1443c528a81722f0f"
+    },
+    {
+      "name": "weather_reconstructed.parquet",
+      "sha256": "453b28f572a6a88a2b2f091e01323cc97cf2e5adea2633188d22d440fa1c780d"
+    }
+  ],
+  "code_sha256": {
+    "src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/config.py": "5c3f69bfe36ae3602a16e7292f456b99f72349098b1a259438166575edc19413",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/evaluation/metrics.py": "37e99575c2bc1ddd0954e0542b052b787ebe4332c1ccd691ba1c1f9187e2d398",
+    "src/evaluation/splits.py": "56142e7cb89c6e0d68ff61999f149d4650dc24ff60c881a401f366d040bb811e",
+    "src/explain/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/explain/shap_explain.py": "6e50cdc3c724f7ef57921cc9d2172a4c1747bd59864acd902a93589a2df5214c",
+    "src/features/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/features/build_cell_days.py": "a206dc2ffef3d88f3a4be9b88edac208ba4f1c29b6e2a5facbc90003d5f4a963",
+    "src/features/grid.py": "197d49e512d0b0cd563296daa0fc61679061f00fca9607a3f1f95d09cc291530",
+    "src/features/join_weather.py": "b30e3ac8b4f21224ebbf00f697737646bac7bfe7bef98e69963a351d198e4c09",
+    "src/features/spatial_priors.py": "936039b79debf2c20a6bf96ce141cfc71b7102b5b2c26fa60f16a84f71af855c",
+    "src/ingest/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ingest/download_firms.py": "9f18694d4c2551e9af123e7e21605db60e13c781e142705a251fce2ac62165b2",
+    "src/ingest/firms_client.py": "1550cd0da2df021cbe361168d2749ccd906cf9613a79bd871d6ef6bc59a80483",
+    "src/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/models/baseline_climatology.py": "039cc1339c2a9e5e026c86f8cd1fa62fae448148d7a90650726f4684e37a6015",
+    "src/models/calibrate.py": "c0083d5b2522f5750b16f5815578d1581ebbfc55fc95c161ed6c199ac210051d",
+    "src/models/compare_models.py": "d1c24c8da24c54c0e66c45f6ed896f377168f4394ca9b8f2319d5e3a395f8b3d",
+    "src/models/convlstm.py": "ccef165b4842774d63dde3c63b4de0a88419da16bc9fefb2521af2916963a1ae",
+    "src/models/train_lgbm.py": "76fb3dcc723868e1e63dd0ac110226dd3beb51e7608fd294aa9ed4930dbdaf55",
+    "src/quality/__init__.py": "fdad98f48e7bcc1a2f98c1287793254d318941201b23428b2bdd2ae93f53c464",
+    "src/quality/checks.py": "a3802618e9858625cdb32ae3f00866dc69e9ebdc46664ab781d03fa3478e005d",
+    "src/quality/coverage.py": "404cbcd441e81a2d7ce9426c475224e757a65fa97458889dc038484478b0b456",
+    "src/quality/repository.py": "bc20a535aacbd290a7a175dfe1a2f3252edb8f4ac19ff003163c6662811bc96c",
+    "scripts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/audit_received_data.py": "b260ce7e9af531d1251ce3c08c90747a19ae809674633a13b638e244acabb2a7",
+    "scripts/audit_spatial_update.py": "3334317ca12b58b3b9a210651038005a3a209b571eb8ed9e65a368915597d770",
+    "scripts/check_data_quality.py": "40c12199cda089ed47d19665af14caf6ddfa67dd7d8f150b5c8839f4cdb92656",
+    "scripts/demo_stats.py": "8152817eb9abffb94fb18181be4f851f80110d001dd44d670fcaf3093af49eaf",
+    "scripts/export_forecast.py": "8ecd5573c573b893f16a8b88c130f19057887970c0036047398507d26b5bbb5e",
+    "scripts/fetch_weather_openmeteo.py": "8a882c00403618d2288e9caf03f10c044942e1842d537e26c575c21233beba40",
+    "scripts/make_synthetic.py": "bc4a68639590aad9ff539877d783a26b7b0481eadbd479b6066525d8ff7f3e2a",
+    "scripts/reproduce_received_run.py": "4abcc77d8a33927de1ac1830445cd3897a6d3c380fc78b967113a7dc92da1ffc",
+    "config/config.yaml": "76d4816b6c962d35770e2dfbff4fd042967740bd39aaf090345e6f0c6e982684"
+  },
+  "configuration": {
+    "project": {
+      "name": "firesight",
+      "random_seed": 42
+    },
+    "region": {
+      "name": "perth_darling_scarp",
+      "bbox": [
+        115.45,
+        -32.6,
+        116.55,
+        -31.4
+      ],
+      "grid_cell_km": 3,
+      "projected_crs": "EPSG:7850"
+    },
+    "seasons": {
+      "start_year": 2019,
+      "end_year": 2025,
+      "season_start_month": 7
+    },
+    "firms": {
+      "base_url": "https://firms.modaps.eosdis.nasa.gov/api/area/csv",
+      "source": "VIIRS_SNPP_SP",
+      "min_confidence": "nominal",
+      "cluster_eps_km": 1.5,
+      "cluster_eps_hours": 24,
+      "cluster_min_samples": 1
+    },
+    "weather": {
+      "variables": [
+        "t2m_max",
+        "rh_min",
+        "wind_speed_max",
+        "precip_24h",
+        "kbdi"
+      ],
+      "lag_days": 1,
+      "rolling_windows": [
+        3,
+        7,
+        30
+      ]
+    },
+    "model": {
+      "target": "ignition",
+      "exclude_cols": [
+        "cell_id",
+        "date",
+        "season",
+        "geometry",
+        "ignition"
+      ],
+      "lightgbm": {
+        "objective": "binary",
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "num_leaves": 7,
+        "min_child_samples": 1000,
+        "reg_lambda": 10,
+        "subsample": 0.8,
+        "subsample_freq": 1,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "class_weight": "none"
+      },
+      "calibration": {
+        "method": "isotonic"
+      }
+    },
+    "evaluation": {
+      "primary_metric": "pr_auc",
+      "reliability_bins": 10,
+      "cv_scheme": "leave_one_season_out"
+    },
+    "paths": {
+      "raw": "data/raw",
+      "processed": "data/processed",
+      "models": "models",
+      "reports": "reports",
+      "figures": "reports/figures"
+    },
+    "mlflow": {
+      "tracking_uri": "sqlite:///mlflow.db",
+      "experiment_name": "firesight"
+    }
+  },
+  "forecast_window": {
+    "start": "2025-01-10",
+    "days": 14
+  },
+  "limitations": [
+    "Current main's all-season label-derived static mask is retained; selection needs review.",
+    "Current main builds spatial priors before its inner validation split; this is not an unbiased-evaluation claim.",
+    "LOSO may train on future seasons; export is a retrospective backtest, not a prospective live forecast.",
+    "UTC event days, Perth weather days, and edge-centre acceptance remain unapproved team decisions.",
+    "Inputs are received events and locally reconstructed weather, not authenticated acquisition manifests.",
+    "Export uses uncalibrated scores and the existing probability floor; no calibrated-probability claim."
+  ],
+  "status": "completed_provisional_replay",
+  "overall_acceptance": false,
+  "population": {
+    "events": 2846,
+    "cells": 1573,
+    "rows": 3448016,
+    "positive_cell_days": 2684
+  },
+  "feature_missing_counts": {
+    "t2m_max_lag1": 1573,
+    "t2m_max_roll3": 1573,
+    "t2m_max_roll7": 4719,
+    "t2m_max_roll30": 23595,
+    "rh_min_lag1": 1573,
+    "rh_min_roll3": 1573,
+    "rh_min_roll7": 4719,
+    "rh_min_roll30": 23595,
+    "wind_speed_max_lag1": 1573,
+    "wind_speed_max_roll3": 1573,
+    "wind_speed_max_roll7": 4719,
+    "wind_speed_max_roll30": 23595,
+    "precip_24h_lag1": 1573,
+    "precip_24h_roll3": 1573,
+    "precip_24h_roll7": 4719,
+    "precip_24h_roll30": 23595,
+    "kbdi_lag1": 1573,
+    "kbdi_roll3": 1573,
+    "kbdi_roll7": 4719,
+    "kbdi_roll30": 23595
+  },
+  "forecast": {
+    "rows": 22022,
+    "days": 14,
+    "positive_rows": 3,
+    "coverage": {
+      "start": "2025-01-10",
+      "end": "2025-01-23",
+      "basis": "supplied grid IDs x inclusive literal daily date keys; no inferred population",
+      "expected_cells": 1573,
+      "expected_days": 14,
+      "expected_cell_days": 22022,
+      "observed_unique_expected_cell_days": 22022,
+      "missing_cell_days": 0,
+      "cells_absent_entire_window": 0,
+      "dates_absent_all_expected_cells": 0,
+      "duplicate_valid_pair_rows": 0,
+      "unknown_or_missing_cell_rows": 0,
+      "invalid_daily_date_rows": 0,
+      "out_of_window_rows": 0,
+      "passed": true,
+      "issues": []
+    },
+    "strict_quality_passed": false
+  },
+  "mlflow": {
+    "run_id": "328aaa7e10cd4f55873fd0598c704ed3",
+    "status": "FINISHED",
+    "experiment_id": "1"
+  },
+  "finished_utc": "2026-10-30T14:45:37.300639+00:00",
+  "outputs": {
+    "processed/baseline_oof_predictions.parquet": {
+      "bytes": 1319413,
+      "sha256": "22351331a20d8a38f5e29960b1c2c8da491fdf1a12b385586ba5009f802f04f8"
+    },
+    "processed/cell_days_features.parquet": {
+      "bytes": 94661451,
+      "sha256": "55bc3077dce922e788623094922ed835ab340e02de16a9161b3aadc8e9eb631e"
+    },
+    "processed/forecast.csv": {
+      "bytes": 2322086,
+      "sha256": "59ec60508bfaa0d28c5ba884825c7fc5c25b7e67cababcfb1dcca4200969cecb"
+    },
+    "processed/grid.csv": {
+      "bytes": 67204,
+      "sha256": "ec5cf28a917afb4c0ffbab34ee9b89273aaa5bfb33235344d72197b7aeb99084"
+    },
+    "processed/oof_predictions.parquet": {
+      "bytes": 25848970,
+      "sha256": "65b658933e80a63417e7a217aef097a5eae5bd01a905bfa18a34b734b29881b7"
+    },
+    "reports/baseline_cv_yian_replay.csv": {
+      "bytes": 936,
+      "sha256": "a66aba5f87c12f72b7386c48d2868c74945b31821cf2934f0f433674788b66c8"
+    },
+    "reports/demo_stats_yian_replay.csv": {
+      "bytes": 585,
+      "sha256": "626a0aa83991e19a8da66b46d3815e6202010e5e96a19a4b0479b236c086ef57"
+    },
+    "reports/forecast-quality/quality-report.json": {
+      "bytes": 2776,
+      "sha256": "46d9ca904eaa7f72a701d05a1f6a1238e6a5fcc3266e69ba965f94139cd8ba09"
+    },
+    "reports/forecast-quality/quality-summary.md": {
+      "bytes": 1204,
+      "sha256": "93405b5fcbaec48bb11f51fa24965a7390daf545c6e2d7637bfb34f8b6ebf9a0"
+    },
+    "reports/lgbm_cv_yian_replay.csv": {
+      "bytes": 1016,
+      "sha256": "13581b5146da45fe98d06b165b491a03e8e509fd74ed67077c315e9b093a89f9"
+    },
+    "reports/static_cells.csv": {
+      "bytes": 36,
+      "sha256": "c59ce613dddf0ed7bc6e583220014761ccf0d34783d9d873c581d6ab80326509"
+    },
+    "models/lgbm_final.pkl": {
+      "bytes": 243046,
+      "sha256": "d36e5a832d6efa0a719b9954a42b48571094ffb4b1dc57994bf534174a99e04d"
+    },
+    "figures/lgbm_pr_curve.png": {
+      "bytes": 34567,
+      "sha256": "269a154ccb4ed5c389fed8ee5794ae4987ca2d9067f701c5543d5d00724a662f"
+    },
+    "figures/lgbm_reliability.png": {
+      "bytes": 76059,
+      "sha256": "2136f91e68b3c9a5fbb31d569364f082007fd6cad303c68b800b89fd5116d28c"
+    }
+  }
+}

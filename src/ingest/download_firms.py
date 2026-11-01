@@ -12,9 +12,11 @@ import hashlib
 import json
 import os
 from collections.abc import Sequence
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from urllib.error import URLError
 from urllib.parse import quote
+from urllib.request import urlopen
 
 FIRMS_AREA_API = "https://firms.modaps.eosdis.nasa.gov/api/area/csv"
 
@@ -48,11 +50,13 @@ def build_area_url(
     days: int,
     end_date: date,
 ) -> str:
-    """Build the FIRMS area endpoint URL without logging its credential."""
+    """Keep legacy inclusive end_date input; send NASA's required start date."""
     if not map_key:
-        raise ValueError("FIRMS_MAP_KEY is required; set it in .env or the environment")
-    if days < 1 or days > 365:
-        raise ValueError("days must be between 1 and 365")
+        raise ValueError("FIRMS_MAP_KEY is required in the environment")
+    if days < 1 or days > 5:
+        raise ValueError(
+            "days must be between 1 and 5; split seasonal pulls into documented chunks"
+        )
 
     bounds = ",".join(f"{coordinate:.6f}" for coordinate in bbox)
     return "/".join(
@@ -62,33 +66,47 @@ def build_area_url(
             quote(source, safe=""),
             quote(bounds, safe=","),
             str(days),
-            end_date.isoformat(),
+            (end_date - timedelta(days=days - 1)).isoformat(),
         )
     )
 
 
-def redacted_url(source: str, bbox: tuple[float, float, float, float], days: int, end_date: date) -> str:
+def redacted_url(
+    source: str, bbox: tuple[float, float, float, float], days: int, end_date: date
+) -> str:
     """Return a manifest-safe FIRMS URL with no API key."""
     bounds = ",".join(f"{coordinate:.6f}" for coordinate in bbox)
     return "/".join(
-        (FIRMS_AREA_API, "<redacted>", source, bounds, str(days), end_date.isoformat())
+        (
+            FIRMS_AREA_API,
+            "<redacted>",
+            source,
+            bounds,
+            str(days),
+            (end_date - timedelta(days=days - 1)).isoformat(),
+        )
     )
 
 
 def download_csv(url: str, timeout_seconds: int) -> bytes:
     """Fetch a FIRMS CSV and reject empty responses."""
     try:
-        import requests
-    except ImportError as exc:
-        raise RuntimeError(
-            "requests is required; install dependencies with python -m pip install -r requirements.txt"
-        ) from exc
-
-    response = requests.get(url, timeout=timeout_seconds)
-    response.raise_for_status()
-    if not response.content.strip():
+        with urlopen(url, timeout=timeout_seconds) as response:
+            content = response.read()
+    except (URLError, TimeoutError, OSError):
+        raise RuntimeError("FIRMS request failed; credential-bearing URL suppressed") from None
+    if not content.strip():
         raise RuntimeError("FIRMS returned an empty response")
-    return response.content
+    import csv
+    import io
+
+    try:
+        header = next(csv.reader(io.StringIO(content.decode("utf-8-sig"))))
+    except (ValueError, StopIteration, UnicodeError):
+        raise RuntimeError("FIRMS response is not a valid CSV") from None
+    if not {"latitude", "longitude", "acq_date", "acq_time"}.issubset(header):
+        raise RuntimeError("FIRMS response lacks required detection columns")
+    return content
 
 
 def write_download(
@@ -104,6 +122,8 @@ def write_download(
     stem = f"firms_{source.lower()}_{end_date.isoformat()}_{days}d"
     csv_path = output_dir / f"{stem}.csv"
     manifest_path = output_dir / f"{stem}.manifest.json"
+    if csv_path.exists() or manifest_path.exists():
+        raise FileExistsError("output already exists; choose a new run directory")
     csv_path.write_bytes(content)
 
     manifest = {
@@ -112,7 +132,8 @@ def write_download(
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),  # noqa: UP017
         "query_url": redacted_url(source, bbox, days, end_date),
         "bbox_west_south_east_north": list(bbox),
-        "lookback_days": days,
+        "day_range": days,
+        "start_date": (end_date - timedelta(days=days - 1)).isoformat(),
         "end_date": end_date.isoformat(),
         "output_file": csv_path.name,
         "sha256": hashlib.sha256(content).hexdigest(),
@@ -136,14 +157,14 @@ def make_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--days",
         type=int,
-        default=10,
-        help="number of days ending on --end-date (1-365; default: 10)",
+        default=5,
+        help="days ending on --end-date (1-5; default: 5)",
     )
     parser.add_argument(
         "--end-date",
         type=parse_date,
         default=date.today(),
-        help="query end date in YYYY-MM-DD (default: today)",
+        help="inclusive end date; converted to NASA start date (default: today)",
     )
     parser.add_argument(
         "--source",
@@ -192,4 +213,3 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

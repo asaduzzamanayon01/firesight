@@ -8,6 +8,7 @@ real pipeline should always run with pyproj.
 from __future__ import annotations
 
 import warnings
+
 import numpy as np
 
 try:
@@ -17,7 +18,7 @@ try:
     HAS_PYPROJ = True
 except ImportError:  # pragma: no cover
     HAS_PYPROJ = False
-    warnings.warn("pyproj not installed: using approximate projection (tests only).")
+    warnings.warn("pyproj not installed: using approximate projection (tests only).", stacklevel=2)
 
 _LON0, _LAT0, _R = 116.0, -32.0, 6_371_000.0
 

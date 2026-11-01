@@ -1,0 +1,3489 @@
+{
+  "generated_utc": "2026-10-29T16:46:44.057244+00:00",
+  "audit_version": 1,
+  "source_revision": "e555d2aa41dd1be1d44d7bb9ebbe6be8feca3b54",
+  "data_mode": "forwarder-described real data; acquisition provenance incomplete",
+  "input_files": [
+    {
+      "file": "ignitions_2019-07-01.parquet",
+      "sha256": "69f6dd09ddc9a7a40b92157e16a8cfb708cb9b0d5781f1cbf99a8c86fe5d04a4",
+      "bytes": 25167
+    },
+    {
+      "file": "ignitions_2020-07-01.parquet",
+      "sha256": "185d788be31064c27546af8f9efdeee6b0e37a6438a5a861c0174bc9033fa22c",
+      "bytes": 23201
+    },
+    {
+      "file": "ignitions_2021-07-01.parquet",
+      "sha256": "6f7218a0d92caa3cbbe0f8a8407f0deaaddc30ef6acfaf3b0b028da890c8d643",
+      "bytes": 22140
+    },
+    {
+      "file": "ignitions_2022-07-01.parquet",
+      "sha256": "78603a3456abbd7b30645a1095a0405f8165a35cde24c17af2b098969ae6d0b3",
+      "bytes": 17961
+    },
+    {
+      "file": "ignitions_2023-07-01.parquet",
+      "sha256": "0caec1abe927b73a3bda604964583c56d169c4ece94bb420fe96cf6a47e1c2e9",
+      "bytes": 16576
+    },
+    {
+      "file": "ignitions_2024-07-01.parquet",
+      "sha256": "45dfbc81a1c95e27c2d7776286268ade154c4a51649ea1c1443c528a81722f0f",
+      "bytes": 17462
+    },
+    {
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "sha256": "2102c5f13d8f1dbe286dca4e28075b92de1584e6f80aea0d37d049329f834491",
+      "bytes": 18635704
+    },
+    {
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "sha256": "287ee68d0cd9bd6c42e7eac4837d43ae8071863e9d1f5a689037c53127d29294",
+      "bytes": 18635348
+    },
+    {
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "sha256": "0fefc34f18e0d0453d3f677e1a00efc03dfc335397ae180c2f13d6e9dc280d29",
+      "bytes": 18635398
+    },
+    {
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "sha256": "b8e48ae6c25f20bb6eb75961a46337b5d5193f78fc6c66643a0d8adc7c347f3e",
+      "bytes": 18632853
+    },
+    {
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "sha256": "48d39d504ddde466420703e20010422167df93a4432b53314a9dcb67fa10fc84",
+      "bytes": 12420677
+    }
+  ],
+  "ignitions": [
+    {
+      "kind": "ignitions",
+      "rows": 620,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2019-07-01T05:50:00+00:00",
+        "end_utc": "2020-06-29T16:43:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 620,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2019-07-01.parquet",
+      "sha256": "69f6dd09ddc9a7a40b92157e16a8cfb708cb9b0d5781f1cbf99a8c86fe5d04a4",
+      "grouped_detection_count": 5025
+    },
+    {
+      "kind": "ignitions",
+      "rows": 552,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2020-07-01T06:27:00+00:00",
+        "end_utc": "2021-06-30T17:21:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 552,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2020-07-01.parquet",
+      "sha256": "185d788be31064c27546af8f9efdeee6b0e37a6438a5a861c0174bc9033fa22c",
+      "grouped_detection_count": 3921
+    },
+    {
+      "kind": "ignitions",
+      "rows": 523,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2021-07-01T05:44:00+00:00",
+        "end_utc": "2022-06-30T16:37:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 523,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2021-07-01.parquet",
+      "sha256": "6f7218a0d92caa3cbbe0f8a8407f0deaaddc30ef6acfaf3b0b028da890c8d643",
+      "grouped_detection_count": 5115
+    },
+    {
+      "kind": "ignitions",
+      "rows": 413,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2022-07-01T05:00:00+00:00",
+        "end_utc": "2023-06-30T17:34:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 413,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2022-07-01.parquet",
+      "sha256": "78603a3456abbd7b30645a1095a0405f8165a35cde24c17af2b098969ae6d0b3",
+      "grouped_detection_count": 3831
+    },
+    {
+      "kind": "ignitions",
+      "rows": 350,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2023-07-01T05:58:00+00:00",
+        "end_utc": "2024-06-29T16:49:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 350,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2023-07-01.parquet",
+      "sha256": "0caec1abe927b73a3bda604964583c56d169c4ece94bb420fe96cf6a47e1c2e9",
+      "grouped_detection_count": 3547
+    },
+    {
+      "kind": "ignitions",
+      "rows": 388,
+      "columns": [
+        "event_id",
+        "lat",
+        "lon",
+        "date",
+        "detections_in_event",
+        "event_day"
+      ],
+      "missing_required_columns": [],
+      "missing": {
+        "event_id": 0,
+        "lat": 0,
+        "lon": 0,
+        "date": 0,
+        "detections_in_event": 0,
+        "event_day": 0
+      },
+      "coverage": {
+        "start_utc": "2024-07-01T06:34:00+00:00",
+        "end_utc": "2025-06-30T06:11:00+00:00"
+      },
+      "summary": {
+        "event_table_rows": 388,
+        "interpretation": "Rows are detections or supplied events, not independently verified ignitions."
+      },
+      "issues": [],
+      "coordinate_check": "performed",
+      "passed": true,
+      "source_columns": [
+        "event_id",
+        "latitude",
+        "longitude",
+        "acq_datetime",
+        "detections_in_event",
+        "date"
+      ],
+      "schema_adapter": "repository-main-utc",
+      "file": "ignitions_2024-07-01.parquet",
+      "sha256": "45dfbc81a1c95e27c2d7776286268ade154c4a51649ea1c1443c528a81722f0f",
+      "grouped_detection_count": 3529
+    }
+  ],
+  "raw_weather_points": [
+    {
+      "point_id": 0,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 115.45,
+      "returned_lat": -32.58348,
+      "returned_lon": 115.432396,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 14.0,
+          "max": 35.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.2,
+          "max": 25.09
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 20.0,
+          "max": 99.0
+        }
+      }
+    },
+    {
+      "point_id": 1,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 115.65,
+      "returned_lat": -32.58348,
+      "returned_lon": 115.76127,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.2,
+          "max": 41.5
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.68,
+          "max": 17.18
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 61.8
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 11.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 2,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -32.58348,
+      "returned_lon": 115.87089,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.2,
+          "max": 43.9
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.04,
+          "max": 14.22
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 8.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 3,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -32.58348,
+      "returned_lon": 116.09013,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.3,
+          "max": 41.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.9,
+          "max": 12.75
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.2
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 4,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -32.58348,
+      "returned_lon": 116.19975,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.8,
+          "max": 42.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.77,
+          "max": 12.53
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 52.1
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 5,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -32.58348,
+      "returned_lon": 116.419,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.7,
+          "max": 43.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.61,
+          "max": 12.79
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 42.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 6,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.6,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -32.58348,
+      "returned_lon": 116.638245,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.6,
+          "max": 43.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.63,
+          "max": 13.03
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 51.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 7,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.4,
+      "requested_lon": 115.45,
+      "returned_lat": -32.372585,
+      "returned_lon": 115.44903,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 14.2,
+          "max": 31.3
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.4,
+          "max": 25.5
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 43.8
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 22.0,
+          "max": 98.0
+        }
+      }
+    },
+    {
+      "point_id": 8,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.4,
+      "requested_lon": 115.65,
+      "returned_lat": -32.372585,
+      "returned_lon": 115.776695,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.2,
+          "max": 42.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.91,
+          "max": 15.7
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 65.1
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 9.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 9,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.4,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -32.372585,
+      "returned_lon": 115.88592,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.2,
+          "max": 44.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.3,
+          "max": 13.32
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 81.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 10,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.4,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -32.372585,
+      "returned_lon": 116.10437,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 42.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.13,
+          "max": 12.32
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 62.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 11,
+      "file": "2018-07-01_2025-06-30_0.2_0.json",
+      "requested_lat": -32.4,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -32.442883,
+      "returned_lon": 116.245445,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 43.3
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.63,
+          "max": 12.09
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 12,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.4,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -32.372585,
+      "returned_lon": 116.43204,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.7,
+          "max": 43.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.68,
+          "max": 11.36
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 47.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 13,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.4,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -32.372585,
+      "returned_lon": 116.65048,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.3,
+          "max": 43.1
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.87,
+          "max": 13.22
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 51.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 14,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 115.45,
+      "returned_lat": -32.161686,
+      "returned_lon": 115.46554,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 13.9,
+          "max": 31.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.75,
+          "max": 23.69
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 43.8
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 23.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 15,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 115.65,
+      "returned_lat": -32.302284,
+      "returned_lon": 115.74545,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.5,
+          "max": 41.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.92,
+          "max": 17.3
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 11.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 16,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -32.231987,
+      "returned_lon": 115.82325,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.4,
+          "max": 44.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.72,
+          "max": 14.62
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 60.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 17,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -32.231987,
+      "returned_lon": 116.04117,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.4,
+          "max": 42.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.8,
+          "max": 13.34
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 48.1
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 8.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 18,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -32.231987,
+      "returned_lon": 116.25908,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.9,
+          "max": 44.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.98,
+          "max": 16.86
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 44.2
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 19,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -32.161686,
+      "returned_lon": 116.44498,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.3,
+          "max": 44.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.64,
+          "max": 13.74
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 43.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 20,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -32.199999999999996,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -32.161686,
+      "returned_lon": 116.662636,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.3,
+          "max": 43.5
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.8,
+          "max": 14.16
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 46.4
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 21,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 115.45,
+      "returned_lat": -32.02109,
+      "returned_lon": 115.4041,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 14.0,
+          "max": 31.1
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.32,
+          "max": 27.07
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 57.6
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 23.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 22,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 115.65,
+      "returned_lat": -32.09139,
+      "returned_lon": 115.760864,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.4,
+          "max": 42.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.16,
+          "max": 17.2
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 86.4
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 23,
+      "file": "2018-07-01_2025-06-30_0.2_12.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -32.02109,
+      "returned_lon": 115.838356,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.6,
+          "max": 43.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.98,
+          "max": 15.12
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 96.6
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 8.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 24,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -32.02109,
+      "returned_lon": 116.05549,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.6,
+          "max": 43.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.21,
+          "max": 13.1
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 43.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 25,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -32.02109,
+      "returned_lon": 116.27261,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.9,
+          "max": 45.5
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.69,
+          "max": 13.6
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 48.1
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 26,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -32.02109,
+      "returned_lon": 116.489746,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.4,
+          "max": 44.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.71,
+          "max": 11.9
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 40.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 27,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.999999999999993,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -31.95079,
+      "returned_lon": 116.674706,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.6,
+          "max": 44.1
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.66,
+          "max": 14.84
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 44.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 28,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 115.45,
+      "returned_lat": -31.810194,
+      "returned_lon": 115.42068,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 14.4,
+          "max": 34.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.78,
+          "max": 27.18
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 52.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 22.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 29,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 115.65,
+      "returned_lat": -31.810194,
+      "returned_lon": 115.74519,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.2,
+          "max": 44.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.19,
+          "max": 18.11
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.4
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 9.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 30,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -31.810194,
+      "returned_lon": 115.85337,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.1,
+          "max": 46.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.94,
+          "max": 15.78
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.1
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 31,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -31.810194,
+      "returned_lon": 116.06972,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 11.8,
+          "max": 45.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.85,
+          "max": 13.03
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.8
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 32,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -31.810194,
+      "returned_lon": 116.286064,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.7,
+          "max": 46.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.7,
+          "max": 13.12
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 51.8
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 33,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -31.810194,
+      "returned_lon": 116.5024,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.1,
+          "max": 44.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.02,
+          "max": 14.17
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 51.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 34,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.79999999999999,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -31.810194,
+      "returned_lon": 116.61058,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.4,
+          "max": 45.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.0,
+          "max": 14.51
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 55.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 7.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 35,
+      "file": "2018-07-01_2025-06-30_0.2_24.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 115.45,
+      "returned_lat": -31.599297,
+      "returned_lon": 115.43712,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 14.7,
+          "max": 32.5
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 3.51,
+          "max": 25.86
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 45.9
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 18.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 36,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 115.65,
+      "returned_lat": -31.599297,
+      "returned_lon": 115.652695,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.6,
+          "max": 42.3
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.19,
+          "max": 18.44
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 64.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 37,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -31.599297,
+      "returned_lon": 115.86826,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 11.9,
+          "max": 46.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.9,
+          "max": 12.68
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 49.6
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 38,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -31.599297,
+      "returned_lon": 116.08383,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 46.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.02,
+          "max": 14.09
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 53.2
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 39,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -31.599297,
+      "returned_lon": 116.2994,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.9,
+          "max": 46.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.9,
+          "max": 13.28
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 40,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -31.599297,
+      "returned_lon": 116.40718,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.3,
+          "max": 45.9
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.88,
+          "max": 12.56
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 49.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 41,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.599999999999987,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -31.599297,
+      "returned_lon": 116.62275,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 11.0,
+          "max": 46.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.81,
+          "max": 12.7
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 51.6
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 42,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 115.45,
+      "returned_lat": -31.388401,
+      "returned_lon": 115.56086,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.3,
+          "max": 43.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.18,
+          "max": 15.13
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 9.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 43,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 115.65,
+      "returned_lat": -31.388401,
+      "returned_lon": 115.66826,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.1,
+          "max": 47.5
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.99,
+          "max": 13.51
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.9
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 44,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -31.388401,
+      "returned_lon": 115.88306,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 11.1,
+          "max": 46.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.9,
+          "max": 14.86
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.9
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 45,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -31.388401,
+      "returned_lon": 116.097855,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.2,
+          "max": 46.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.71,
+          "max": 14.18
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 58.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 46,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -31.388401,
+      "returned_lon": 116.20525,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.7,
+          "max": 45.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.14,
+          "max": 12.78
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 61.0
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 47,
+      "file": "2018-07-01_2025-06-30_0.2_36.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -31.388401,
+      "returned_lon": 116.42005,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 45.7
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.2,
+          "max": 12.26
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 54.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 48,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.399999999999984,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -31.388401,
+      "returned_lon": 116.63485,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.7,
+          "max": 46.4
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.81,
+          "max": 13.82
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 47.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 49,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 115.45,
+      "returned_lat": -31.177505,
+      "returned_lon": 115.46968,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.6,
+          "max": 43.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.06,
+          "max": 15.25
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 57.2
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 8.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 50,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 115.65,
+      "returned_lat": -31.177505,
+      "returned_lon": 115.683716,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 12.1,
+          "max": 46.9
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.06,
+          "max": 14.26
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 57.5
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 51,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 115.85000000000001,
+      "returned_lat": -31.177505,
+      "returned_lon": 115.89774,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.9,
+          "max": 47.0
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.02,
+          "max": 14.38
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 64.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 52,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 116.05000000000001,
+      "returned_lat": -31.247803,
+      "returned_lon": 116.03571,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.7,
+          "max": 46.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.11,
+          "max": 14.95
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 63.9
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 53,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 116.25000000000001,
+      "returned_lat": -31.177505,
+      "returned_lon": 116.21879,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 9.4,
+          "max": 45.6
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.16,
+          "max": 14.71
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 57.3
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 54,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 116.45000000000002,
+      "returned_lat": -31.177505,
+      "returned_lon": 116.43282,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.0,
+          "max": 45.8
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 2.26,
+          "max": 14.4
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 42.7
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    },
+    {
+      "point_id": 55,
+      "file": "2018-07-01_2025-06-30_0.2_48.json",
+      "requested_lat": -31.19999999999998,
+      "requested_lon": 116.65000000000002,
+      "returned_lat": -31.177505,
+      "returned_lon": 116.64685,
+      "timezone": "Australia/Perth",
+      "utc_offset_seconds": 28800,
+      "daily_expected_axis_match": true,
+      "hourly_expected_axis_match": true,
+      "daily_duplicate_times": 0,
+      "hourly_duplicate_times": 0,
+      "daily_units": {
+        "time": "iso8601",
+        "temperature_2m_max": "\u00b0C",
+        "wind_speed_10m_max": "m/s",
+        "precipitation_sum": "mm"
+      },
+      "hourly_units": {
+        "time": "iso8601",
+        "relative_humidity_2m": "%"
+      },
+      "variables": {
+        "daily.temperature_2m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 10.7,
+          "max": 46.2
+        },
+        "daily.wind_speed_10m_max": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 1.92,
+          "max": 14.12
+        },
+        "daily.precipitation_sum": {
+          "values": 2557,
+          "expected_values": 2557,
+          "missing_or_nonfinite": 0,
+          "min": 0.0,
+          "max": 49.6
+        },
+        "hourly.relative_humidity_2m": {
+          "values": 61368,
+          "expected_values": 61368,
+          "missing_or_nonfinite": 0,
+          "min": 6.0,
+          "max": 100.0
+        }
+      }
+    }
+  ],
+  "complete_three_table_handoff": false,
+  "forecast_validation": "NOT RUN: forecast.csv not supplied",
+  "event_summary": {
+    "event_rows": 2846,
+    "grouped_detection_count": 24968,
+    "duplicate_season_event_ids": 0,
+    "repeated_bare_event_ids_across_seasons": 2226,
+    "event_id_scope": "local to each seasonal file; use (source_season,event_id)",
+    "unassigned_events": 0,
+    "positive_cell_days": 2822,
+    "cell_days_with_multiple_event_rows": 24,
+    "total_model_cell_days": 3452400,
+    "positive_cell_day_rate_percent": 0.08174023867454525,
+    "ignition_contract_all_passed": true
+  },
+  "raw_weather_summary": {
+    "request_points": 56,
+    "unique_returned_coordinates": 56,
+    "days_per_point_including_spinup": 2557,
+    "hours_per_point": 61368,
+    "model_days_per_point": 2192,
+    "all_daily_axes_complete": true,
+    "all_hourly_axes_complete": true,
+    "all_variable_lengths_match": true,
+    "missing_or_nonfinite_values": 0,
+    "timezones": [
+      "Australia/Perth"
+    ],
+    "units_consistent": true,
+    "ranges": {
+      "daily.temperature_2m_max": {
+        "min": 9.4,
+        "max": 47.5
+      },
+      "daily.wind_speed_10m_max": {
+        "min": 1.3,
+        "max": 27.18
+      },
+      "daily.precipitation_sum": {
+        "min": 0.0,
+        "max": 96.6
+      },
+      "hourly.relative_humidity_2m": {
+        "min": 6.0,
+        "max": 100.0
+      }
+    }
+  },
+  "reconstructed_weather": {
+    "kind": "weather",
+    "rows": 3452400,
+    "columns": [
+      "cell_id",
+      "date",
+      "t2m_max",
+      "rh_min",
+      "wind_speed_max",
+      "precip_24h",
+      "kbdi",
+      "lat",
+      "lon"
+    ],
+    "missing_required_columns": [],
+    "missing": {
+      "cell_id": 0,
+      "date": 0,
+      "t2m_max": 0,
+      "rh_min": 0,
+      "wind_speed_max": 0,
+      "precip_24h": 0,
+      "kbdi": 0,
+      "lat": 0,
+      "lon": 0
+    },
+    "coverage": {
+      "start_utc": "2019-07-01T00:00:00+00:00",
+      "end_utc": "2025-06-30T00:00:00+00:00"
+    },
+    "summary": {},
+    "issues": [
+      {
+        "code": "coordinates_outside_study_box_or_invalid",
+        "count": 76720,
+        "severity": "error"
+      },
+      {
+        "code": "grid_centres_outside_study_box_or_invalid",
+        "count": 35,
+        "severity": "error"
+      }
+    ],
+    "coordinate_check": "performed",
+    "passed": false,
+    "source_columns": [
+      "cell_id",
+      "date",
+      "t2m_max",
+      "rh_min",
+      "wind_speed_max",
+      "precip_24h",
+      "kbdi"
+    ],
+    "schema_adapter": "repository-main-utc",
+    "sha256": "453b28f572a6a88a2b2f091e01323cc97cf2e5adea2633188d22d440fa1c780d",
+    "origin": "locally reconstructed from supplied JSON",
+    "original_author_processed_weather_supplied": false
+  },
+  "grid_summary": {
+    "origin": "locally reconstructed from current main src/features/grid.py",
+    "actual_run_grid_supplied": false,
+    "cells": 1575,
+    "centres_outside_configured_bbox": 35,
+    "weather_rows_at_those_centres": 76720,
+    "weather_points_used_by_grid": 42,
+    "bbox": [
+      115.45,
+      -32.6,
+      116.55,
+      -31.4
+    ],
+    "sha256": "b4721660845dd77aca78179b60e74c20313201c3489ca8501595aa8169b78a3b"
+  },
+  "limitations": [
+    "Forwarded files identify real data by sender claim; original FIRMS request manifests absent.",
+    "Event-day coverage cannot establish successful retrieval of every source window.",
+    "Weather response metadata has units/timezone but no selected model or acquisition timestamp.",
+    "Batch-to-request-point mapping is inferred from filenames and current pipeline order, not a request manifest.",
+    "Derived weather and grid reproduce current main assumptions; actual model-run artefacts/revision absent.",
+    "Main event dates are UTC; weather days are Australia/Perth. Team must approve their interpretation together.",
+    "Main and firesight-geo use different bbox/grid/clustering/day conventions; no silent substitution performed.",
+    "No forecast.csv, model metrics or calibrated predictions were provided; model quality is not reproduced.",
+    "Historical reanalysis and simplified KBDI do not establish live forecast availability."
+  ],
+  "overall_acceptance": "PENDING: missing forecast/run provenance and grid/day policy"
+}
