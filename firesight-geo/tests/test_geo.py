@@ -7,10 +7,10 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from firesight_geo.grid import build_grid, assign_cells
-from firesight_geo.labels import cluster_events, ignition_events, cell_day_labels
-from firesight_geo.splits import fire_season, loso_splits, spatial_block_split
 from firesight_geo import qa
+from firesight_geo.grid import assign_cells, build_grid
+from firesight_geo.labels import cell_day_labels, cluster_events, ignition_events
+from firesight_geo.splits import fire_season, loso_splits, spatial_block_split
 
 
 def _det(lon, lat, when):

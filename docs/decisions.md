@@ -115,3 +115,41 @@ pipeline must recover the features that were planted. It does — SHAP ranks
 temperature, humidity and powerline distance highest.
 
 **Rule.** Never report synthetic results as real. Label every figure.
+
+---
+
+## D8. Spatial and recent-activity features on real data
+**Owner:** Ayon · **Status:** Accepted
+
+On real data LightGBM trained on weather and season alone scored PR-AUC 0.0021,
+below the climatology baseline (0.0043). The weather lattice is about 20 km wide,
+so neighbouring 3 km cells receive almost the same weather and the model cannot
+tell them apart, whereas the baseline knows which cells burn.
+
+**Decision.** Add cell location, ignitions in the last 1 and 7 days nearby and in
+the region, and historical ignition rates of the cell and its neighbours
+(`src/features/spatial_priors.py`).
+
+**Leakage rules.** Recent activity uses only earlier days of the same season
+(shifted one day). Historical rates use training seasons only; a training row's
+rate comes from the other training seasons, and a test row's from all training
+seasons. `tests/test_spatial_priors.py` checks each rule.
+
+**Result.** PR-AUC 0.0102 against 0.0043 for the baseline, better in 6 of 6
+seasons. The top 5% of cells per day contain 32% of ignitions (random: 5%).
+Skill falls in later seasons (PR-AUC 0.0227 in 2019-20, 0.0038 in 2024-25).
+
+---
+
+## D9. Remove permanent heat-source cells
+**Owner:** Ayon · **Status:** Accepted
+
+Two cells (570 and 571) had 99 and 39 ignition days, far above any other cell.
+They are persistent heat sources, not repeated ignitions.
+
+**Decision.** Exclude cells with 35 or more ignition days from the cell-day table
+(`drop_static_sources`, tested in `tests/test_static_sources.py`). The excluded
+cells are written to `data/processed/static_cells.csv` and `results_real/static_cells.csv`.
+
+**Why.** They would dominate the positive class and let the model look good by
+memorising two locations.
