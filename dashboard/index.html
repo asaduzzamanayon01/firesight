@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FireSight - ignition risk backtest</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div>
+      <h1>FireSight</h1>
+      <p class="subtitle" id="subtitle">Bushfire ignition risk, Perth peri-urban interface, 3 km grid</p>
+    </div>
+    <div class="badge" role="note">Backtest, not a live forecast</div>
+  </header>
+
+  <section class="controls" aria-label="Date controls">
+    <button id="play" type="button">Play</button>
+    <button id="prev" type="button" aria-label="Previous day">&lsaquo;</button>
+    <div class="slider-wrap">
+      <input id="slider" type="range" min="0" max="0" value="0" step="1" aria-label="Date" disabled>
+      <div id="ticks" class="ticks" aria-hidden="true"></div>
+    </div>
+    <button id="next" type="button" aria-label="Next day">&rsaquo;</button>
+    <div id="date-label" class="date-label" aria-live="polite">Loading forecast...</div>
+  </section>
+
+  <div id="problem" class="problem" role="alert" hidden></div>
+
+  <main class="layout">
+    <div id="map" aria-label="Map of risk percentile by grid cell"></div>
+
+    <aside class="panel">
+
+      <section class="card" aria-labelledby="capture-title">
+        <h2 id="capture-title">Real fire starts that landed in the top <span id="top-pct">5</span>% of cells each day</h2>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value" id="stat-six">-</div>
+            <div class="stat-label">Across six seasons</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="stat-window">-</div>
+            <div class="stat-label"><span id="stat-window-name">This summer window</span><br>
+              <span id="stat-window-detail"></span></div>
+          </div>
+        </div>
+        <p class="note">Choosing cells at random would catch <span id="random-pct">5</span>%.</p>
+        <p class="note small">Six-season figure: model evaluation. Summer window: counted from this forecast file.</p>
+      </section>
+
+      <section class="card" aria-labelledby="day-title">
+        <h2 id="day-title">This day</h2>
+        <div id="day-summary" class="day-summary" aria-live="polite"></div>
+      </section>
+
+      <section class="card" aria-labelledby="legend-title">
+        <h2 id="legend-title">Legend</h2>
+        <div class="legend-bar" id="legend-bar"></div>
+        <div class="legend-scale"><span>Lower risk</span><span>Higher risk</span></div>
+        <p class="note small">Colour is each cell's rank among all cells that day (risk percentile), not its raw probability.</p>
+        <div class="legend-row"><span class="dot-fire"></span> A fire really started here that day</div>
+        <label class="legend-row toggle">
+          <input type="checkbox" id="toggle-outline" checked>
+          <span class="swatch-outline"></span>
+          <span>Outline the top <span id="outline-pct">5</span>% of cells</span>
+        </label>
+      </section>
+
+      <section class="card" id="example" aria-labelledby="example-title" hidden>
+        <h2 id="example-title">Example: cell <span id="example-cell"></span></h2>
+        <p class="note" id="example-context"></p>
+        <div class="chips" id="example-buttons"></div>
+        <button type="button" class="link" id="example-clear" hidden>Clear highlight</button>
+      </section>
+
+    </aside>
+  </main>
+
+  <footer class="footnote">
+    <p>2 cells excluded: probable industrial heat sources</p>
+    <p>A fire start is the first satellite detection of each fire event (NASA FIRMS).</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="forecast.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
