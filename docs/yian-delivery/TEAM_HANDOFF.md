@@ -2,6 +2,12 @@
 
 Based on the 8-page final-delivery plan read from the authorized WhatsApp conversation and repository / Jira inspection on 29 October 2026, refreshed against upstream main 41584f9 during PR preparation. **Responsibilities are planned outputs, not proof of completion.** Internal deadlines use Perth time; Tabib must verify official Blackboard requirements.
 
+## 1 November board update
+
+The current Jira check marks **Tabib FS-40–FS-43 Done** (requirements check, report skeleton, ethics/sustainability, introduction/conclusion/references). These are board-status updates; no new attachments or comments accompanied them. **Ayon FS-25–FS-28 are In Progress**, including optional horizons, code freeze, report sections and presentation/demo support. Final assembly, integration and submission must still be evidenced separately.
+
+Yian's five tasks have delivered core materials, with the full run package in **FS-37 attachment 10036**. Jira has no Review status, so labels identify `delivered` plus the actual pending review/acceptance/integration/rehearsal condition. The existing Definition of Done still applies. [PR #7](https://github.com/asaduzzamanayon01/firesight/pull/7) awaits a second member's review and upstream merge.
+
 ## Latest follow-up after PR 15
 
 [Current spatial update](Spatial_Update_2026-10-30.md): main a86e39b adds results_real evidence and a static-cell filter. Filtered counts independently match the CSVs (1,573 cells, 2,684 positive cell-days); aggregate means favour spatial LightGBM, with evaluation/provenance review limits retained. Sa-ad's FS-30/32/33 and new FS-52/53/54 are Done; his FS-32 comment confirms evaluation draft/review and pending final integration. His FS-33 comment records 24-hour real clustering. Yian's independent replay now supplies forecast.csv, full held-out predictions and matching run evidence; edge/day/methodology acceptance and original-source provenance remain open. **S1/S2/S3 now correspond to FS-52/53/54**, respectively; do not infer authentic sprint artefacts solely from Done status.
@@ -20,7 +26,7 @@ Sa-ad's [PR #14](https://github.com/asaduzzamanayon01/firesight/pull/14) is open
 | Tabib | Refreshed editable report/slide and notes available in this folder | Integrate/review whole submission, confirm official requirements and coordinate timing |
 | Zarif | Dashboard export contract documented | Use Yian's provisional forecast export to test the historical dashboard; retain demo/rehearsal evidence |
 
-The author's reported model PR-AUC remains unverified; no model result was reproduced in this data audit. Missing evidence here does not establish that a teammate has done no work elsewhere.
+That earlier data-only audit did not reproduce model scores. The subsequent Yian replay now reproduces saved-prediction metrics and the published seasonal CSV values; methodology acceptance remains separate. Missing evidence here does not establish that a teammate has done no work elsewhere.
 
 ## Ayon — ML, real data and code
 
@@ -96,7 +102,7 @@ Yian owns traceability and checks. Ayon / Sa-ad supply model results; Tabib coor
 ## Current remaining dependencies
 
 1. **Ayon + Sa-ad: approve the actual data contract.** Main uses bbox 115.45,-32.60,116.55,-31.40, UTC event days and 1.5 km / 24-hour clustering. The merged firesight-geo module has a different bbox, Perth days and 2 km / 2-day grouping. Sa-ad's open PR #14 explains intentional main-grid overshoot and proposes a clustering change; neither an edge-cell acceptance rule nor a new clustering window is adopted here. Confirm grid IDs/boundaries and how UTC event days align with Perth weather days.
-2. **Ayon + Sa-ad: review model-evaluation separation.** The new static mask uses all-season labels before LOSO, and fit-season spatial priors are built before inner validation. The audit independently reconciles filtered counts and published CSV arithmetic, but does not establish unbiased generalisation or calibrated probability quality. Review those choices and provide the matching spatial-run record/held-out predictions.
+2. **Ayon + Sa-ad: review model-evaluation separation.** The new static mask uses all-season labels before LOSO, and fit-season spatial priors are built before inner validation. The audit independently reconciles filtered counts and published CSV arithmetic, but does not establish unbiased generalisation or calibrated probability quality. Review those choices using the now-delivered Yian replay record and held-out predictions; Ayon's original run provenance remains a separate unverified source.
 3. **Ayon: finish the artefact handoff.** Six event files and five raw weather batches have arrived and been checked. Yian has independently supplied provisional forecast.csv, actual replay weather/grid hashes, held-out predictions and a matching spatial-run record. Still needed from original acquisition: source-window manifests and selected weather-model attribution; original Ayon run provenance remains unverified. A tracked data directory containing .gitkeep does not negate the received local files. Missing source downloads cannot be treated as zero-fire periods.
 4. **Yian: validate the remaining artefacts and obtain review.** Supplied-file measurements and filtered-label reconciliation are complete; report/slide/notes are updated in GitHub and Jira. The replay now passes 122 local root tests plus six subtests and lint; current hosted CI is linked from PR #7. Its export has complete grid/day coverage but preserves strict boundary failures. Keep those findings visible, review the agreed run/methodology policy, then obtain second-person review/upstream merge. Coordinate final integration with Tabib and rehearse personally and with the team.
 5. **Plan author / Ayon + Tabib: confirm submission requirements.** The internal plan refers to a Section 5 decision gate and supplied scripts/patches that were not included in the inspected plan. Confirm those requirements and the official Blackboard rules before final scope/submission decisions; internal target dates above do not replace official deadlines.

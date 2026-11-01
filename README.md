@@ -8,6 +8,12 @@ probability quality still require review.
 
 Group 14 · COMP6002 Semester 2 2026 · Master of AI, Curtin University
 
+## Data delivery ready for team review
+
+Yian's FS-35–FS-39 core files are delivered. Start with the [current handoff index](docs/yian-delivery/README.md) and [independent replay evidence](docs/yian-delivery/Yian_Replay_2026-10-30/README.md). The replay produced **3,448,016 held-out predictions**, reproduced the published spatial and baseline metrics, and exported **22,022 rows for 10–23 January 2025**. The **25.6 MB full output package** is uploaded to [Jira FS-37](https://asaduzzamanayon001.atlassian.net/browse/FS-37), attachment **10036**; it includes predictions, reconstructed weather/grid, the model and run/verification records.
+
+Use the **2026-10-30_Replay** report, editable slide and speaking notes. **122 root tests and hosted CI passed**; local verification also includes six subtests. [PR #7](https://github.com/asaduzzamanayon01/firesight/pull/7) still needs a second member's review and upstream merge. Strict boundary, calendar-day and evaluation-methodology acceptance remains open; the export is an uncalibrated historical backtest.
+
 ## The problem in one paragraph
 
 Australia's Fire Danger Rating System tells agencies how dangerous a fire
@@ -27,7 +33,7 @@ make test
 `make pipeline` runs baseline, training, calibration and explanation stages,
 writing figures to `reports/figures/` and metrics to `reports/`. Runtime depends
 on the data and machine. The current hosted smoke test verifies synthetic
-data generation and the baseline stage; see the [current CI run](https://github.com/YIAN-WANG-W/firesight/actions/runs/40979703928).
+data generation and the baseline stage; see the [latest verified 122-test CI run](https://github.com/YIAN-WANG-W/firesight/actions/runs/41079491271) and [branch Actions](https://github.com/YIAN-WANG-W/firesight/actions).
 
 ## Repository layout
 
@@ -110,11 +116,19 @@ mlflow ui                     # http://localhost:5000
 
 ## Data quality and current delivery
 
-Start at [Yian’s FS-35–FS-39 delivery index](docs/yian-delivery/README.md) for current files and owners, then the [latest spatial/filter reconciliation](docs/yian-delivery/Spatial_Update_2026-10-30.md). The original [received-file audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks 2,846 event rows and 56 raw weather points; its 2,822 positive cell-days are explicitly unfiltered. Latest filtered model counts are 2,684 positives over 1,573 cells. Strict coordinate validation retains 35 outside-bbox centres; Sa-ad documents intended edge coverage, while approval of the acceptance rule remains pending. Actual forecast and run provenance are still required. Published summary arithmetic has been checked; prediction-level model scores have not been reproduced.
+The [source-file audit](docs/yian-delivery/Real_Data_Quality_Status.md) checks 2,846 supplied event rows and 56 weather point series. Before the existing static-source filter, labels contain 2,822 positives over 1,575 cells. The independently reproduced model uses **1,573 cells / 3,448,016 cell-days / 2,684 positives**. Keep both population definitions explicit.
 
-[Checker instructions](docs/data-quality.md) · [Source catalogue](docs/data-sources.md) · [Whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md). PR #7 awaits second-person review and upstream merge. Fixture/CI tests and measured data checks are distinct.
+The [Yian replay](docs/yian-delivery/Yian_Replay_2026-10-30/README.md) now supplies full held-out predictions, forecast.csv, matching input/output/code hashes and finished MLflow run **328aaa7e10cd4f55873fd0598c704ed3**. Spatial/baseline seasonal metrics reproduce the published CSVs, with mean PR-AUC **0.0102256655 / 0.0042608292** and daily top-5% capture **32.08%**. These results retain the current method's documented selection/validation limits. Original acquisition-window manifests and selected weather-model attribution remain unverified.
 
+The non-mutating checker validates fields, values, duplicates, dates, coordinates and optional risk_percentile. With an explicit grid and inclusive date window, **--require-complete-cell-days** also detects missing whole days/cells/pairs. The actual 14-day export has complete coverage; strict bounds still flag **35 edge centres / 490 export rows**. The original full reconstructed weather has **76,720** flagged rows. No edge rows were dropped or moved to hide this result.
 
-### Latest spatial/filter update
+[Checker instructions](docs/data-quality.md) · [Source catalogue](docs/data-sources.md) · [Whole-team handoff](docs/yian-delivery/TEAM_HANDOFF.md) · [Full-package upload receipt](docs/yian-delivery/Yian_Replay_2026-10-30/Jira_Full_Package_Receipt_2026-10-30.json).
 
-Main a86e39b / PR #15 is integrated. See [current evidence](docs/yian-delivery/Spatial_Update_2026-10-30.md): static-source filtering reproduces 1,573 cells / 3,448,016 cell-days / 2,684 positives (0.07784187%), replacing the unfiltered population only for the new model run. Published spatial/baseline CSV means are 0.01022567 / 0.00426083; summary arithmetic and counts are checked, with selection/validation limits retained. The forecast exporter adds risk_percentile. Local root suite: 95 passed + 6 subtests; geography: 10 separately; lint passed. Current hosted smoke/CI status is linked from PR #7.
+## Remaining acceptance
+
+- Ayon/Sa-ad review edge/calendar-day/event rules, all-season label-derived static selection, priors before inner validation and LOSO future-season use.
+- Another member reviews PR #7; merge and green upstream CI follow the repository's Definition of Done.
+- Tabib integrates/reviews the Replay report and slide. Zarif tests the historical dashboard export. Yian and the team rehearse.
+- The original acquisition provenance and the final submission receipts remain separate evidence requirements.
+
+Jira's current workflow has only To Do, In Progress and Done. Delivered work awaiting review/integration is labelled explicitly; it remains In Progress until its actual acceptance conditions are met. This does not mean the delivered files are missing.
