@@ -7,7 +7,7 @@ cells, with a buffer ring removed from training).
 """
 from __future__ import annotations
 
-from typing import Iterator
+from collections.abc import Iterator
 
 import numpy as np
 import pandas as pd

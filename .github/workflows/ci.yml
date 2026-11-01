@@ -23,7 +23,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint
-        run: ruff check src/ tests/ scripts/
+        run: ruff check .
 
       - name: Run tests
         run: pytest tests/ -v
@@ -31,7 +31,7 @@ jobs:
       # Proves the pipeline still runs end to end, not just that units pass.
       - name: Smoke test the pipeline
         run: |
-          python -m scripts.make_synthetic
-          python -m src.models.baseline_climatology
+          make synth
+          make baseline
         env:
           MLFLOW_TRACKING_URI: sqlite:///mlflow.db
